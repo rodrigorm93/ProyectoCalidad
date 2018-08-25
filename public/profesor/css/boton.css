@@ -1,0 +1,17 @@
+#seleccion{
+	border-bottom: #eee8d8 0px outset; 
+	border-left: #eee8d8 0px outset; 
+	background:transparent;  
+	border-top: #eee8d8 0px outset; 
+	cursor: hand; 
+	border-right: #eee8d8 0px outset;
+}
+
+#seleccion:hover{
+    color: #EEE;
+	text-shadow: 0px 0px 7px #FFF;
+}
+
+#seleccion:active{
+    background:green;
+}
