@@ -1,2 +1,1 @@
-# sw2
-proyecto software II
+Proyecto de Calidad
