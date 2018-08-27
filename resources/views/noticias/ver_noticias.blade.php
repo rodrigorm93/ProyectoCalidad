@@ -65,9 +65,8 @@
 									</button>
                 <!-- Brand -->
                 <a class="navbar-brand page-scroll sticky-logo" href="index.html">
-                  <h1><span>e</span>Business</h1>
                   <!-- Uncomment below if you prefer to use an image logo -->
-                  <!-- <img src="img/logo.png" alt="" title=""> -->
+                  <img src="/img/logoC2.png" alt="" title=""> 
 								</a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -77,22 +76,22 @@
                     <a class="page-scroll" href="/">Home</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#about">About</a>
+                    <a class="page-scroll" href="#about">¿Quienes Somos?</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#services">Services</a>
+                    <a class="page-scroll" href="#services">Proyecto Educativo</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#team">Team</a>
+                    <a class="page-scroll" href="#team">Cuerpo Docente</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    <a class="page-scroll" href="#portfolio">Postulaciones</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#blog">Blog</a>
+                    <a class="page-scroll" href="/noticias">Noticias</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
+                    <a class="page-scroll" href="#contact">Contacto</a>
                   </li>
 
                   

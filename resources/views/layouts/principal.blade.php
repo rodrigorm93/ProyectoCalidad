@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>eBusiness Bootstrap Template</title>
+  <title>Escuela Especial Evangelica Presbiteriana</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -68,10 +68,10 @@
 										<span class="icon-bar"></span>
 									</button>
                 <!-- Brand -->
-                <a class="navbar-brand page-scroll sticky-logo" href="index.html">
-                  <h1><span>e</span>Business</h1>
+                <a class="navbar-brand page-scroll sticky-logo" href="/">
+                
                   <!-- Uncomment below if you prefer to use an image logo -->
-                  <!-- <img src="img/logo.png" alt="" title=""> -->
+                   <img src="img/logoC2.png" alt="" title=""> 
 								</a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -152,8 +152,8 @@
   <div id="home" class="slider-area">
     <div class="bend niceties preview-2">
       <div id="ensign-nivoslider" class="slides">
-        <img src="img/slider/slider1.jpg" alt="" title="#slider-direction-1" />
-        <img src="img/slider/slider2.jpg" alt="" title="#slider-direction-2" />
+        <img src="img/slider/img1.jpg" alt="" title="#slider-direction-1" />
+        <img src="img/slider/img2.jpg" alt="" title="#slider-direction-2" />
         <img src="img/slider/slider3.jpg" alt="" title="#slider-direction-3" />
       </div>
 
@@ -298,7 +298,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline services-head text-center">
-            <h2>Our Services</h2>
+            <h2>PROYECTO EDUCATIVO</h2>
           </div>
         </div>
       </div>

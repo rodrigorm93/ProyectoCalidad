@@ -113,13 +113,25 @@ class AsignacionController extends Controller
           ->where('idProfesor', '=',$idProfesor)
             ->get();
 
-        
-     
-            $alumno = DB::table('alumno')
+            //cargamos solo los alumnos que no esten en la asignatura 
+            //seleccionada
+           
+            /*
+            $count =DB::table('notas')
+            ->where('idMateria','=',$idMateria)
+            ->where('idAlumno','=',$idAlumno)
+            ->count(DB::raw('*'));
+            */
+            $alumno = DB::table('Notas as n')
+            ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
+            ->where('n.idMateria','!=',$idMateria)
+            ->where('n.idAlumno','!=',$idAlumno)
             ->get();
+           
 
-     
-
+           // $alumno=DB::table('alumno')    
+           // ->get();
+    
        
         return view('seccion_curso.create',['materia'=> $materia,'profesor'=> $profesor,
             'alumno'=> $alumno]);
