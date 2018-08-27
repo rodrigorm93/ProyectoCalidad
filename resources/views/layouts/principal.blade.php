@@ -154,7 +154,7 @@
       <div id="ensign-nivoslider" class="slides">
         <img src="img/slider/img1.jpg" alt="" title="#slider-direction-1" />
         <img src="img/slider/img2.jpg" alt="" title="#slider-direction-2" />
-        <img src="img/slider/slider3.jpg" alt="" title="#slider-direction-3" />
+        <!--<img src="img/slider/slider3.jpg" alt="" title="#slider-direction-3" -->
       </div>
 
       <!-- direction 1 -->

@@ -135,13 +135,14 @@
                   <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Nueva Plantilla</button>  
               </i></a></li>
               {{Form::close()}}
-
+            <!--
               {!! Form::open(array('url'=>'curso/porcentaje', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
              <input type="hidden" name="searchText" value="{{$cur->idMateria}}">
               <li><a href="curso/porcentaje"><i class="fa fa-circle-o">
                   <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Configurar % asistencia</button>  
               </i></a></li>
               {{Form::close()}}
+              -->
 
         </ul> 
                       
