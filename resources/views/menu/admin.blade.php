@@ -66,7 +66,24 @@
                                 </li>
                                 -->
                                 <li>
-                                    <a href="/noticias/create"><i class='fa fa-list-ol fa-fw'></i>Subir Noticia</a>
+                                
+                                    <a href="/noticias/create"><i class='fa fa-plus fa-fw'></i>Subir Noticia</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                          <li>
+                            <a href="#"><i class="fa fa-film fa-fw"></i>Proyectos Educativos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                            <!--
+                                <li>
+                                    <a href="#"><i class='fa fa-plus fa-fw'></i> Agregar</a>
+                                </li>
+                                -->
+                                <li>
+                                
+                                    <a href=""><i class='fa fa-plus fa-fw'></i>Subir Proyecto</a>
                                 </li>
                             </ul>
                         </li>
