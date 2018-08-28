@@ -30,6 +30,15 @@
                     </select>
                 </div>
 
+                 <div class="form-group">
+                <label>ver nombres: </label>
+                    <select name="n" id="n">
+                    @foreach($curso as $c)
+                    <option>{{$c -> idCurso}} {{$c -> grado}}</option>
+                    @endforeach
+                    </select>
+                </div>
+
             <div class="form-group">
                 <label for="nombre">Materia: </label>
                 <input type="text" name="nombre" placeholder="Ej: ciencias">

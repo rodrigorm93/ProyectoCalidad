@@ -35,14 +35,24 @@
                     <option>{{$c -> idMateria}}</option>
                     @endforeach
                     </select>
+
+                     <label>Ayuda: </label>
+                    <select name="m" id="m">
+                    @foreach($materia as $c)
+                    <option>{{$c -> idMateria}} {{$c -> nombre}}</option>
+                    @endforeach
+                    </select>
                 </div>
+
                 <div class="form-group">
-                <label>Cursos: </label>
+                <label>Curso: </label>
                     <select name="curso" id="listaCursos">
                     @foreach($materia as $c)
                     <option>{{$c -> idCurso}}</option>
                     @endforeach
                     </select>
+                     
+
                 </div>
 
                    <div class="form-group">
@@ -50,6 +60,13 @@
                     <select name="idp">
                     @foreach($profesor as $pro)
                     <option>{{$pro -> idProfesor}}</option>
+                    @endforeach
+                    </select>
+
+                     <label>Ayuda: </label>
+                    <select name="i">
+                    @foreach($profesor as $pro)
+                    <option>{{$pro -> idProfesor}}-{{$pro -> nombre}}</option>
                     @endforeach
                     </select>
                 </div>

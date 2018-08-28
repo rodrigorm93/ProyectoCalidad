@@ -253,7 +253,7 @@ class AsignacionController extends Controller
       $alumno->asignacion= 'No asignado';
       $alumno->update();
 
-      return Redirect::to('/menu');
+      return Redirect::to('/seccion_curso');
     }
 
 

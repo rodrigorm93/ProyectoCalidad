@@ -112,7 +112,7 @@ class CursoController extends Controller
             
             
         }
-            return Redirect::to('/menu');
+            return Redirect::to('/curso/createMateria');
     }
 
 
@@ -141,7 +141,7 @@ class CursoController extends Controller
             
             
         }
-            return Redirect::to('/menu');
+            return Redirect::to('/seccion_curso/asignarP');
     }
 
 
