@@ -118,7 +118,7 @@
                                 </li>
                                 -->
                                 <li>
-                                    <a href=""><i class='fa fa-list-ol fa-fw'></i> Cursos</a>
+                                    <a href="{{ route('curso.index') }}"><i class='fa fa-list-ol fa-fw'></i> Cursos</a>
                                 </li>
                             </ul>
                         </li>

@@ -35,18 +35,40 @@ class CursoController extends Controller
     public function index(Request $request)
     {
 
-        if($request){
-    
-            $seccion=DB::table('Notas as n')
-            ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
-            ->join ('Materia as m', 'm.idMateria', '=' ,'n.idMateria') 
-            ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')         
-            ->select('a.nombre as nombre','a.apellido as apellido','m.nombre as materia','m.idCurso','c.grado')
-            ->orderBy('n.idMateria','dec')
+       
+           
+        $curso=DB::table('Curso')
+        ->get();
 
-            ->paginate(10);
-            return view('seccion_curso.index', ["seccion" => $seccion]);
-        }
+             
+        return view('curso.grado',['curso'=> $curso]);
+
+        
+    }
+
+    public function ver_materias(Request $request)
+    {
+        $idCurso = $request->get('idCurso');
+        
+        /*
+        $materia=DB::table('Materia as m')
+        ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')
+        ->join ('Notas as n', 'n.idMateria', '=' ,'m.idMateria')
+        ->select('m.idMateria','n.idAlumno','c.grado','m.nombre')              
+        ->where('m.asignacion', '=','ASIGNADO')
+        ->where('m.idCurso', '=',$idCurso)
+        ->distinct()->get();
+*/
+        $materia=DB::table('Materia as m')
+        ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')      
+        ->where('m.asignacion', '=','ASIGNADO')
+        ->where('m.idCurso', '=',$idCurso)
+        ->paginate(10);
+     
+
+              
+        return view('curso.ver_materias',['materia'=> $materia]);
+  
     }
 
 
@@ -122,15 +144,42 @@ class CursoController extends Controller
             return Redirect::to('/menu');
     }
 
-    public function show($id)
-    {
-        return view("seccion_curso.show", ["seccion"=>Seccion::findOrFail($idCurso,$idProfesor,$idAlumno)]);
-    }
 
-     public function destroy($idCurso,$idProfesor,$idAlumno)
+
+     public function destroy(Request $request,$idMateria)
     {
-      $seccion= Seccion::find($idCurso,$idProfesor,$idAlumno);
-      $seccion->delete();
+       
+        try {
+            $cont=0;
+            //capturamos los id de los alumnos que estan en la materia eliminada
+            $idAlumno=$request->get('idAlumno');
+
+            DB::beginTransaction();
+
+        //Eliminamos la materia 
+      $materia= Materia::find($idMateria);
+      $materia->delete();
+
+      //Eliminamos todos los alumnos asigandos a esa materia
+     
+
+      while($cont < count($idAlumno)){
+          
+        Alumno::where('idAlumno', '=', $idAlumno[$cont])
+        ->update(['asignacion' => 'No asignado']);
+
+        $notas= Notas::find($idAlumno[$cont]);
+        $notas->delete();
+        $cont = $cont+1;
+      }
+
+      DB::commit();
+            
+    } catch (Exception $e) {
+        DB::rollback();
+        
+        
+    }
 
       return Redirect::to('/menu');
     }

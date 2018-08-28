@@ -49,6 +49,9 @@ Route::get('/seccion_curso/seccion', 'AsignacionController@EliminarSeccion');
 
 //Route::get('/seccion_curso/eliminar', 'AsignacionController@destroy');
 
+//ruta para ver las materias impartidas en un curso especifico
+Route::get('/curso/ver_materias', 'CursoController@ver_materias');
+
 
 
 //Rutas Nuevas

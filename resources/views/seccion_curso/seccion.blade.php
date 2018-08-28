@@ -13,16 +13,16 @@
 				@if(isset($seccion))
 				<table class="table table-striped table-bordered table-condensed table-hover">
 					<thead>
-						<th>ID Curso</th>
-						<th>ID Profesor</th>
-						<th>ID Alumno</th>
-						
+						<th>Curso</th>
+						<th>Materia</th>
+						<th>Alumno</th>
+
 					</thead>
 					@foreach ($seccion as $sec)
 					<tr>
 						<td>{{$sec -> grado}}</td>
 						<td>{{$sec -> materia}}</td>
-						<td>{{$sec -> nombre}}</td>
+						<td>{{$sec -> nombre}} {{$sec -> apellido}}</td>
 						<td>
 				<td>
 				<a href="" data-target="#modal-delete-{{$sec->idAlumno}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i> </btn></a>
