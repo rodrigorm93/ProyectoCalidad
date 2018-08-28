@@ -112,9 +112,11 @@
                                 <li>
                                     <a href="/curso/createMateria"><i class='fa fa-plus fa-fw'></i> Materia</a>
                                 </li>
+                                <!--
                                 <li>
                                     <a href="/curso/importar"> <i class='fa fa-plus fa-fw'></i> Importar lista </a>
                                 </li>
+                                -->
                                 <li>
                                     <a href=""><i class='fa fa-list-ol fa-fw'></i> Cursos</a>
                                 </li>

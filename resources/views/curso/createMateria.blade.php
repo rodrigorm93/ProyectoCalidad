@@ -22,7 +22,7 @@
 
 
              <div class="form-group">
-                <label>Curso: </label>
+                <label>Grado: </label>
                     <select name="curso" id="listaCursos">
                     @foreach($curso as $c)
                     <option>{{$c -> idCurso}}</option>
