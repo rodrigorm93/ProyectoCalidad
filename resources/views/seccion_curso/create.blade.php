@@ -7,7 +7,7 @@
         <div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
             
             <fieldset>
-                <legend><h3>Asignacion de Cursos: </h3></legend>
+                <legend><h3>Asignacion de Alumnos:  </h3></legend>
                 @if(count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
@@ -32,7 +32,7 @@
                 <label>Materias Impartidas: </label>
                     <select name="idMateria" id="idMateria">
                     @foreach($materia as $c)
-                    <option>{{$c -> nombre}}</option>
+                    <option selected>{{$c -> nombre}}</option>
                     @endforeach
                     </select>
                 </div>
@@ -95,5 +95,13 @@
          }
     </script>
     @endpush
+
+    <Script> 
+    if(idMateria.length==0){
+        alert("No hay materias para este curso! Primero asigne las materias al curso y luego los alumnos");
+        window.location.replace("http://127.0.0.1:8000/seccion_curso/grado");
+    }
+</Script> 
+
 
 @endsection

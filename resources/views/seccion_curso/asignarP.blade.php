@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                 <label>Materia: </label>
-                    <select name="materia" id="listaCursos">
+                    <select name="materia" id="materia">
                     @foreach($materia as $c)
                     <option>{{$c -> idMateria}}</option>
                     @endforeach
@@ -95,4 +95,10 @@
     </script>
     @endpush
 
+    <Script> 
+    if(materia.length==0){
+        alert("Todas las materias han sido asignadas");
+        window.location.replace("http://127.0.0.1:8000/menu");
+    }
+</Script> 
 @endsection
