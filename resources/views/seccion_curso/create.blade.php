@@ -29,35 +29,35 @@
                 -->
 
                 <div class="form-group">
-                <label>Materia Impartida: </label>
-                    <select name="Materia" id="listaCursos">
+                <label>Materias Impartidas: </label>
+                    <select name="idMateria" id="idMateria">
                     @foreach($materia as $c)
-                    <option>{{$c -> idMateria}}</option>
+                    <option>{{$c -> nombre}}</option>
                     @endforeach
                     </select>
                 </div>
 
+                   @foreach($materia as $c)
+                <input id="idCurso" type="hidden" name="idCurso" value="{{$c -> idCurso}}">
+                @endforeach
 
-                   <div class="form-group">
-                <label>ID Profesor: </label>
-                    <select name="idp">
-                    @foreach($profesor as $pro)
-                    <option>{{$pro -> idProfesor}}</option>
-                    @endforeach
-                    </select>
-                </div>
-
+                @foreach($materia as $c)
+                <input id="idMateria" type="hidden" name="idMateria[]" value="{{$c -> idMateria}}">
+                @endforeach
+                  
                   <div class="table-responsive">
                 <table class="table table-striped table-bordered table-condensed table-hover">
                     <thead>
                      <th>ID Alumno</th>
                      <th>Nombre</th>
+                   
                      </thead>
 
                     @foreach($alumno as $a)
                     <tr>
                     
-                       <td><input id="idAlumno" type="text" name="idAlumno[]" value="{{$a -> idAlumno}}"></td>
+                       <td>{{$a->idAlumno}}</td>
+                       <input id="idAlumno" type="hidden" name="idAlumno[]" value="{{$a -> idAlumno}}">
                        <td>{{$a->nombre}} {{$a->apellido}}</td>
                        
                        <td>

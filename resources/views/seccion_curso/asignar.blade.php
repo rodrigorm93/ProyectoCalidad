@@ -28,7 +28,7 @@
                     <input id="idMateria" type="hidden" name="idMateria" value="{{$c -> idMateria}}">
                     <input id="idProfesor" type="hidden" name="idProfesor" value="{{$c -> idProfesor}}">
                     @foreach($alumno as $a)
-                    <input id="idAlumno" type="hidden" name="idAlumno" value="{{$a -> idAlumno}}">
+                    <input id="idAlumno" type="hidden" name="idAlumno[]" value="{{$a -> idAlumno}}">
                     @endforeach
                     <button class="btn btn-primary" type="submit">ingresar</button>
                   

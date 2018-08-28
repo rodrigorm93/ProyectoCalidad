@@ -8,7 +8,8 @@ use App\Http\Requests;
 //agregamos nuestro modelo
 use App\User;
 use App\Alumno;
-use App\Historial;
+use App\Notas;
+
 //use asistencias\Alumno;
 //hacemos referencias a redirect para hacer algunas redirrecciones
 use Illuminate\Support\Facades\Redirect;
@@ -52,9 +53,8 @@ class AlumnoController extends Controller
                     'u.apellido as apellido',
                     'u.email as email',
                     'u.genero as genero',
-                    'u.edad as edad',
-                    'a.carrera as carrera',
-                    'a.ingresoYear as ingreso'
+                    'u.edad as edad',   
+                    'a.ingreso as ingreso'
                     )
             ->paginate(15);
 
@@ -157,9 +157,18 @@ class AlumnoController extends Controller
 
     public function destroy($id)
     {
+     //Eliminamos de la tabla usuario, alumno y su registros de notas
       $usuario = User::findOrFail($id);
-      $usuario->estado= 'inactivo';
-      $usuario->update();  
+      //$usuario->estado= 'inactivo';
+      $usuario->delete(); 
+
+      $alumno = Alumno::findOrFail($id);
+      //$usuario->estado= 'inactivo';
+      $alumno->delete();
+      
+
+      $notas = Notas::findOrFail($id);
+      $notas->delete();
 
       return Redirect::to('alumno');
     }
@@ -220,6 +229,7 @@ class AlumnoController extends Controller
                     $alumno->nombre = $nombre[$cont];
                     $alumno->apellido = $apellido[$cont];
                     $alumno->ingreso= $ingreso[$cont];
+                    $alumno->asignacion= 'No asignado';
                    
                     $alumno->save(); 
 

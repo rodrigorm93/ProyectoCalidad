@@ -34,20 +34,44 @@ class AsignacionController extends Controller
     public function index(Request $request)
     {
 
-        if($request){
-    
+        $curso=DB::table('Curso')
+        ->get();
+
+            return view('seccion_curso.index', ["curso" => $curso]);
+        
+    }
+
+    public function EliminarSeccion(Request $request)
+    {
+        $idCurso = $request->get('idCurso');
+       
+       
+            /*
             $seccion=DB::table('Notas as n')
             ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
             ->join ('Materia as m', 'm.idMateria', '=' ,'n.idMateria') 
-            ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')         
-            ->select('a.nombre as nombre','a.apellido as apellido','m.nombre as materia','m.idCurso','c.grado')
+            ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')  
+            ->where('c.idCurso','=',$idCurso)       
+            ->select('a.nombre as nombre','a.apellido as apellido','m.nombre as materia',
+            'm.idCurso','c.grado','n.idAlumno','n.idMateria')
             ->orderBy('n.idMateria','dec')
+            ->paginate(40);
+                */
+                if($request){
+               
+                $seccion=DB::table('Notas as n')
+                ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
+                ->join ('Materia as m', 'm.idMateria', '=' ,'n.idMateria') 
+                ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')  
+                ->where('c.idCurso','=',$idCurso)       
+                ->select('a.nombre as nombre','a.apellido as apellido','m.nombre as materia',
+                'm.idCurso','c.grado','n.idAlumno','n.idMateria')
+                ->orderBy('a.idAlumno','dec')
+                ->paginate(100);
 
-            ->paginate(10);
-            return view('seccion_curso.index', ["seccion" => $seccion]);
-        }
+            return view('seccion_curso.seccion', ["seccion" => $seccion]);
+                }
     }
-
 
     public function create()
     {
@@ -88,57 +112,14 @@ class AsignacionController extends Controller
         //->get();
 
         $alumno = DB::table('alumno')
-        //->join ('Alumno as a', 'a.idAlumno', '=' , 'u.id')
+        ->where('asignacion', '=','No asignado')
         ->get();
               
-        return view('seccion_curso.asignar',['materia'=> $materia,'alumno'=> $alumno]);
+        return view('seccion_curso.create',['materia'=> $materia,'alumno'=> $alumno]);
   
     }
 
 
-
-    public function asignar2(Request $request)
-    {
-        $idProfesor = $request->get('idProfesor');
-        $idMateria= $request->get('idMateria');
-        $idAlumno= $request->get('idAlumno');
-
-
-        $materia=DB::table('materia')    
-        ->where('estado', '<>', 'inactivo')
-        ->where('idMateria', '=',$idMateria)
-        ->get();
-
-         $profesor = DB::table('profesor')
-          ->where('idProfesor', '=',$idProfesor)
-            ->get();
-
-            //cargamos solo los alumnos que no esten en la asignatura 
-            //seleccionada
-           
-            /*
-            $count =DB::table('notas')
-            ->where('idMateria','=',$idMateria)
-            ->where('idAlumno','=',$idAlumno)
-            ->count(DB::raw('*'));
-            */
-            $alumno = DB::table('Notas as n')
-            ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
-            ->where('n.idMateria','!=',$idMateria)
-            ->where('n.idAlumno','!=',$idAlumno)
-            ->get();
-           
-
-           // $alumno=DB::table('alumno')    
-           // ->get();
-    
-       
-        return view('seccion_curso.create',['materia'=> $materia,'profesor'=> $profesor,
-            'alumno'=> $alumno]);
-            
-  
-
-    }
 
     //Asiganacion de profesores a los cursos
 
@@ -205,9 +186,12 @@ class AsignacionController extends Controller
             //Se crean los array de los siguientes datos:
             $idAlumno=$request->get('idAlumno');
             $Asignar=$request->get('select');
-            $idMateria=$request->get('Materia');
+            $idCurso=$request->get('idCurso');
+            $materias=$request->get('idMateria');
 
             $cont = 0;
+            $cont2 = 0;
+
 
             //Se recorren y asignan los array
             while($cont < count($idAlumno)){
@@ -217,20 +201,28 @@ class AsignacionController extends Controller
              //ACTUALIZAMOS LOS REGISTROS DE ALUMMNO PAra que digan que ya esta en un curso 
 
              
-            /* Alumno::where('idAlumno', '=', $idAlumno[$cont])
-                   ->update(['asignacion' => 'ASIGNADO']);*/
+            Alumno::where('idAlumno', '=', $idAlumno[$cont])
+                   ->update(['asignacion' => 'ASIGNADO']);
 
-            $notas = new Notas;
+            
+
+            //Asignar todas las materias del grado correspondienta para cada alumno
+            while($cont2 < count($materias)){
+             $notas = new Notas;
             $notas->idAlumno=$idAlumno[$cont];
-            $notas->idMateria=$request->get('Materia');
+            $notas->idMateria=$materias[$cont2];
             $notas->nota='0';
             $notas->promedio='0';
             $notas->save();
-  
+
+            $cont2 = $cont2+1;
+            }
+
                 }
                
 
                 $cont = $cont+1;
+                $cont2 = 0;
             }
 
             DB::commit();
@@ -249,10 +241,17 @@ class AsignacionController extends Controller
         return view("seccion_curso.show", ["seccion"=>Seccion::findOrFail($idCurso,$idProfesor,$idAlumno)]);
     }
 
-     public function destroy($idCurso,$idProfesor,$idAlumno)
+     public function destroy($idAlumno)
     {
-      $seccion= Seccion::find($idCurso,$idProfesor,$idAlumno);
-      $seccion->delete();
+       
+    //Eliminamos al alumno de un curso 
+      $nota = Notas::find($idAlumno);
+      $nota->delete();
+
+    //Actualizamos al alumnos como no asignado a ningun curso
+      $alumno = Alumno::find($idAlumno);
+      $alumno->asignacion= 'No asignado';
+      $alumno->update();
 
       return Redirect::to('/menu');
     }

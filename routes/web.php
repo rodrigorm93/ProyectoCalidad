@@ -43,6 +43,13 @@ Route::get('/seccion_curso/asignarPStore', 'AsignacionController@asignarPStore')
 Route::get('/curso/createMateria', 'CursoController@createMateria'); 
 Route::post('/curso/materiaStore', 'CursoController@materiaStore'); 
 
+//para eliminar alumnos de un grado especifico
+Route::get('/seccion_curso/seccion', 'AsignacionController@EliminarSeccion');
+
+
+//Route::get('/seccion_curso/eliminar', 'AsignacionController@destroy');
+
+
 
 //Rutas Nuevas
 Route::resource('menu','UsuarioController');

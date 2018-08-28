@@ -1,37 +1,41 @@
 @extends ('menu.admin')
 @section ('contenido')
 
-	<div class="row">
-		<div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
-			<h3>Lista de Asignaciones</h3>
-		</div>	
-	</div>
+    {!!Html::style('admin/css/formulario.css')!!}
 
-	<div class="row">
-		<div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
-			<div class="table-responsive">
-				@if(isset($seccion))
-				<table class="table table-striped table-bordered table-condensed table-hover">
-					<thead>
-						<th>Curso</th>
-						<th>Materia</th>
-						<th>Nombre Alumno</th>
-						
-					</thead>
-					@foreach ($seccion as $sec)
-					<tr>
-						<td>{{$sec -> grado}}</td>
-						<td>{{$sec -> materia}}</td>
-						<td>{{$sec -> nombre}} {{$sec -> apellido}}</td>
-		
-					</tr>
-				@include('seccion_curso.modal')
-				@endforeach
-				</table>
-				@endif
-			</div>
-			{{$seccion->render()}}
-		</div>
-	</div>
+    <div class="row">
+        <div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            
+            <fieldset>
+                <legend><h3>Asignacion de Cursos: </h3></legend>
+                @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                <label>Cursos Impartidas: </label>
+          
+                
+                    @foreach($curso as $c)
+                    {!!Form::open(array('url'=>'seccion_curso/seccion', 'method'=>'GET', 'autocomplete'=>'off'))!!}
+                {{Form::token()}}
+                   
+                    <p>{{$c->grado}}
+                    <input id="idCurso" type="hidden" name="idCurso" value="{{$c -> idCurso}}">
+        
+                    <button class="btn btn-primary" type="submit">ingresar</button>
+                  
+                    {!!Form::close()!!}
+                    @endforeach
+                    </p>
 
-@stop
+            </fieldset>
+        </div>
+    </div>
+
+
+@endsection

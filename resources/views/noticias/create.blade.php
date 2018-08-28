@@ -10,7 +10,7 @@
                         <legend class="text-center header">Subir Noticia</legend>
 
                         <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                             <div class="col-md-8">
                                 <input id="titulo" name="titulo" type="text" placeholder="Titulo" class="form-control">
                             </div>
@@ -31,6 +31,15 @@
                             </div>
                         </div>
 
+                      
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <FONT SIZE=4 COLOR="green">Admin</FONT>
+                            </div>
+                        </div>
+                   
+                        
                         <div id="imagenes"></div>
 
                         <div class="form-group">

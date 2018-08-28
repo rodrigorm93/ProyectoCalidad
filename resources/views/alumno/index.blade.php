@@ -26,7 +26,6 @@
 						<th>Correo</th>
 						<th>Genero</th>
 						<th>Edad</th>
-						<th>carrera</th>
 						<th>Año de ingreso</th>
 						<th>Opciones</th>
 					</thead>
@@ -38,7 +37,6 @@
 						<td>{{$usu -> email}}</td>
 						<td>{{$usu -> genero}}</td>
 						<td>{{$usu -> edad}}</td>
-						<td>{{$usu -> carrera}}</td>
 						<td>{{$usu -> ingreso}}</td>
 						<td>
 							<a href="{{URL::action('AlumnoController@edit', $usu -> id)}}"><btn class="btn btn-info"><i class="material-icons" style="font-size:18px">border_color</i></btn></a>
