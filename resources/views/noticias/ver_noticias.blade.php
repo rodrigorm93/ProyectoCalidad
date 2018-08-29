@@ -64,7 +64,7 @@
 										<span class="icon-bar"></span>
 									</button>
                 <!-- Brand -->
-                <a class="navbar-brand page-scroll sticky-logo" href="index.html">
+                <a class="navbar-brand page-scroll sticky-logo" href="/">
                   <!-- Uncomment below if you prefer to use an image logo -->
                   <img src="/img/logoC2.png" alt="" title=""> 
 								</a>
