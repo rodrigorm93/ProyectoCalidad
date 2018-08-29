@@ -1,6 +1,6 @@
 @extends('menu.admin')
 @section('contenido')
-<div id="cambia_servicio">
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -52,7 +52,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <script type="text/javascript">
 
 //VISTA PREVIA DE IMAGENES

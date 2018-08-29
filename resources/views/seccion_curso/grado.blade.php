@@ -17,7 +17,7 @@
                     </ul>
                 </div>
                 @endif
-                <label>Cursos Impartidas: </label>
+                <label>Materias Impartidas: </label>
           
                 
                     @foreach($curso as $c)
@@ -26,8 +26,8 @@
                    
                     <p>{{$c->grado}}
                     <input id="idCurso" type="hidden" name="idCurso" value="{{$c -> idCurso}}">
-        
-                    <button class="btn btn-primary" type="submit">ingresar</button>
+                    
+                      <button class="btn btn-primary" type="submit">ingresar</button>
                   
                     {!!Form::close()!!}
                     @endforeach
