@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-08-2018 a las 03:19:06
+-- Tiempo de generación: 29-08-2018 a las 19:25:20
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -110,9 +110,9 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`idMateria`, `idCurso`, `nombre`, `estado`, `asignacion`, `idProfesor`) VALUES
-(13, 4, 'fisica', 'activo', 'ASIGNADO', 6261631),
-(14, 4, 'ingles', 'activo', 'ASIGNADO', 6341234),
-(15, 4, 'lenguaje', 'activo', 'ASIGNADO', 6341234);
+(16, 4, 'Ciencias', 'activo', 'ASIGNADO', 6341234),
+(17, 4, 'Lenguaje', 'activo', 'ASIGNADO', 6341234),
+(18, 4, 'Matematicas', 'activo', 'ASIGNADO', 7263526);
 
 -- --------------------------------------------------------
 
@@ -132,19 +132,24 @@ CREATE TABLE `notas` (
 --
 
 INSERT INTO `notas` (`idAlumno`, `idMateria`, `nota`, `promedio`) VALUES
-(6261631, 6, '0', '0'),
-(6261631, 7, '0', '0'),
-(6261631, 8, '0', '0'),
-(8468829, 9, '0', '0'),
-(10207009, 6, '0', '0'),
-(10207009, 7, '0', '0'),
-(10207009, 8, '0', '0'),
-(19543644, 13, '0', '0'),
-(19543644, 14, '0', '0'),
-(19543644, 15, '0', '0'),
-(22178016, 13, '0', '0'),
-(22178016, 14, '0', '0'),
-(22178016, 15, '0', '0');
+(6261631, 16, '0', '0'),
+(6261631, 17, '0', '0'),
+(6261631, 18, '0', '0'),
+(8468829, 16, '0', '0'),
+(8468829, 17, '0', '0'),
+(8468829, 18, '0', '0'),
+(10207009, 16, '0', '0'),
+(10207009, 17, '0', '0'),
+(10207009, 18, '0', '0'),
+(19543644, 16, '0', '0'),
+(19543644, 17, '0', '0'),
+(19543644, 18, '0', '0'),
+(22178016, 16, '0', '0'),
+(22178016, 17, '0', '0'),
+(22178016, 18, '0', '0'),
+(24423529, 16, '0', '0'),
+(24423529, 17, '0', '0'),
+(24423529, 18, '0', '0');
 
 -- --------------------------------------------------------
 
@@ -184,17 +189,8 @@ CREATE TABLE `profesor` (
 --
 
 INSERT INTO `profesor` (`idProfesor`, `nombre`, `apellido`, `asignacion`) VALUES
-(6261631, 'Oleg', 'Serrano', 'ASIGNADO'),
 (6341234, 'Manuel', 'Valenzuela', 'ASIGNADO'),
-(7263526, 'Jose', 'Torres', 'ASIGNADO'),
-(8468829, 'Abdul', 'Holman', ''),
-(10207009, 'Priscilla', 'Bennett', ''),
-(19543644, 'Raja', 'Wiggins', ''),
-(22178016, 'Indira', 'Cline', ''),
-(24423529, 'Jeremy', 'Murray', ''),
-(27159042, 'Hakeem', 'Knowles', ''),
-(36491606, 'Iliana', 'Shields', ''),
-(44294342, 'Joshua', 'Velazquez', '');
+(7263526, 'Jose', 'Torres', 'ASIGNADO');
 
 -- --------------------------------------------------------
 
@@ -223,18 +219,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `digito`, `password`, `nombre`, `apellido`, `email`, `genero`, `edad`, `rol`, `estado`, `remember_token`, `created_at`, `updated_at`) VALUES
-(6261631, '8', '$2y$10$9Kk.dTkEv1z2bfzDAmDkw.hsop2Cig2kdHRWWX3u7R1ipzkUkYGny', 'Oleg', 'Serrano', 'tincidunt.dui@Inatpede.org', 'mujer', 27, 'alumno', 'activo', NULL, '2018-08-28 16:15:16', '2018-08-28 16:15:16'),
-(6341234, '2', '$2y$10$FkvnRrCe1QewHqWa51kWYutfVpYpOcjlnhX4i9LX6uutp.rYMKFMy', 'Manuel', 'Valenzuela', 'manuel@gmail.com', 'hombre', 48, 'profesor', 'activo', 't5yddapRRZALHH5ptnPDn6EmojUu3Kc2PKBRe7HttoHELjTCY4eNRPX4o2d5', '2018-08-25 03:50:42', '2018-08-25 03:50:42'),
-(7263526, '6', '$2y$10$ovxZyhtVVd670T8SO29zdOgk/HgRbySBihuyIem37UeIN2X.7IbZS', 'Jose', 'Torres', 'jtores@gmail.com', 'hombre', 38, 'profesor', 'activo', 'O7RgOZii9GZGd1xqF7JxNuKorM508MzCvNWbxRcFxJpnCuHDKgiPFyW1UGnm', '2018-08-25 03:50:42', '2018-08-25 03:50:42'),
-(8468829, '0', '$2y$10$DQT/LAzYfbzKtDytgAs2Q.YzPf7rIhxp14h9O1SRjNNb9YdN7.X7u', 'Abdul', 'Holman', 'a.scelerisque.sed@imperdietdictummagna.co.uk', 'mujer', 21, 'alumno', 'activo', NULL, '2018-08-28 16:15:16', '2018-08-28 16:15:16'),
-(10207009, '7', '$2y$10$2bAEpKUcYZ3lB7d/9iCaDOnE6bIqPdzrDCSjNS6BgMpu4iaZ6EoiS', 'Priscilla', 'Bennett', 'dignissim@Mauris.ca', 'hombre', 23, 'alumno', 'activo', NULL, '2018-08-28 16:15:15', '2018-08-28 16:15:15'),
-(18273626, '5', '$2y$10$Jm7XN0mpmXX34KgqohlmyO1DZHvD8oqWT1lnogFPDRELb7254CvnC', 'Rodrigo', 'Ramirez', 'rodrigo@gmail.com', 'hombre', 50, 'admin', 'activo', 'fmNY01g3iq4Wbu1gZLeCyXzXxhaj87Q7pvVfTbvbFrlZfPSUu7mAWk2JPKej', '2017-05-26 03:11:07', '2017-05-26 03:11:07'),
-(19543644, '4', '$2y$10$UpjNDAjP8Mx2fpq4LnQSC.8Rc6Lp1U.ds5.O68BkUNbq/wJZiQrA.', 'Raja', 'Wiggins', 'aliquet.odio@mauriseuelit.edu', 'mujer', 28, 'alumno', 'activo', NULL, '2018-08-28 16:15:16', '2018-08-28 16:15:16'),
-(22178016, '7', '$2y$10$rRkJ7gpufXHxkGW16AiqUegJfNnWy.sitbbdT6bfwBl6l2pUh60bm', 'Indira', 'Cline', 'imperdiet.ornare@justo.org', 'mujer', 26, 'alumno', 'activo', NULL, '2018-08-28 16:15:15', '2018-08-28 16:15:15'),
-(24423529, '8', '$2y$10$g1bZoVDO/Z0olJtWZI8rAe6SKOBnBXeGVh0JLBOAG9drhmucmauW6', 'Jeremy', 'Murray', 'pellentesque.tellus.sem@dapibus.org', 'mujer', 29, 'alumno', 'activo', NULL, '2018-08-28 16:15:15', '2018-08-28 16:15:15'),
-(27159042, '3', '$2y$10$bM6XXSWcgg6BLSz6POHRqu8lY0LUzh5A2SJnqNr/5HVmeOQwR1Mla', 'Hakeem', 'Knowles', 'vitae.risus.Duis@euerosNam.edu', 'mujer', 24, 'alumno', 'activo', NULL, '2018-08-28 16:15:16', '2018-08-28 16:15:16'),
-(36491606, 'K', '$2y$10$urwzxF2h/ID9bq5WAhJskOxhUc4eHlo2OkKkcG3gjJZ8XR0ET.GtK', 'Iliana', 'Shields', 'posuere.cubilia.Curae@massa.org', 'mujer', 24, 'alumno', 'activo', NULL, '2018-08-28 16:15:15', '2018-08-28 16:15:15'),
-(44294342, '7', '$2y$10$xeuWVnItI2zRHIlkdKzfWOHyYOtNtvTq5i5zIr/rnKD.USmTV8RZS', 'Joshua', 'Velazquez', 'dolor.Quisque.tincidunt@commodo.co.uk', 'mujer', 26, 'alumno', 'activo', NULL, '2018-08-28 16:15:15', '2018-08-28 16:15:15');
+(6261631, '8', '$2y$10$5s7Q4rNwmjT2GQqUEDDHpu1FYlJxU9OvB3OQ3erGhWKIKPzXrBnte', 'Oleg', 'Serrano', 'tincidunt.dui@Inatpede.org', 'mujer', 27, 'alumno', 'activo', NULL, '2018-08-29 17:19:53', '2018-08-29 17:19:53'),
+(6341234, '2', '$2y$10$T87wrHGKB5evuC9dj9IZDOW.3G43snBmSseAw.Edm/H/RIn7/UvrO', 'Manuel', 'Valenzuela', 'manuel@gmail.com', 'hombre', 48, 'profesor', 'activo', 'C9n7oG0484cInjiDAXgssbG7mKPSEB7hOXbXcYx1LRfU3sD9n7JfQuyrZcu3', '2018-08-29 17:19:32', '2018-08-29 17:19:32'),
+(7263526, '6', '$2y$10$FBckAoJ0ntD3Jaw.Go5YD.0hfcJ35d88GWq2RBqNUD/ZQ3Y6E6QJG', 'Jose', 'Torres', 'jtores@gmail.com', 'hombre', 38, 'profesor', 'activo', NULL, '2018-08-29 17:19:32', '2018-08-29 17:19:32'),
+(8468829, '0', '$2y$10$hfVkvQ2wCdn9oadQUL9an.8Ni5gCs.89xbJCMc/0X7q0/r6j0UBb2', 'Abdul', 'Holman', 'a.scelerisque.sed@imperdietdictummagna.co.uk', 'mujer', 21, 'alumno', 'activo', NULL, '2018-08-29 17:19:53', '2018-08-29 17:19:53'),
+(10207009, '7', '$2y$10$G4znUNI6Nm3WrX0GD.uKyeW7vpCa8p14s0Lx4Kv2mu0wCRvw7MAWC', 'Priscilla', 'Bennett', 'dignissim@Mauris.ca', 'hombre', 23, 'alumno', 'activo', NULL, '2018-08-29 17:19:53', '2018-08-29 17:19:53'),
+(18273626, '5', '$2y$10$Jm7XN0mpmXX34KgqohlmyO1DZHvD8oqWT1lnogFPDRELb7254CvnC', 'Rodrigo', 'Ramirez', 'rodrigo@gmail.com', 'hombre', 50, 'admin', 'activo', 'Axkx7N1yyVQcP8gOhGZZoPfPzTBoaxXM5GxwYhi6m7fVcVy2saHudyOYC9tE', '2017-05-26 03:11:07', '2017-05-26 03:11:07'),
+(19543644, '4', '$2y$10$slbk.xVwtusJ.AmIY0Bk4e8gwjzvpQQi1zXhEuLxEVvlT8LNWi3g2', 'Raja', 'Wiggins', 'aliquet.odio@mauriseuelit.edu', 'mujer', 28, 'alumno', 'activo', NULL, '2018-08-29 17:19:53', '2018-08-29 17:19:53'),
+(22178016, '7', '$2y$10$gd/GVpTWvcOV2vbgKfPKAe51j2iAyGzccxjGvhxuaSsmCd1RbuA5O', 'Indira', 'Cline', 'imperdiet.ornare@justo.org', 'mujer', 26, 'alumno', 'activo', NULL, '2018-08-29 17:19:53', '2018-08-29 17:19:53'),
+(24423529, '8', '$2y$10$y2Mz/jkR4zyK7GPf4FgJTeNbC5m/A.aWXrMIzcjB9J8dZv17veCPS', 'Jeremy', 'Murray', 'pellentesque.tellus.sem@dapibus.org', 'mujer', 29, 'alumno', 'activo', NULL, '2018-08-29 17:19:53', '2018-08-29 17:19:53'),
+(27159042, '3', '$2y$10$ZKN0/VQz0IB.JBA/WFhhuOc9au4xwnn3mrsWYNQzsXpY0wIR363d.', 'Hakeem', 'Knowles', 'vitae.risus.Duis@euerosNam.edu', 'mujer', 24, 'alumno', 'activo', NULL, '2018-08-29 17:19:53', '2018-08-29 17:19:53'),
+(36491606, 'K', '$2y$10$eIisoGUW5nb2XzOZdqK/0uyyJHx7/VIs284ooh5RvvwwkOgsRbx2u', 'Iliana', 'Shields', 'posuere.cubilia.Curae@massa.org', 'mujer', 24, 'alumno', 'activo', NULL, '2018-08-29 17:19:53', '2018-08-29 17:19:53'),
+(44294342, '7', '$2y$10$XdRG4AS8w0eCwf/8hyiCAOX/ntYYG1IUZdKtuxkPrhfo37zT1o4Bu', 'Joshua', 'Velazquez', 'dolor.Quisque.tincidunt@commodo.co.uk', 'mujer', 26, 'alumno', 'activo', NULL, '2018-08-29 17:19:53', '2018-08-29 17:19:53');
 
 --
 -- Índices para tablas volcadas
@@ -308,7 +304,7 @@ ALTER TABLE `fotos`
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `noticias`
