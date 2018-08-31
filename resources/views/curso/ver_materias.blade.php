@@ -21,21 +21,19 @@
 				<table class="table table-striped table-bordered table-condensed table-hover">
 					<thead>
 						<th>Id</th>
-						<th>Nombre</th>
-						<th>Opciones</th>
+						<th>Materia</th>
+						<th>Profesor que lo Imparte</th>
 					</thead>
 				
 					<tr>
 					@foreach ($materia as $m)
-						<td>{{$m -> idMateria}}</td>
-						<td>{{$m -> nombre}}</td>
-					
-				
+					<td>{{$m -> id}}</td>
+					<td>{{$m -> nombreM}}</td>
+					<td>{{$m -> nombreP}} {{$m -> apellido}}</td>
+							
+		
 				 </tr>
-				 @include('curso.modal')
-		
-		
-
+			
 					@endforeach
 				</table>
 				@endif

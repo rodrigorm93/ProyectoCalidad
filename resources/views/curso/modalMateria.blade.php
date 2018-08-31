@@ -1,7 +1,7 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" 
-id="modal-delete-{{$c->idCurso}}">
+id="modal-delete-{{$m->idMateria}}">
 
-	  {!!Form::open(array('url'=>'curso/modal', 'method'=>'GET', 'autocomplete'=>'off'))!!}
+{!!Form::open(array('url'=>'curso/modalMateria', 'method'=>'GET', 'autocomplete'=>'off'))!!}
                 {{Form::token()}}
 
 	<div class="modal-dialog">
@@ -10,17 +10,15 @@ id="modal-delete-{{$c->idCurso}}">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">x</span>
 				</button>
-				<h4 class="modal-title">Eliminar el Curso: <FONT COLOR="green">{{$c->grado}}</FONT></h4>
+				<h4 class="modal-title">Eliminar materia: <FONT COLOR="green">{{$m->nombre}}</FONT> del curso</h4>
 			</div>
 
 			<div class="modal-body">
-				<p>Confirme si desea eliminar el curso:</p>
-				<FONT COLOR="red">
-                <p>Si elimina este curso automaticamente se eliminaran todos los alumnos asignado a el</p>
-				</FONT>
+				<p>Confirme si desea eliminar la materia:<FONT COLOR="blue">  </FONT> del Curso</p>
+                <p>Si elimina esta materia automaticamente se eliminaran todos los alumnos del curso</p>
 			</div>
 
-            <input id="idCurso" type="hidden" name="idCurso" value="{{$c -> idCurso}}">
+           
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

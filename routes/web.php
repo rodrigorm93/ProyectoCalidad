@@ -46,12 +46,14 @@ Route::post('/curso/materiaStore', 'CursoController@materiaStore');
 //para eliminar alumnos de un grado especifico
 Route::get('/seccion_curso/seccion', 'AsignacionController@EliminarSeccion');
 
-
-//Route::get('/seccion_curso/eliminar', 'AsignacionController@destroy');
-
 //ruta para ver las materias impartidas en un curso especifico
 Route::get('/curso/ver_materias', 'CursoController@ver_materias');
 
+//para eliminar un curso completo
+Route::get('/curso/modal', 'CursoController@destroyCurso');
+
+//para eliminar una materia del curso
+Route::get('/curso/modal', 'CursoController@destroyMateria');
 
 
 //Rutas Nuevas

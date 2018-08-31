@@ -1,6 +1,6 @@
 @extends('menu.admin')
 @section('contenido')
-
+<div id="cambia_img">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -52,7 +52,7 @@
         </div>
     </div>
 </div>
-
+</div>
 <script type="text/javascript">
 
 //VISTA PREVIA DE IMAGENES
@@ -60,7 +60,7 @@ var loadFile = function(event) {
 
     var imagenes = document.getElementById("imagenes");   
     imagenes.parentNode.removeChild(imagenes);
-    document.getElementById('cambia_servicio').insertAdjacentHTML( 'beforeend', '<div id="imagenes"></div>' ); 
+    document.getElementById('cambia_img').insertAdjacentHTML( 'beforeend', '<div id="imagenes"></div>' ); 
 
     //Obtiene cantidad de imagenes
     var limite = document.getElementById("imagen").files;

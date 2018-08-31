@@ -40,6 +40,7 @@ class CursoController extends Controller
         $curso=DB::table('Curso')
         ->get();
 
+      
              
         return view('curso.grado',['curso'=> $curso]);
 
@@ -48,7 +49,7 @@ class CursoController extends Controller
 
     public function ver_materias(Request $request)
     {
-        $idCurso = $request->get('idCurso');
+        $idCurso = $request->get('idCurso2  ');
         
         /*
         $materia=DB::table('Materia as m')
@@ -60,13 +61,14 @@ class CursoController extends Controller
         ->distinct()->get();
 */
         $materia=DB::table('Materia as m')
-        ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')      
+        ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso') 
+        ->join ('Profesor as p', 'p.idProfesor', '=' ,'m.idProfesor')        
         ->where('m.asignacion', '=','ASIGNADO')
         ->where('m.idCurso', '=',$idCurso)
+        ->select('m.nombre as nombreM','m.idMateria as id','p.nombre as nombreP','p.apellido as apellido')
         ->paginate(10);
      
 
-              
         return view('curso.ver_materias',['materia'=> $materia]);
   
     }
@@ -146,6 +148,7 @@ class CursoController extends Controller
 
 
 
+//Eliminar las materias de un curso
      public function destroy(Request $request,$idMateria)
     {
        
@@ -184,8 +187,43 @@ class CursoController extends Controller
       return Redirect::to('/menu');
     }
 
+    //Eliminar un curso completo
+    public function destroyCurso(Request $request)
+    {
+        $idCurso=$request->get('idCurso');
+
+        try {
+            $cont = 0;
+
+            $alumnos=DB::table('Notas as n')
+                ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
+                ->join ('Materia as m', 'm.idMateria', '=' ,'n.idMateria') 
+                ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')  
+                ->where('c.idCurso','=',$idCurso)       
+                ->select('a.idAlumno')
+                ->get();
+              
 
 
+                foreach ($alumnos as $a) {
+
+                Alumno::where('idAlumno', '=', $a->idAlumno)
+                ->update(['asignacion' => 'No Asignado']);
+               
+                }
+
+        $curso= Curso::find($idCurso);
+        $curso->delete();
+
+      DB::commit();
+            
+    } catch (Exception $e) {
+        DB::rollback();
+        
+    }
+
+      return Redirect::to('/menu');
+    }
 
 
 
