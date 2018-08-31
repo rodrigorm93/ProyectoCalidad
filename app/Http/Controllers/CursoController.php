@@ -49,17 +49,8 @@ class CursoController extends Controller
 
     public function ver_materias(Request $request)
     {
-        $idCurso = $request->get('idCurso2  ');
-        
-        /*
-        $materia=DB::table('Materia as m')
-        ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')
-        ->join ('Notas as n', 'n.idMateria', '=' ,'m.idMateria')
-        ->select('m.idMateria','n.idAlumno','c.grado','m.nombre')              
-        ->where('m.asignacion', '=','ASIGNADO')
-        ->where('m.idCurso', '=',$idCurso)
-        ->distinct()->get();
-*/
+        $idCurso = $request->get('idCurso2');
+ 
         $materia=DB::table('Materia as m')
         ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso') 
         ->join ('Profesor as p', 'p.idProfesor', '=' ,'m.idProfesor')        
