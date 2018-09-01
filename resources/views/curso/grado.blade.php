@@ -35,7 +35,7 @@
                         <input id="idCurso2" type="hidden" name="idCurso2" value="{{$c -> idCurso}}">
                         
                         <td><button class="btn btn-primary" type="submit">ingresar</button></td>
-                       
+                        {!!Form::close()!!}
 
                         <td>
                     	<a href="{{URL::action('CursoController@edit', $c -> idCurso)}}"><btn class="btn btn-info">
@@ -48,7 +48,7 @@
 				 </tr>
 		
                  @include('curso.modal') 
-                 {!!Form::close()!!}
+             
 					@endforeach
                  
 				</table>

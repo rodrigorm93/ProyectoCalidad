@@ -25,11 +25,11 @@
                 <label>Asignar Curso: </label>
                     <select name="curso" id="listaCursos">
                     @foreach($curso as $c)
-                    <option>{{$c -> idCurso}}</option>
+                    <option>{{$c -> idCurso}}  {{$c -> grado}}</option>
                     @endforeach
                     </select>
                 </div>
-
+                <!--
                  <div class="form-group">
                 <label>ver nombres: </label>
                     <select name="n" id="n">
@@ -38,7 +38,7 @@
                     @endforeach
                     </select>
                 </div>
-
+-->
             <div class="form-group">
                 <label for="nombre">Materia: </label>
                 <input type="text" name="nombre" placeholder="Ej: ciencias">

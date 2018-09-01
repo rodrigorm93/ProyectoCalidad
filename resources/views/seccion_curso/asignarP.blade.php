@@ -32,10 +32,12 @@
                 <label>Materia: </label>
                     <select name="materia" id="materia">
                     @foreach($materia as $c)
-                    <option>{{$c -> idMateria}}</option>
+                    <option>{{$c -> idMateria}}   {{$c -> nombre}}</option>
                     @endforeach
                     </select>
-
+                    </div>
+                    <!--
+                    <div class="form-group">
                      <label>Ayuda: </label>
                     <select name="m" id="m">
                     @foreach($materia as $c)
@@ -48,21 +50,21 @@
                 <label>Curso: </label>
                     <select name="curso" id="listaCursos">
                     @foreach($materia as $c)
-                    <option>{{$c -> idCurso}}</option>
+                    <option>{{$c -> idCurso}} </option>
                     @endforeach
                     </select>
-                     
-
                 </div>
-
+-->
+              
                    <div class="form-group">
                 <label>ID Profesor: </label>
                     <select name="idp">
                     @foreach($profesor as $pro)
-                    <option>{{$pro -> idProfesor}}</option>
+                    <option>{{$pro -> idProfesor}}   {{$pro -> nombre}} {{$pro -> apellido}}</option>
                     @endforeach
                     </select>
-
+                    </div>
+            <!--
                      <label>Ayuda: </label>
                     <select name="i">
                     @foreach($profesor as $pro)
@@ -70,7 +72,7 @@
                     @endforeach
                     </select>
                 </div>
-
+-->
                <div style="text-align: right;">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
                 <button class="btn btn-primary" type="submit">Asignar</button>

@@ -112,14 +112,16 @@ class CursoController extends Controller
     public function materiaStore(Request $request)
     { 
 
-
+        $cadena=$request->get('curso');
+      //para extrar solo el id y no la cadena completa(funciona si el id es de dos digitos) 
+        $idCurso=substr($cadena,0,2);
             try {
 
             DB::beginTransaction();
 
         
             $materia = new Materia;
-            $materia->idCurso=$request->get('curso');
+            $materia->idCurso=$idCurso;
             $materia->nombre=$request->get('nombre');
             $materia->estado='activo';
             $materia->idProfesor='0';

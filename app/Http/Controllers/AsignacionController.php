@@ -127,9 +127,9 @@ class AsignacionController extends Controller
     {
       //Cargamos los cursos y profesores que aun no esten asigandos
 
-        $materia=DB::table('materia')    
-        ->where('estado', '<>', 'inactivo')
-        ->where('asignacion', '!=','ASIGNADO')
+        $materia=DB::table('materia as m')  
+        ->where('m.estado', '<>', 'inactivo')
+        ->where('m.asignacion', '!=','ASIGNADO')
         ->get();
 
 
@@ -137,7 +137,11 @@ class AsignacionController extends Controller
        // ->where('asignacion', '!=','ASIGNADO')
         ->get();
 
-        return view('seccion_curso.asignarP',['materia'=> $materia,'profesor'=> $profesor]);
+        $curso = DB::table('curso')
+       // ->where('asignacion', '!=','ASIGNADO')
+        ->get();
+
+        return view('seccion_curso.asignarP',['materia'=> $materia,'profesor'=> $profesor,'curso'=> $curso]);
             
   
     }
@@ -146,9 +150,19 @@ class AsignacionController extends Controller
     public function asignarPStore(Request $request)
     {
     
-        $idProfesor=$request->get('idp');
-        $idMateria=$request->get('materia');
-        $idCurso=$request->get('curso');
+        //$idProfesor=$request->get('idp');
+        //$idMateria=$request->get('materia');
+        //$idCurso=$request->get('curso');
+
+        $idMateria1=$request->get('materia');
+        //para extrar solo el id y no la cadena completa(funciona si el id es de dos digitos) 
+        $idMateria=substr($idMateria1,0,2);
+
+        $idProfesor1=$request->get('idp');
+        //para extrar solo el id y no la cadena completa(funciona si el id es de dos digitos) 
+        $idProfesor=substr($idProfesor1,0,8);
+
+
         try {
 
             DB::beginTransaction();
@@ -156,11 +170,11 @@ class AsignacionController extends Controller
              
              
              Materia::where('idMateria', '=', $idMateria)
-             ->where('idCurso', '=', $idCurso)
+            // ->where('idCurso', '=', $idCurso)
                    ->update(['asignacion' => 'ASIGNADO','idProfesor' => $idProfesor]);
                     
-             Profesor::where('idProfesor', '=', $idProfesor)
-             ->update(['asignacion' => 'ASIGNADO']);
+             //Profesor::where('idProfesor', '=', $idProfesor)
+             //->update(['asignacion' => 'ASIGNADO']);
 
             DB::commit();
             
@@ -168,7 +182,18 @@ class AsignacionController extends Controller
             DB::rollback();
             
         }
-            return Redirect::to('/menu');
+
+        $materia=DB::table('materia as m')  
+        ->where('m.estado', '<>', 'inactivo')
+        ->where('m.asignacion', '!=','ASIGNADO')
+        ->get();
+
+
+        $profesor = DB::table('profesor')
+       // ->where('asignacion', '!=','ASIGNADO')
+        ->get();
+
+         return view('seccion_curso.asignarP',['materia'=> $materia,'profesor'=> $profesor]);
             
   
     }
