@@ -1128,7 +1128,7 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="section-headline text-center">
-              <h2>Contact us</h2>
+              <h2>Contacto</h2>
             </div>
           </div>
         </div>
@@ -1139,8 +1139,8 @@
               <div class="single-icon">
                 <i class="fa fa-mobile"></i>
                 <p>
-                  Call: +1 5589 55488 55<br>
-                  <span>Monday-Friday (9am-5pm)</span>
+                Fonos: 712231442<br>
+                  <span>Lunes-Viernes (7am-8pm)</span>
                 </p>
               </div>
             </div>
@@ -1151,8 +1151,8 @@
               <div class="single-icon">
                 <i class="fa fa-envelope-o"></i>
                 <p>
-                  Email: info@example.com<br>
-                  <span>Web: www.example.com</span>
+                  Email: escuelaeept@gmail.com<br>
+    
                 </p>
               </div>
             </div>
@@ -1163,8 +1163,8 @@
               <div class="single-icon">
                 <i class="fa fa-map-marker"></i>
                 <p>
-                  Location: A108 Adam Street<br>
-                  <span>NY 535022, USA</span>
+                Locación: 4 Poniente, 14 Sur <br>
+                  <span>N° 390, TALCA</span>
                 </p>
               </div>
             </div>
@@ -1177,7 +1177,7 @@
             <!-- Start Map -->
             <!-- Uncomment below if you wan to use dynamic maps -->
             <!--<div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div>-->
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x350&maptype=roadmap&markers=color:red%7Clabel:S%7C40.702147,-74.015794" alt="">
+            <img src="/img/mapaColegio.jpg" alt="">
             <!-- End Map -->
           </div>
           <!-- End Google Map -->
@@ -1224,10 +1224,14 @@
             <div class="footer-content">
               <div class="footer-head">
                 <div class="footer-logo">
-                  <h2><span>e</span>Business</h2>
+                  <h2><span>E</span>scuela especial evangélica presbiteriana 
+</h2>
                 </div>
 
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+                <p>Director: José Horacio Molina Fonseca<br/>
+                  Representante Legal: Hugo Núñez Orellana <br/>
+                  RBD: 2994-7
+.</p>
                 <div class="footer-icons">
                   <ul>
                     <li>
@@ -1251,14 +1255,14 @@
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="footer-content">
               <div class="footer-head">
-                <h4>information</h4>
+                <h4>información</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 Para obtener más informacion contactanos en:
                 </p>
                 <div class="footer-contacts">
-                  <p><span>Tel:</span> +123 456 789</p>
-                  <p><span>Email:</span> contact@example.com</p>
-                  <p><span>Working Hours:</span> 9am-5pm</p>
+                  <p><span>Tel:</span> 712231442</p>
+                  <p><span>Email:</span> escuelaeept@gmail.com</p>
+                  <p><span>Hora de Trabajo:</span> 7am-8pm</p>
                 </div>
               </div>
             </div>
