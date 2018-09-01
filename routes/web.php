@@ -55,6 +55,9 @@ Route::get('/curso/modal', 'CursoController@destroyCurso');
 //para eliminar una materia del curso
 Route::get('/curso/modal', 'CursoController@destroyMateria');
 
+//Ruta para editar materias
+Route::get('/curso/editMateria', 'CursoController@editMateria');
+Route::get('/curso/updateMateria', 'CursoController@updateMateria');
 
 //Rutas Nuevas
 Route::resource('menu','UsuarioController');

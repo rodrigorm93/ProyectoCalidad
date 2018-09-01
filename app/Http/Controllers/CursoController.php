@@ -110,8 +110,8 @@ class CursoController extends Controller
 
 
     public function materiaStore(Request $request)
-    {   
-    	
+    { 
+
 
             try {
 
@@ -217,5 +217,56 @@ class CursoController extends Controller
     }
 
 
+//Editar el registro curso
+    public function edit($idCurso)
+    {
+      return view("curso.editCurso", ["curso"=>Curso::findOrFail($idCurso)]);  
+    }
+
+
+
+    public function update(Request $request, $idCurso)
+    {
+    
+      $curso = Curso::findOrFail($idCurso);
+      $curso->grado=$request->get('grado');
+      $curso->update();  
+    
+      return Redirect::to('/curso');
+    }
+
+
+
+
+    //Editar el registro Materia
+    public function editMateria(Request $request)
+    {
+       $idMateria=$request->get('idMateria');
+
+       $materia=DB::table('Materia as m')
+       ->where('m.idMateria','=',$idMateria)
+       ->get();
+
+       $profesor=DB::table('Profesor as p')
+       ->get();
+
+        return view('curso.editMateria',["materia" => $materia,"profesor" => $profesor]);
+
+    }
+
+
+    public function updateMateria(Request $request)
+    {
+        $idMateria=$request->get('idMateria');
+        $nombre=$request->get('Nombre');
+        $idProfesor=$request->get('idProfesor');
+    
+      $materia = Materia::findOrFail($idMateria);
+      $materia->nombre=$nombre;
+      $materia->idProfesor=$idProfesor;
+      $materia->update();  
+    
+      return Redirect::to('/menu');
+    }
 
 }

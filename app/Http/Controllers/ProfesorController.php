@@ -201,7 +201,7 @@ class ProfesorController extends Controller
                     $profesor->idProfesor = $id[$cont];
                     $profesor->nombre= $nombre[$cont];
                     $profesor->apellido= $apellido[$cont];
-                    $profesor->asignacion= '';
+                    //$profesor->asignacion= '';
                     $profesor->save(); 
 
              

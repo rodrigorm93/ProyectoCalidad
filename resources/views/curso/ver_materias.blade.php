@@ -23,6 +23,7 @@
 						<th>Id</th>
 						<th>Materia</th>
 						<th>Profesor que lo Imparte</th>
+						<th>Editar</th>
 					</thead>
 				
 					<tr>
@@ -30,8 +31,13 @@
 					<td>{{$m -> id}}</td>
 					<td>{{$m -> nombreM}}</td>
 					<td>{{$m -> nombreP}} {{$m -> apellido}}</td>
-							
-		
+
+					     {!!Form::open(array('url'=>'curso/editMateria', 'method'=>'GET', 'autocomplete'=>'off'))!!}
+            {{Form::token()}}
+					<td><input type="hidden" name="idMateria"  value="{{$m->id}}">
+					<button class="btn btn-info" type="submit">
+                    <i class="material-icons" style="font-size:18px">border_color</i></td>	
+					{!!Form::close()!!}
 				 </tr>
 			
 					@endforeach
