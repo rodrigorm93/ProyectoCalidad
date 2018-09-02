@@ -186,12 +186,12 @@
         <div class="col-md-8 col-sm-8 col-xs-12">
         @foreach ($noticia as $noticias)
           <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-11 col-sm-11 col-xs-12">
               <div class="single-blog">
                 <div class="single-blog-img">
                   <a href="blog-details.html">
 										<a href="{{URL::action('NoticiasController@show', $noticias->id_noticia)}}">
-        <img style="width:100%; height: 100%" src="{{$noticias -> foto}}" alt="" ></a>
+        <img style="width:90%; height: 90%" src="{{$noticias -> foto}}" alt="" ></a>
                     </a>
 										</a>
                 </div>
