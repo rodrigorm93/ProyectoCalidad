@@ -41,7 +41,7 @@ class NoticiasController extends Controller
                   
                   )
           ->orderBy('n.id_noticia', 'desc')
-          ->paginate(10);
+          ->paginate(4);
 
           $noticia2 = DB::table('noticias as n')
           ->join ('fotos as f', 'n.id_noticia', '=' , 'f.id_noticia')
@@ -69,8 +69,9 @@ class NoticiasController extends Controller
         return view('noticias.create');
     }
 
-    public function store(Request $request){ 
-        $fecha_actual=date('Y-m-d');
+    public function store(Request $request){
+        $time = time(); 
+        $fecha_actual=date("Y-m-d H:i:s");
 
       try {
 

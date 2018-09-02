@@ -65,9 +65,9 @@
 									</button>
                 <!-- Brand -->
                 <a class="navbar-brand page-scroll sticky-logo" href="/">
-                
-                  <!-- Uncomment below if you prefer to use an image logo -->
                   <img src="/img/logoC2.png" alt="" title="">
+                  <!-- Uncomment below if you prefer to use an image logo -->
+                  <!-- <img src="img/logo.png" alt="" title=""> -->
 								</a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -118,6 +118,7 @@
               <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
                 <h1 class="title2">Noticias</h1>
               </div>
+             
             </div>
           </div>
         </div>
@@ -145,155 +146,81 @@
             <div class="single-blog-page">
               <!-- recent start -->
               <div class="left-blog">
-                <h4>Noticias Recientes</h4>
+               <h4>Noticias Recientes</h4>
                 <div class="recent-post">
                   <!-- start single post -->
-                  @foreach ($noticia2 as $noticiaR)
+                   @foreach ($noticia2 as $noticiaR)
                   <div class="recent-single-post">
                     <div class="post-img">
-                      <a href="{{URL::action('NoticiasController@show', $noticiaR->id_noticia)}}">
+                       <a href="{{URL::action('NoticiasController@show', $noticiaR->id_noticia)}}">
                       <img style="width:100%; height: 100%" src="{{$noticiaR -> foto}}" alt="" >
-												</a>
+                        </a>
                     </div>
                     <div class="pst-content">
                       <p><a href="{{URL::action('NoticiasController@show', $noticiaR->id_noticia)}}"> {!!str_limit($noticiaR->descripcion,55)!!}</a></p>
                     </div>
-                   
                   </div>
-                 
-                  @endforeach 
-             
+                     @endforeach 
                   <!-- End single post -->
-                  
+                  <!-- start single post -->
+                                  <!-- End single post -->
+                  <!-- start single post -->
+                
+                  <!-- End single post -->
+                  <!-- start single post -->
+                
+                  <!-- End single post -->
                 </div>
               </div>
               <!-- recent end -->
             </div>
-            <div class="single-blog-page">
-              <div class="left-blog">
-                <h4>categories</h4>
-                <ul>
-                  <li>
-                    <a href="#">Portfolio</a>
-                  </li>
-                  <li>
-                    <a href="#">Project</a>
-                  </li>
-                  <li>
-                    <a href="#">Design</a>
-                  </li>
-                  <li>
-                    <a href="#">wordpress</a>
-                  </li>
-                  <li>
-                    <a href="#">Joomla</a>
-                  </li>
-                  <li>
-                    <a href="#">Html</a>
-                  </li>
-                  <li>
-                    <a href="#">Website</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="single-blog-page">
-              <div class="left-blog">
-                <h4>archive</h4>
-                <ul>
-                  <li>
-                    <a href="#">07 July 2016</a>
-                  </li>
-                  <li>
-                    <a href="#">29 June 2016</a>
-                  </li>
-                  <li>
-                    <a href="#">13 May 2016</a>
-                  </li>
-                  <li>
-                    <a href="#">20 March 2016</a>
-                  </li>
-                  <li>
-                    <a href="#">09 Fabruary 2016</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="single-blog-page">
-              <div class="left-tags blog-tags">
-                <div class="popular-tag left-side-tags left-blog">
-                  <h4>popular tags</h4>
-                  <ul>
-                    <li>
-                      <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                      <a href="#">Project</a>
-                    </li>
-                    <li>
-                      <a href="#">Design</a>
-                    </li>
-                    <li>
-                      <a href="#">Website</a>
-                    </li>
-                    <li>
-                      <a href="#">Joomla</a>
-                    </li>
-                    <li>
-                      <a href="#">Html</a>
-                    </li>
-                    <li>
-                      <a href="#">wordpress</a>
-                    </li>
-                    <li>
-                      <a href="#">Masonry</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            
+         
+        
           </div>
         </div>
         <!-- End left sidebar -->
        
-        @foreach ($noticia as $noticias)
-<div class="row">
 
-          <!-- Start Left Blog -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="single-blog">
-              <div class="single-blog-img">
-                <a href="{{URL::action('NoticiasController@show', $noticias->id_noticia)}}">
-				<img style="width:100%; height: 100%" src="{{$noticias -> foto}}" alt="" ></a>
-              </div>
-              <div class="blog-meta">
-                <span class="date-type">
-										<i class="fa fa-calendar"></i>{{$noticias->fechacreacion}}
+        <!-- Start single blog -->
+        <div class="col-md-8 col-sm-8 col-xs-12">
+        @foreach ($noticia as $noticias)
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="single-blog">
+                <div class="single-blog-img">
+                  <a href="blog-details.html">
+										<a href="{{URL::action('NoticiasController@show', $noticias->id_noticia)}}">
+        <img style="width:100%; height: 100%" src="{{$noticias -> foto}}" alt="" ></a>
+                    </a>
+										</a>
+                </div>
+                <div class="blog-meta">
+              
+                  <span class="date-type">
+											 <i class="fa fa-calendar"></i>{{$noticias->fechacreacion}}
+										</span>
+                </div>
+                <div class="blog-text">
+                  <h4>
+											<a href="{{URL::action('NoticiasController@show', $noticias->id_noticia)}}">
+                {{$noticias->titulo}}</a>
+										</h4>
+                  <p>
+                    {{str_limit($noticias->descripcion,240)}}
+                  </p>
+                </div>
+                <span>
+									 <a href="{{URL::action('NoticiasController@show', $noticias->id_noticia)}}" 
+              class="ready-btn page-scroll">Ver Más</a>
 									</span>
               </div>
-              <div class="blog-text">
-                <h4>
-                                        <a href="blog.html">{{$noticias->titulo}}</a>
-									</h4>
-                <section class="special box">
-                {!!str_limit($noticias->descripcion,40)!!}
-                </section>
-              </div>
-              <span>
-              <a href="{{URL::action('NoticiasController@show', $noticias->id_noticia)}}" 
-              class="ready-btn page-scroll">Ver Más</a>
-              
-				</span>
             </div>
-           
-</div>
-@endforeach   
-
-
-
-
+            @endforeach 
+            <!-- End single blog -->
+           <!-- End single blog -->
             <div class="blog-pagination">
-                 {{$noticia->render()}}
+                {{$noticia->render()}}          
             </div>
           </div>
         </div>
@@ -306,17 +233,21 @@
 
   <!-- Start Footer bottom Area -->
   <footer>
-    <div class="footer-area">
+      <div class="footer-area">
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="footer-content">
               <div class="footer-head">
                 <div class="footer-logo">
-                  <h2><span>e</span>Business</h2>
+                  <h2><span>E</span>scuela especial evangélica presbiteriana 
+</h2>
                 </div>
 
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+                <p>Director: José Horacio Molina Fonseca<br/>
+                  Representante Legal: Hugo Núñez Orellana <br/>
+                  RBD: 2994-7
+.</p>
                 <div class="footer-icons">
                   <ul>
                     <li>
@@ -340,14 +271,14 @@
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="footer-content">
               <div class="footer-head">
-                <h4>information</h4>
+                <h4>información</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 Para obtener más informacion contactanos en:
                 </p>
                 <div class="footer-contacts">
-                  <p><span>Tel:</span> +123 456 789</p>
-                  <p><span>Email:</span> contact@example.com</p>
-                  <p><span>Working Hours:</span> 9am-5pm</p>
+                  <p><span>Tel:</span> 712231442</p>
+                  <p><span>Email:</span> escuelaeept@gmail.com</p>
+                  <p><span>Hora de Trabajo:</span> 7am-8pm</p>
                 </div>
               </div>
             </div>
