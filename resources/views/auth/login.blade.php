@@ -35,7 +35,7 @@
             <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
 					<span class="login100-form-logo">
-					<img src="img/logoC3.png" alt="" title=""> 
+					<a href="/"><img src="img/logoC3.png" alt="" title=""></a>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">

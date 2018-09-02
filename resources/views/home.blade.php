@@ -21,7 +21,7 @@
                                         <a href="blog.html">{{$noticia->titulo}}</a>
 									</h4>
                 <section class="special box">
-                {!!str_limit($noticia->descripcion,40)!!}
+                {{str_limit($noticia->descripcion,340)}}
                 </section>
               </div>
               <span>
