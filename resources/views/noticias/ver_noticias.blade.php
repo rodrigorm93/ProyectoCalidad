@@ -105,7 +105,7 @@
                       
                         
 						<ul class="dropdown-menu">
-                            <li ><a style="color:#000;"  href="menu">Mis Cursos</a></li>
+                            <li ><a style="color:#000;"  href="/menu">Mis Cursos</a></li>
                             <li><a style="color:#000;" href="/favoritos">Favoritos</a></li>
 							<li><a style="color:#000;"  href="/cupones">Subir Cupón</a></li>
 							<li class="divider"></li>
@@ -122,7 +122,7 @@
                       
                         
 						<ul class="dropdown-menu">
-                            <li ><a style="color:#000;"  href="menu">Gestionar</a></li>
+                            <li ><a style="color:#000;"  href="/menu">Gestionar</a></li>
 							<li class="divider"></li>
                             <li><a style="color:#000;" href="{{url('/logout')}}">Salir</a></li>
                          
