@@ -7,7 +7,7 @@
         <div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
             
             <fieldset>
-                <legend><h3>Asignacion de Cursos: </h3></legend>
+                <legend><h3>Cursos </h3></legend>
                 @if(count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
                 @endif
-                <label>Cursos Impartidas: </label>
+              
           
                 
                     @foreach($curso as $c)

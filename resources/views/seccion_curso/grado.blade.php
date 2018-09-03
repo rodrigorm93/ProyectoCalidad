@@ -17,7 +17,7 @@
                     </ul>
                 </div>
                 @endif
-                <label>Materias Impartidas: </label>
+                <label>Cursos Impartidos: </label>
           
                 
                     @foreach($curso as $c)
