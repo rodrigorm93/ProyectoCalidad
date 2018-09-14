@@ -266,23 +266,70 @@ class AsignacionController extends Controller
         return view("seccion_curso.show", ["seccion"=>Seccion::findOrFail($idCurso,$idProfesor,$idAlumno)]);
     }
 
-     public function destroy($idAlumno)
+    //Para eliminar una materia a un alumno
+     public function destroyMateria(Request $request)
     {
        
     //Eliminamos al alumno de un curso 
-      $nota = Notas::find($idAlumno);
-      $nota->delete();
+     // $nota = Notas::find($idAlumno);
+      //$nota->delete();
 
     //Actualizamos al alumnos como no asignado a ningun curso
-      $alumno = Alumno::find($idAlumno);
-      $alumno->asignacion= 'No asignado';
-      $alumno->update();
+    //  $alumno = Alumno::find($idAlumno);
+    //  $alumno->asignacion= 'No asignado';
+     // $alumno->update();
 
-      return Redirect::to('/seccion_curso');
+        //codigo para actualzir el registro de notas PRUEBA
+
+        $idAlumno=$request->get('idAlumno');
+        $idMateria=$request->get('idMateria');
+
+       
+  try {
+
+            DB::beginTransaction();
+
+            //Eliminamos una materia a un alumno seleccionado
+             Notas::where('idAlumno',$idAlumno )
+             ->where('idMateria', $idMateria)
+             ->delete();
+
+         
+
+            DB::commit();
+            
+        } catch (Exception $e) {
+            DB::rollback();
+            
+            
+        }
+        return Redirect::to('/seccion_curso');
+      
     }
 
 
 
+    //Para eliminar una materia a un alumno
+    public function destroy($idAlumno)
+    {
+       
+
+    //Eliminamos al alumno de un curso 
+      $nota = Notas::find($idAlumno);
+      $nota->delete();
+
+     $alumno = Alumno::find($idAlumno);
+     $alumno->asignacion= 'No asignado';
+     $alumno->update();
+ 
+
+    //Actualizamos al alumnos como no asignado a ningun curso
+   
+
+            return Redirect::to('/seccion_curso');
+      
+      
+    }
 
 
 

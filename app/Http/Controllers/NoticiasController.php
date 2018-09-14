@@ -11,6 +11,7 @@ use Alert;
 //Modelos
 use App\Imagenes;
 use App\Noticias;
+use App\Notas;
 
 use Image; 
 use DB;
@@ -75,7 +76,9 @@ class NoticiasController extends Controller
 
       try {
 
+
             DB::beginTransaction();
+         
 
             //Guarda los datos del anuncio
             $noticia = new Noticias;

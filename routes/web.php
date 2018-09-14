@@ -50,6 +50,15 @@ Route::get('/seccion_curso/seccion', 'AsignacionController@EliminarSeccion');
 //para eliminar un curso completo
 Route::get('/curso/modal','CursoController@destroyCurso');
 
+
+//para eliminar una materia a un alumno
+Route::get('/seccion_curso/modal_materias','AsignacionController@destroyMateria');
+
+
+//para eliminar todas las materias de un alumno
+Route::get('/seccion_curso/modal','AsignacionController@destroy');
+
+
 //para eliminar una materia del curso
 //Route::get('/curso/modal','CursoController@destroyMateria');
 

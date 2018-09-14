@@ -25,12 +25,17 @@
 						<td>{{$sec -> nombre}} {{$sec -> apellido}}</td>
 						<td>
 				<td>
-				<a href="" data-target="#modal-delete-{{$sec->idAlumno}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i> </btn></a>
+				<a href="" data-target="#modal-delete-{{$sec->idAlumno,$sec->idMateria}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i> </btn></a>
 			     </td>
+
+				 <td>
+				 <a href="" data-target="#modal_materias-delete-{{$sec->idAlumno}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i> </btn></a>
+				<td>
 			
 						</td>
 					</tr>
 				@include('seccion_curso.modal')
+				@include('seccion_curso.modal_materias')
 				@endforeach
 				</table>
 				@endif

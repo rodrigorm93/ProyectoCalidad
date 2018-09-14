@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Notas extends Model
 {
     protected $table='notas'; // asignamos la tabla a la cual hara referencia.
-    protected $primaryKey='idAlumno'; //asignamos la PK de nuestra tabla.
-
+   // protected $primaryKey='idAlumno'; //asignamos la PK de nuestra tabla.
+   //declaramos una llave compuesta 
+   protected $primaryKey = 'idAlumno'; 
 
 	public $timestamps = false;
 
