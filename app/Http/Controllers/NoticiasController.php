@@ -80,7 +80,7 @@ class NoticiasController extends Controller
             DB::beginTransaction();
          
 
-            //Guarda los datos del anuncio
+            //Guarda los datos de la Noticia
             $noticia = new Noticias;
             $lastValue = DB::table('noticias')->orderBy('id_noticia', 'desc')->first();
             if(count($lastValue) < 1){

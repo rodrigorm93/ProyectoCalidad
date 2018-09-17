@@ -39,10 +39,9 @@ class AlumnoController extends Controller
 
     public function index(Request $request)
     {
-        if($request){
-           if($this->auth->user()->rol=='admin'){
-            $query=trim($request->get('searchText'));
-            
+        
+          
+            $query=trim($request->get('searchText'));      
             $usuarios = DB::table('users as u')
             ->join ('Alumno as a', 'a.idAlumno', '=' , 'u.id')
             ->where('id', 'LIKE', '%'.$query.'%')
@@ -59,33 +58,39 @@ class AlumnoController extends Controller
             ->paginate(15);
 
             return view('alumno.index', ["usuarios" => $usuarios, "searchText" => $query]);
-        }else{
-           
-            // Cargar todos los alumnos de un curso especifico
-            $query2=$request->get('searchText');
-            //$query2=$this->auth->user()->id;
-            $query=$this->auth->user()->id;
-           
-            $cursos=DB::table('materia as c')
-            ->where('c.idProfesor','=',$query)
-            ->where('c.estado','=','activo')      
-            ->select('c.nombre','c.idCurso as idCurso','c.idMateria as idMateria')
-            ->paginate(5);
-            
-              //Obtiene nombre del profesor
-              $lista=DB::table('materia as m')
-              ->join ('notas as n', 'n.idMateria', '=' , 'm.idMateria')
-              ->join ('alumno as a', 'a.idAlumno', '=' , 'n.idAlumno')
-              ->where('m.idProfesor','=',$query) 
-              ->where('m.idMateria','=',$query2)     
-              ->select('a.nombre','a.apellido')
-              ->paginate(40);
+        
+    
+}
 
 
-        return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
-     } 
-   }
-    }
+
+    //Lista de alumnos para los cursos que imparte un profesor
+   public function listaAlumnos(Request $request)
+   {
+  // Cargar todos los alumnos de un curso especifico
+  $query2=$request->get('searchText');
+  //$query2=$this->auth->user()->id;
+  $query=$this->auth->user()->id;
+ 
+  $cursos=DB::table('materia as c')
+  ->where('c.idProfesor','=',$query)
+  ->where('c.estado','=','activo')      
+  ->select('c.nombre','c.idCurso as idCurso','c.idMateria as idMateria')
+  ->paginate(10);
+  
+    //Obtiene nombre del profesor
+    $lista=DB::table('materia as m')
+    ->join ('notas as n', 'n.idMateria', '=' , 'm.idMateria')
+    ->join ('alumno as a', 'a.idAlumno', '=' , 'n.idAlumno')
+    ->where('m.idProfesor','=',$query) 
+    ->where('m.idMateria','=',$query2)     
+    ->select('a.nombre','a.apellido')
+    ->paginate(40);
+
+
+return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
+} 
+   
 
 
     public function create()
@@ -154,23 +159,30 @@ class AlumnoController extends Controller
       return Redirect::to('alumno');
     }
 
-
+    
+    //Eliminamos de la tabla usuario, alumno y su registros de notas
     public function destroy($id)
     {
-     //Eliminamos de la tabla usuario, alumno y su registros de notas
-      $usuario = User::findOrFail($id);
-      //$usuario->estado= 'inactivo';
-      $usuario->delete(); 
-
-      $alumno = Alumno::findOrFail($id);
-      //$usuario->estado= 'inactivo';
-      $alumno->delete();
-      
-
-      $notas = Notas::findOrFail($id);
-      $notas->delete();
-
-      return Redirect::to('alumno');
+        try {
+            DB::beginTransaction();
+            
+            $usuario = User::findOrFail($id);
+            $usuario->delete(); 
+            
+            $alumno = Alumno::findOrFail($id);
+            $alumno->delete();
+            
+            Notas::where('idAlumno',$id )
+            ->delete();
+            
+            DB::commit();
+        
+        } catch (Exception $e) {
+            DB::rollback();
+        }
+        
+        return Redirect::to('/alumno')->with('success', "Registro Eliminado Correctamente");
+    
     }
 
 
@@ -250,7 +262,7 @@ class AlumnoController extends Controller
 
         $cantidad = $cont-$cantidad;
 
-        return Redirect::to('menu')->with('success', "Se han ingresado ".$cantidad."/".$cont." datos correctamente");
+        return Redirect::to('menu')->with('success2', "Se han ingresado ".$cantidad."/".$cont." datos correctamente");
 
     }
 

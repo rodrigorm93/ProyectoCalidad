@@ -34,6 +34,7 @@
 						<td>{{$c -> grado}}</td>
                         <input id="idCurso2" type="hidden" name="idCurso2" value="{{$c -> idCurso}}">
                         
+                        
                         <td><button class="btn btn-primary" type="submit">ingresar</button></td>
                         {!!Form::close()!!}
 

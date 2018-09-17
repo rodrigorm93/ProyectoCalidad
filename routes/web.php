@@ -70,18 +70,25 @@ Route::get('/curso/ver_materias', 'CursoController@ver_materias');
 Route::get('/curso/editMateria','CursoController@editMateria');
 Route::get('/curso/updateMateria','CursoController@updateMateria');
 
-//Rutas Nuevas
+//para cargar la lista del curso en cada materia impartida por un profesor
+Route::get('listaAlumno', 'AlumnoController@listaAlumnos');
+
+
+
+//Rutas:
+
 Route::resource('menu','UsuarioController');
 Route::resource('/','HomeController');
 Route::resource('seccion_curso', 'AsignacionController');
 Route::resource('alumno', 'AlumnoController');
 Route::resource('noticias', 'NoticiasController');
+Route::resource('profesores', 'ProfesorController');
 
-Route::resource('alumno', 'AlumnoController');
+
 Route::resource('curso', 'CursoController');
-//para cargar la lista del curso en cada materia impartida por un profesor
-Route::resource('listaAlumno', 'AlumnoController');
 
+//guardamos los mensajes enviados
+Route::resource('mensajes', 'MensajesController');
 
 
 

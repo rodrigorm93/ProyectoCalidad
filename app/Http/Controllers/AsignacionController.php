@@ -57,7 +57,7 @@ class AsignacionController extends Controller
             ->orderBy('n.idMateria','dec')
             ->paginate(40);
                 */
-                if($request){
+               
                
                 $seccion=DB::table('Notas as n')
                 ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
@@ -69,8 +69,12 @@ class AsignacionController extends Controller
                 ->orderBy('a.idAlumno','dec')
                 ->paginate(100);
 
-            return view('seccion_curso.seccion', ["seccion" => $seccion]);
-                }
+                $curso=DB::table('Curso')
+                ->where('idCurso','=',$idCurso)
+                ->get();       
+
+            return view('seccion_curso.seccion', ["seccion" => $seccion,"curso" => $curso]);
+                
     }
 
     public function create()
@@ -107,6 +111,7 @@ class AsignacionController extends Controller
         ->get();
 
         
+     
        // $alumno = DB::table('users as u')
         //->join ('Alumno as a', 'a.idAlumno', '=' , 'u.id')
         //->get();

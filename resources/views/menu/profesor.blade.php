@@ -198,7 +198,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.0.1
         </div>
-        <strong>Copyright &copy; 2017-2020 Software de Asitencias</strong> All rights reserved.
+        <strong>Copyright &copy; 2018-2020 Software Colegio</strong> All rights reserved.
       </footer>
 
       

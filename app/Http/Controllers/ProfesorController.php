@@ -8,11 +8,11 @@ use App\Http\Requests;
 //agregamos nuestro modelo
 use App\User;
 use App\Profesor;
-use App\Historial;
+use App\Materia;
+
 //hacemos referencias a redirect para hacer algunas redirrecciones
 use Illuminate\Support\Facades\Redirect;
 //Hacemos referencia a nuestro request
-use App\Http\Requests\UsuarioFormRequest;
 //para tebajar con la clase DB de laravel.
 use DB;
 
@@ -26,13 +26,12 @@ class ProfesorController extends Controller
         $this->middleware('auth');
 
     }
-    //Agregamos todo los metodos, al momento de meternos a menu/plantillas el rutas se llamara este controlador el cual nos permitira utilizar estos metodos.
     
     //METODOS :
 
     public function index(Request $request)
     {
-        if($request){
+        
             $query=trim($request->get('searchText'));
 
             $usuarios = DB::table('users as u')
@@ -42,16 +41,13 @@ class ProfesorController extends Controller
             ->select('u.id as id',
                         'u.nombre as nombre',
                         'u.apellido as apellido',
-                        'u.email as email',
-                        'p.departamento as departamento'
+                        'u.email as email' 
                         )
             ->paginate(5);
 
-            //segunda cobsulta para obtener todos los cursos
-
-
+    
             return view('profesor.index', ["usuarios" => $usuarios, "searchText" => $query]);
-        }
+        
     }
 
 
@@ -135,16 +131,27 @@ class ProfesorController extends Controller
 
     public function destroy($id)
     {
-      $usuario = User::findOrFail($id);
-      $usuario->estado= 'inactivo';
-      $usuario->update();  
+         try {
+             
+            DB::beginTransaction();
+            
+            $usuario = User::findOrFail($id);
+            $usuario->delete();  
 
-      $historial = new Historial;
-      $historial->fecha = date("Y-m-d");
-      $historial->registro = "Se ha eliminado el profesor: ".$id;
-      $historial->save();
+            $profesor = Profesor::findOrFail($id);
+            $profesor->delete(); 
+      
+            //Dejamos la materia que impartia el profesor como no asignada.
+            Materia::where('idProfesor', $id)
+            ->update(['asignacion' => 'No asignado','idProfesor' => 0]);
 
-      return Redirect::to('profesor');
+            DB::commit();
+
+        } catch (Exception $e) {
+            DB::rollback();
+        }
+      
+        return Redirect::to('/profesores')->with('eliminarP', "Registro Eliminado Correctamente");;
     }
 
 
@@ -221,7 +228,7 @@ class ProfesorController extends Controller
 
         $cantidad = $cont-$cantidad;
 
-        return Redirect::to('menu')->with('success', "Se han ingresado ".$cantidad."/".$cont." datos correctamente");
+        return Redirect::to('menu')->with('success2', "Se han ingresado ".$cantidad."/".$cont." datos correctamente");
 
     }
 

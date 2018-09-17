@@ -99,8 +99,8 @@
 
     <Script> 
     if(materia.length==0){
-        alert("Todas las materias han sido asignadas");
-        window.location.replace("http://127.0.0.1:8000/menu");
+        alert("La Materia ha sido Asignada");
+        window.location.replace("http://127.0.0.1:8000/curso/createMateria");
     }
 </Script> 
 @endsection

@@ -16,7 +16,7 @@ id="modal-delete-{{$c->idCurso}}">
 			<div class="modal-body">
 				<p>Confirme si desea eliminar el curso:</p>
 				<FONT COLOR="red">
-                <p>Si elimina este curso automaticamente se eliminaran todos los alumnos asignado a el</p>
+                <p>Si elimina este curso automaticamente se eliminaran todos los alumnos y materias asignados a él</p>
 				</FONT>
 			</div>
 

@@ -173,8 +173,8 @@
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">See Services</a>
-                  <a class="ready-btn page-scroll" href="#about">Learn More</a>
+                  <a class="ready-btn right-btn page-scroll" href="#services">Proyecto Educativo</a>
+                  <a class="ready-btn page-scroll" href="#about">Leer Más</a>
                 </div>
               </div>
             </div>
@@ -198,8 +198,8 @@
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">See Services</a>
-                  <a class="ready-btn page-scroll" href="#about">Learn More</a>
+                  <a class="ready-btn right-btn page-scroll" href="#services">Proyecto Educativo</a>
+                  <a class="ready-btn page-scroll" href="#about">Leer Más</a>
                 </div>
               </div>
             </div>
@@ -1181,33 +1181,35 @@
             <!-- End Map -->
           </div>
           <!-- End Google Map -->
-
+          {!!Form::open(array('url'=>'mensajes', 'method'=>'POST', 'autocomplete'=>'off'))!!}
+                {{Form::token()}}
           <!-- Start  contact -->
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="form contact-form">
               <div id="sendmessage">Your message has been sent. Thank you!</div>
               <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
+             
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" required />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="descripcion"></textarea>
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="descripcion" required></textarea>
                   <div class="validation"></div>
                 </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
-              </form>
+                <div class="text-center"><button type="submit"><Em>Enviar Mensaje</Em></button></div>
+                
             </div>
           </div>
+          {!!Form::close()!!}
           <!-- End Left contact -->
         </div>
       </div>

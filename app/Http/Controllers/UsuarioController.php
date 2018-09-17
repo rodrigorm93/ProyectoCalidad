@@ -49,7 +49,7 @@ class UsuarioController extends Controller
                 ->where('c.idProfesor','=',$query)
                 ->where('c.estado','=','activo')      
                 ->select('c.nombre','c.idMateria as idMateria')
-                ->paginate(5);
+                ->paginate(10);
 
             
            

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
-@if(session()->has('msj'))
-<div class="alert alert-success" role="alert">{{session('msj')}}</div>
-@endif
+@if(session('success2'))
+		<div class="alert alert-success">
+			{{session('success2')}}
+		</div>
+	@endif
 <head>
 
     <!-- IMPORTANDO ICONOS -->
@@ -36,6 +38,7 @@
                 <a class="navbar-brand" href="/">Home</a>
             </div>
            
+    
 
             <ul class="nav navbar-top-links navbar-right">
                  <li class="dropdown">
@@ -43,7 +46,7 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a>
+                        <li><a href="#"><i></i>{{ Auth::user()->nombre}} {{ Auth::user()->apellido}}</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="{{url('/logout')}}"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sección</a>
@@ -134,7 +137,7 @@
                                     <a href="/profesor/importar"> <i class='fa fa-plus fa-fw'></i> Importar lista </a>
                                 </li>
                                 <li>
-                                    <a href=""><i class='fa fa-list-ol fa-fw'></i> Profesores</a>
+                                    <a href="/profesores"><i class='fa fa-list-ol fa-fw'></i> Profesores</a>
                                 </li>
 
                            

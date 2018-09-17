@@ -28,8 +28,7 @@ class CursoController extends Controller
         $this->middleware('auth');
 
     }
-    //Agregamos todo los metodos, al momento de meternos a menu/plantillas el rutas se llamara este controlador el cual nos permitira utilizar estos metodos.
-    
+
     //METODOS :
 
     public function index(Request $request)
@@ -57,7 +56,7 @@ class CursoController extends Controller
         ->where('m.asignacion', '=','ASIGNADO')
         ->where('m.idCurso', '=',$idCurso)
         ->select('m.nombre as nombreM','m.idMateria as id','p.nombre as nombreP','p.apellido as apellido')
-        ->paginate(10);
+        ->paginate(20);
      
 
         return view('curso.ver_materias',['materia'=> $materia]);
