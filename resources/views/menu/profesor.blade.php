@@ -95,11 +95,12 @@
       <aside class="main-sidebar">
       @foreach($curso as $cur)
         <!-- sidebar: style can be found in sidebar.less -->
+  
         <section class="sidebar">
           <!-- Sidebar user panel -->
                    
           <!-- sidebar menu: : style can be found in sidebar.less -->
-        
+       
           <ul class="sidebar-menu">
             <li class="header"></li>
             
@@ -110,6 +111,7 @@
                 <span>{{$cur->nombre}}</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
+
 
         <ul class="treeview-menu">
 
@@ -125,14 +127,14 @@
              {!! Form::open(array('url'=>'plantillas', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
              <input type="hidden" name="searchText" value="{{$cur->idMateria}}">
              <li><a href="plantillas"><i class="fa fa-circle-o">
-                 <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''"">Plantillas</button>
+                 <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''"">Libreta de Notas</button>
               </i></a></li> 
              {{Form::close()}}
 
               {!! Form::open(array('url'=>'plantillas/create', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
              <input type="hidden" name="searchText" value="{{$cur->idMateria}}">
               <li><a href="plantillas/create"><i class="fa fa-circle-o">
-                  <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Nueva Plantilla</button>  
+                  <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Citacion Apoderados</button>  
               </i></a></li>
               {{Form::close()}}
             <!--
@@ -145,7 +147,8 @@
               -->
 
         </ul> 
-                      
+
+   
         </section>
       @endforeach
 
