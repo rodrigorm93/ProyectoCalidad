@@ -9,6 +9,7 @@
                 <legend><h3>Nuevo Alumno: </h3></legend>
             @if(count($errors) > 0)
             <div class="alert alert-danger">
+            
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{$error}}</li>
