@@ -102,26 +102,26 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
 
     public function store(Request $request)
     {   
-      $usuario = new User;
-      $usuario->id=$request->get('id');
-      $usuario->digito=$request->get('digito');
-      $usuario->password=bcrypt($request->get('password'));
-      $usuario->nombre=$request->get('nombre');
-      $usuario->apellido=$request->get('apellido');
-      $usuario->email=$request->get('email');
-      $usuario->genero=$request->get('genero');
-      $usuario->edad=$request->get('edad');
-      $usuario->rol= 'alumno';
-      $usuario->estado= 'activo';
-      $usuario->save();	
-
-      $alumno = new Alumno;
-      $alumno->idAlumno = $request->get('id');
-      $alumno->carrera=$request->get('carrera');
-      $alumno->ingresoYear=$request->get('ingresoYear');
-      $alumno->nombre=$request->get('nombre');
-      $alumno->apellido=$request->get('apellido');
-      $alumno->save();  
+        $usuario = new User;
+        $usuario->id=$request->get('id');
+        $usuario->digito=$request->get('digito');
+        $usuario->password=bcrypt($request->get('password'));
+        $usuario->nombre=$request->get('nombre');
+        $usuario->apellido=$request->get('apellido');
+        $usuario->email=$request->get('email');
+        $usuario->genero=$request->get('genero');
+        $usuario->edad=$request->get('edad');
+        $usuario->rol= 'alumno';
+        $usuario->estado= 'activo';
+        $usuario->save();	
+  
+        $alumno = new Alumno;
+        $alumno->idAlumno = $request->get('id');
+        $alumno->asignacion='';
+        $alumno->ingreso=$request->get('ingresoYear');
+        $alumno->nombre=$request->get('nombre');
+        $alumno->apellido=$request->get('apellido');
+        $alumno->save();  
 
       return Redirect::to('menu');
     }
@@ -152,8 +152,9 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
 
       $alumno = Alumno::findOrFail($id);
       $alumno->idAlumno=$request->get('id');
-      $alumno->carrera=$request->get('carrera');
-      $alumno->ingresoYear=$request->get('ingresoYear');
+      $alumno->nombre=$request->get('nombre');
+      $alumno->apellido=$request->get('apellido');
+      $alumno->ingreso=$request->get('ingresoYear');
       $alumno->update();  
     
       return Redirect::to('alumno');

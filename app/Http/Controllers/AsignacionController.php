@@ -27,9 +27,7 @@ class AsignacionController extends Controller
         $this->middleware('auth');
 
     }
-    //Agregamos todo los metodos, al momento de meternos a menu/plantillas el rutas se llamara este controlador el cual nos permitira utilizar estos metodos.
-    
-    //METODOS :
+   
 
     public function index(Request $request)
     {
