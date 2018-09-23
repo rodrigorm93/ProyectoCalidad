@@ -70,7 +70,7 @@
                                 -->
                                 <li>
                                 
-                                    <a href="/noticias/create"><i class='fa fa-plus fa-fw'></i>Subir Noticia</a>
+                                    <a href=""><i class='fa fa-plus fa-fw'></i>Subir Noticia</a>
                                 </li>
                             </ul>
                         </li>
@@ -131,7 +131,7 @@
                             <a href="#"><i class="fa fa-child fa-fw"></i> Profesores<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href=""><i class='fa fa-plus fa-fw'></i> Agregar</a>
+                                    <a href="{{route('profesores.create') }}"><i class='fa fa-plus fa-fw'></i> Agregar</a>
                                 </li>
                                 <li>
                                     <a href="/profesor/importar"> <i class='fa fa-plus fa-fw'></i> Importar lista </a>

@@ -123,7 +123,7 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
         $alumno->apellido=$request->get('apellido');
         $alumno->save();  
 
-      return Redirect::to('menu');
+      return Redirect::to('alumno')->with('success', "Se han ingresado los datos correctamente");
     }
 
     public function show($id)

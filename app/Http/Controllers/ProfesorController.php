@@ -54,14 +54,13 @@ class ProfesorController extends Controller
     public function create()
     {
 
-         $cursos=DB::table('Curso as c')
-          ->get();
-        return view('profesor.create',['cursos'=> $cursos]);
+       
+        return view('profesor.create');
   
     }
 
 
-    public function store(UsuarioFormRequest $request)
+    public function store(Request $request)
     {   
       $usuario = new User;
       $usuario->id=$request->get('id');
@@ -78,15 +77,11 @@ class ProfesorController extends Controller
 
       $profesor = new Profesor;
       $profesor->idProfesor = $request->get('id');
-      $profesor->departamento=$request->get('departamento');
+      $profesor->nombre=$request->get('nombre');
+      $profesor->apellido=$request->get('apellido');
       $profesor->save(); 
 
-      $historial = new Historial;
-      $historial->fecha = date("Y-m-d");
-      $historial->registro = "Se ha agregado el profesor: ".$request->get('id');
-      $historial->save();
-
-      return Redirect::to('profesor');
+      return Redirect::to('/profesores')->with('profesores', "Se han ingresado los datos correctamente");;
       
     }
 
@@ -101,7 +96,7 @@ class ProfesorController extends Controller
       return view("profesor.edit", ["usuario"=>User::findOrFail($id), "profesor"=>Profesor::findOrFail($id)]);  
     }
 
-    public function update(UsuarioFormRequest $request, $id)
+    public function update(Request $request, $id)
     {
       $usuario = User::findOrFail($id);
       $usuario->id=$request->get('id');
@@ -117,15 +112,12 @@ class ProfesorController extends Controller
 
       $profesor = Profesor::findOrFail($id);
       $profesor->idProfesor=$request->get('id');
-      $profesor->departamento=$request->get('departamento');
+      $profesor->nombre=$request->get('nombre');
+      $profesor->apellido=$request->get('apellido');
       $profesor->update();  
 
-      $historial = new Historial;
-      $historial->fecha = date("Y-m-d");
-      $historial->registro = "Se ha editado el profesor: ".$request->get('id');
-      $historial->save();
 
-      return Redirect::to('profesor');
+      return Redirect::to('/profesores');
     }
 
 
@@ -151,7 +143,7 @@ class ProfesorController extends Controller
             DB::rollback();
         }
       
-        return Redirect::to('/profesores')->with('eliminarP', "Registro Eliminado Correctamente");;
+        return Redirect::to('/profesores')->with('profesores', "Registro Eliminado Correctamente");;
     }
 
 

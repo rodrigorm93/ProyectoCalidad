@@ -1,9 +1,9 @@
 @extends ('menu.admin')
 @section ('contenido')
 
-	@if(session('eliminarP'))
+	@if(session('profesores'))
 		<div class="alert alert-success">
-			{{session('eliminarP')}}
+			{{session('profesores')}}
 		</div>
 	@endif
 
