@@ -86,7 +86,7 @@
                                 -->
                                 <li>
                                 
-                                    <a href=""><i class='fa fa-plus fa-fw'></i>Subir Proyecto</a>
+                                    <a href=""><i class='fa fa-plus fa-fw'></i>Proyecto</a>
                                 </li>
                             </ul>
                         </li>
