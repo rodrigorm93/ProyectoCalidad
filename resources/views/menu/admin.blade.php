@@ -77,7 +77,7 @@
 
 
                           <li>
-                            <a href="#"><i class="fa fa-film fa-fw"></i>Proyectos Educativos<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-film fa-fw"></i>Educativos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                             <!--
                                 <li>
