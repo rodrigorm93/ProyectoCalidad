@@ -12,22 +12,24 @@
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="titulo" name="titulo" type="text" placeholder="Titulo" class="form-control">
+                                <input id="titulo" name="titulo" type="text" placeholder="Titulo" class="form-control" required>
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                             <div class="col-md-8">
-                                <textarea class="form-control" id="descripCK" name="descripcion" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>
-                            </div>
+                                <textarea class="form-control" id="descripCK" name="descripcion" placeholder="descripcion" rows="7" required></textarea>
+                            </div>  
                         </div>
                         
-             
+                      
                         <div class="form-group">
+                        
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                             <div class="col-md-8">
-                            <span class="field"><input type="file" name="imagen[]" id="imagen" class="input-xxlarge" accept="image/*" multiple="" onchange="loadFile(event)" required=""/></span>
+                            <FONT SIZE=3 COLOR="green">Imagen de Portada:</FONT>
+                            <span class="field"><input type="file" name="imagen[]" id="imagen" class="input-xxlarge" accept="image/*" multiple="" onchange="loadFile(event)" required/></span>
                             </div>
                         </div>
 

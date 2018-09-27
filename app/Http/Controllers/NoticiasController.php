@@ -145,7 +145,7 @@ class NoticiasController extends Controller
             DB::rollback();
         }
 
-        return Redirect::to('/menu');
+        return Redirect::to('/menu')->with('success2', "Noticia Agregada Correctamente");
 
     }
 

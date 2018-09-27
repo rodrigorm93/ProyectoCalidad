@@ -70,7 +70,7 @@
                                 -->
                                 <li>
                                 
-                                    <a href=""><i class='fa fa-plus fa-fw'></i>Subir Noticia</a>
+                                    <a href="/noticias/create"><i class='fa fa-plus fa-fw'></i>Subir Noticia</a>
                                 </li>
                             </ul>
                         </li>
