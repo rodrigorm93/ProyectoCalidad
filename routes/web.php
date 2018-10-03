@@ -73,6 +73,13 @@ Route::get('/curso/updateMateria','CursoController@updateMateria');
 //para cargar la lista del curso en cada materia impartida por un profesor
 Route::get('listaAlumno', 'AlumnoController@listaAlumnos');
 
+//Para actualizar el promedio final del alumno y guardarlo en la BD
+Route::get('/notas/updatePromedio','NotasController@updatePromedio');
+
+//ver los alumnos aprobados y reprobados de un curso
+
+Route::get('/notas/grado','NotasController@verPorCurso');
+Route::get('/notas/verEstadoAlumnos','NotasController@verEstadoAlumnos');
 
 
 //Rutas:
@@ -86,6 +93,9 @@ Route::resource('profesores', 'ProfesorController');
 
 
 Route::resource('curso', 'CursoController');
+
+//Ruta para revisar las notas
+Route::resource('notas', 'NotasController');
 
 //guardamos los mensajes enviados
 Route::resource('mensajes', 'MensajesController');

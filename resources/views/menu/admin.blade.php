@@ -159,7 +159,26 @@
                                  <li>
                                     <a href="{{ route('seccion_curso.index') }}"><i class='fa fa-list-ol fa-fw'></i>Mostrar</a>
                                 </li>
+                            </ul>
+                        </li>
 
+                           <li>
+                            <a href="#"><i class="fa fa-film fa-fw"></i>Estado de Notas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                            <!--
+                                <li>
+                                    <a href="#"><i class='fa fa-plus fa-fw'></i> Agregar</a>
+                                </li>
+                                -->
+                                <li>
+                                
+                                    <a href="/notas"><i class='fa fa-list-ol fa-fw'></i>Estado</a>
+                                </li>
+
+                                 <li>
+                                
+                                <a href="/notas/grado"><i class='fa fa-list-ol fa-fw'></i>Calcular Promedios Finales</a>
+                            </li>
                             </ul>
                         </li>
 
