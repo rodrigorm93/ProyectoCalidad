@@ -70,9 +70,11 @@ class NotasController extends Controller
     }
 
 
+    //Guardamos el Promedio Final ya redondeado a la tabla alumno con el estado 
+    // A = aprobado, R = reprobado
     public function updatePromedio(Request $request)
     {   
-
+        //Agregamos el promedio Final a la tabla Alumno
         try {
 
             DB::beginTransaction();
@@ -104,6 +106,7 @@ class NotasController extends Controller
 
     }
 
+    //Vemos el Promedio final de cada alumno redondeado 
     public function verEstadoAlumnos(Request $request)
     {
         $idCurso = $request->get('idCurso2');
