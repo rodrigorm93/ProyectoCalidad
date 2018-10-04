@@ -33,16 +33,36 @@
                    
 					<tr>
 						<td>{{$usu -> idAlumno}}</td>
-                        <td>{{$usu -> promedioFinal}}</td>
-                         <input type="hidden" name="promedioFinal[]" value="{{$usu -> promedioFinal}}">
+                       
+                         
                          <input type="hidden" name="idAlumno[]" value="{{$usu -> idAlumno}}">
-						@if($usu -> promedioFinal >= '39.5') 
+
+						 @if($usu -> promedioFinal >='61' && $usu -> promedioFinal <= '70')
+						 <td>{{$usu -> promedioFinal}}</td> 
+						 <td><FONT COLOR="green"><strong> Aprobado</strong></FONT></td>
+						 <input type="hidden" name="promedioFinal[]" value="{{$usu -> promedioFinal}}">
+						<input type="hidden" name="estado[]" value="AM">
+
+						@elseif($usu -> promedioFinal == '40') 
+						<td>{{$usu -> promedioFinal}}</td>
 						<td><FONT COLOR="green"><strong> Aprobado</strong></FONT></td>
+						<input type="hidden" name="promedioFinal[]" value="{{$usu -> promedioFinal}}">
 						<input type="hidden" name="estado[]" value="A">
+
+						@elseif($usu -> promedioFinal >= '21' && $usu -> promedioFinal < '40') 
+						<td><input type="text" name="promedioFinal[]" value="{{$usu -> promedioFinal}}"></td>
+				
+						<td><FONT COLOR="red"><input type="text" name="estado[]" value="Por Aprobar"></FONT></td>
+
 						@else
-						<td><FONT COLOR="red"><strong>Reprobado</strong></FONT></td>
-						<input type="hidden" name="estado[]" value="R">
+						<td>{{$usu -> promedioFinal}}</td>
+						<td><FONT COLOR="red"><strong>Reprobado </strong></FONT></td>
+						<input type="hidden" name="promedioFinal[]" value="{{$usu -> promedioFinal}}">
+						<input type="hidden" name="estado[]" value="NA">
+
+
 						@endif
+
 					</tr>
 					@endforeach
 				</table>
