@@ -52,7 +52,7 @@
 						@elseif($usu -> promedioFinal >= '21' && $usu -> promedioFinal < '40') 
 						<td><input type="text" name="promedioFinal[]" value="{{$usu -> promedioFinal}}"></td>
 				
-						<td><FONT COLOR="red"><input type="text" name="estado[]" value="Por Aprobar"></FONT></td>
+						<td><FONT COLOR="red"><input type="text" name="estado[]" value="PA"></FONT></td>
 
 						@else
 						<td>{{$usu -> promedioFinal}}</td>
