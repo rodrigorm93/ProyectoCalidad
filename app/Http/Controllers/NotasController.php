@@ -87,9 +87,9 @@ class NotasController extends Controller
 
         $cont=0;
         while($cont < count($idAlumno)){
-
+     
         Alumno::where('idAlumno', '=', $idAlumno[$cont])
-        ->update(['promedioFinal' => $promedioFinal[$cont],'estado' => $estado[$cont]]);
+        ->update(['promedioFinal' => $promedioFinal[$cont],'estado_curso' => $estado[$cont]]);
 
         $cont = $cont+1;
         }
