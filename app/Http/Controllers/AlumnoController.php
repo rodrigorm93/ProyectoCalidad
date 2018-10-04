@@ -121,6 +121,8 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
         $alumno->ingreso=$request->get('ingresoYear');
         $alumno->nombre=$request->get('nombre');
         $alumno->apellido=$request->get('apellido');
+        $alumno->promedioFinal=0;
+        $alumno->estado_curso='';
         $alumno->save();  
 
       return Redirect::to('alumno')->with('success', "Se han ingresado los datos correctamente");
@@ -243,6 +245,8 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
                     $alumno->apellido = $apellido[$cont];
                     $alumno->ingreso= $ingreso[$cont];
                     $alumno->asignacion= 'No asignado';
+                    $alumno->promedioFinal=0;
+                    $alumno->estado_curso='';
                    
                     $alumno->save(); 
 

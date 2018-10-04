@@ -86,7 +86,7 @@ class CursoController extends Controller
     public function store(Request $request)
     {   
     	
-
+            $year =  date("Y");
             try {
 
             DB::beginTransaction();
@@ -94,6 +94,7 @@ class CursoController extends Controller
         
             $curso = new Curso;
             $curso->grado=$request->get('grado');
+            $curso->year = $year;
             $curso->save();
   
               

@@ -21,7 +21,7 @@
                
                     <table class="table table-striped table-bordered table-condensed table-hover">
 					<thead>
-						<th>Grado</th>
+						<th>Curso</th>
 						<th>Ver Materias</th>
                         <th>Opciones</th>
 					</thead>
@@ -31,7 +31,7 @@
                     
                     {!!Form::open(array('url'=>'curso/ver_materias', 'method'=>'GET', 'autocomplete'=>'off'))!!}
                 {{Form::token()}}
-						<td>{{$c -> grado}}</td>
+						<td>{{$c -> grado}} Año {{$c -> year}}</td>
                         <input id="idCurso2" type="hidden" name="idCurso2" value="{{$c -> idCurso}}">
                         
                         

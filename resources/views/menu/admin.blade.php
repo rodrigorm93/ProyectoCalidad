@@ -18,6 +18,7 @@
     {!!Html::style('admin/css/metisMenu.min.css')!!}
     {!!Html::style('admin/css/sb-admin-2.css')!!}
     {!!Html::style('admin/css/font-awesome.min.css')!!}
+    {!!Html::style('admin/css/tabla_scroll.css')!!}
 
 </head>
 

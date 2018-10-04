@@ -116,11 +116,12 @@ class NotasController extends Controller
         ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso') 
         ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno')        
         ->where('a.asignacion', '=','ASIGNADO')
+        ->where('a.promedioFinal', '=',0)
         ->where('c.idCurso', '=',$idCurso)
         ->select( 'n.idAlumno', DB::raw( 'round(AVG( n.promedio ),0) as promedioFinal' ))
         ->groupBy('n.idAlumno')      
         ->get();
-     
+
 
         return view('notas.estadoPorCurso',['alumnos'=> $alumnos]);
     }
