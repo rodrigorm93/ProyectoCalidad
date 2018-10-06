@@ -252,6 +252,8 @@ class AsignacionController extends Controller
             $notas->n11='0';
             $notas->n12='0';
 
+            $notas->promedio_s1='0';
+            $notas->promedio_s2='0';
             $notas->promedio='0';
             $notas->save();
 

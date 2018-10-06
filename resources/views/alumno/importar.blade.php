@@ -68,8 +68,6 @@
 				    var edad = row.insertCell(6);
 				    var correo = row.insertCell(7);
 				  
-				    var ingreso = row.insertCell(8);
-
 
 				    //Se insertan las celdas como input cuyos nombres son arreglos
 				    var rut = data[i].RUT.split("-");
@@ -82,7 +80,7 @@
 				    edad.innerHTML = "<input type=\"text\" name=\"edad[]\" value=\""+data[i].Edad+"\">";
 				    correo.innerHTML = "<input type=\"text\" name=\"correo[]\" value=\""+data[i].Correo+"\">";
 			
-				    ingreso.innerHTML = "<input type=\"text\" name=\"ingreso[]\" value=\""+data[i].Ingreso+"\">";
+			
                 }
 
                 //Se insertan los titulos de las columnas
@@ -98,7 +96,7 @@
 			    var edad = row.insertCell(6);
 			    var correo = row.insertCell(7);
 			   
-			    var ingreso = row.insertCell(8);
+			   
 
 			    id.innerHTML = "ID";
 			    digito.innerHTML = "Digito";
@@ -109,7 +107,7 @@
 			    edad.innerHTML = "Edad";
 			    correo.innerHTML = "Correo"
 			  
-			    ingreso.innerHTML = "Año ingreso";
+			  
             });
          }
     </script>

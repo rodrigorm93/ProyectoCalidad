@@ -197,6 +197,7 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
 
     public function importar_store(Request $request)
     {   
+        $year =  date("Y"); //Capturamos el año de ingreso d elos datos que seria el de ingreso del alumno
       
         try {
 
@@ -212,7 +213,6 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
             $edad=$request->get('edad');
             $correo=$request->get('correo');
           
-            $ingreso=$request->get('ingreso');
 
             $cont = 0;
             $cantidad = 0;
@@ -243,7 +243,7 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
                     $alumno->idAlumno = $id[$cont];
                     $alumno->nombre = $nombre[$cont];
                     $alumno->apellido = $apellido[$cont];
-                    $alumno->ingreso= $ingreso[$cont];
+                    $alumno->ingreso=$year;
                     $alumno->asignacion= 'No asignado';
                     $alumno->promedioFinal=0;
                     $alumno->estado_curso='';

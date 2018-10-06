@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('profesor/css/font-awesome.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('profesor/css/AdminLTE.min.css')}}">
+    <link rel="stylesheet" href="{{asset('profesor/css/tabla_scroll.css')}}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('profesor/css/_all-skins.min.css')}}">

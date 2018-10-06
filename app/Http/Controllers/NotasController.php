@@ -9,6 +9,8 @@ use App\Http\Requests;
 use App\User;
 use App\Alumno;
 use App\Notas;
+use App\Curso;
+
 
 //use asistencias\Alumno;
 //hacemos referencias a redirect para hacer algunas redirrecciones
@@ -188,17 +190,44 @@ class NotasController extends Controller
         }
     
         $promedioSemestre2[$cont2] = $sumaN/$numeroNotas;
+         //Calculamos el promedio final de la materia
+        $promedioFinal[$cont2]=($promedio_s1[$cont2] + $promedioSemestre2[$cont2])/2;
       
+        //Para el caso de las demas materias que solo necesitan 4 notas
+        //solo veremos en que semestre estamos para ir calculando sus promedios
 
+        }else if($semestre=='1' ){
+
+        $notas1 = array($n1[$cont2],$n2[$cont2],$n3[$cont2],$n4[$cont2]);
+        $numeroNotas = 4;
+
+        while($cont < count($notas1)){
+            $sumaN = $sumaN + $notas1[$cont];
+            $cont = $cont+1;
+        }
+      $promedioSemestre1[$cont2] = $sumaN/$numeroNotas;
+      //Semestre 2:
+        }else{
+            $notas2 = array($n5[$cont2],$n6[$cont2],$n7[$cont2],$n8[$cont2]);
+            $numeroNotas = 4;
+
+        while($cont < count($notas2)){
+            $sumaN = $sumaN + $notas2[$cont];
+            $cont = $cont+1;
+        }
+    
+        $promedioSemestre2[$cont2] = $sumaN/$numeroNotas;
+          //Calculamos el promedio final de la materia
+         $promedioFinal[$cont2]=($promedio_s1[$cont2] + $promedioSemestre2[$cont2])/2;
+        
         }
 
-        //Calculamos el promedio final de la materia
-        $promedioFinal1[$cont2]=($promedio_s1[$cont2] + $promedio_s2[$cont2]);
-        $promedioFinal[$cont2]=($promedioFinal1[$cont2])/2;
+
+     
         
      
         //Guardamos los datos dependiendo del semestre
-        if($semestre=='1'){
+        if($nombreMateria == 'Lenguaje y Comunicación' && $semestre=='1' ){
               //guardamos las notas de cada alumno que esta en esa materia
      Notas::where('idAlumno', '=', $idAlumno[$cont2])
      ->where('idMateria', $idMateria)
@@ -212,8 +241,9 @@ class NotasController extends Controller
      ]);
     
      //Caso contrario que seria el segundo semestre y ademas guardamos el promedio final de la materia
-    }else{
-
+    }else if ($nombreMateria == 'Lenguaje y Comunicación' && $semestre=='2' ){
+           
+   
      Notas::where('idAlumno', '=', $idAlumno[$cont2])
      ->where('idMateria', $idMateria)
      ->update([
@@ -227,13 +257,37 @@ class NotasController extends Controller
      'promedio' => $promedioFinal[$cont2]
      ]);
 
+        }else if($semestre=='1' ){
+
+                      
+     Notas::where('idAlumno', '=', $idAlumno[$cont2])
+     ->where('idMateria', $idMateria)
+     ->update(['n1' => $n1[$cont2],
+     'n2' => $n2[$cont2],
+     'n3' => $n3[$cont2],
+     'n4' => $n4[$cont2],
+     'promedio_s1' => $promedioSemestre1[$cont2]
+     ]);
+        }else{
+
+        
+            Notas::where('idAlumno', '=', $idAlumno[$cont2])
+            ->where('idMateria', $idMateria)
+            ->update([
+            'n5' => $n5[$cont2],
+            'n6' => $n6[$cont2],  
+            'n7' => $n7[$cont2],
+            'n8' => $n8[$cont2],
+            'promedio_s2' => $promedioSemestre2[$cont2],
+            'promedio' => $promedioFinal[$cont2]
+            ]);
         }
 
          $cont2 = $cont2+1;
        
          $sumaN =0; //reiniciamos la suma de las notas
          $cont = 0; //reiniciamos el contador que ira recoriendo el array de las notas
-      
+       
 
         }
 
@@ -285,6 +339,23 @@ class NotasController extends Controller
     //Para crear la libreta de Notas
     public function create(Request $request){
 
+        // Cargar todos los alumnos de un curso especifico
+        $query=trim($request->get('searchText'));
+
+          //Veremos en que semestre estamos
+          $fecha_actual = strtotime(date("d-m-Y H:i:00",time()));
+          $fecha_entrada = strtotime("11-07-2018 21:00:00");
+  
+          if($fecha_actual < $fecha_entrada)
+      { 
+          $semestre='1';
+      }else{
+          $semestre='2';
+      }
+
+      //Revisamos en que semestre estamos
+      Curso::where('idCurso', '=', $query)
+      ->update(['semestre' => $semestre]);
 
     
         // Cargar todos los alumnos de un curso especifico
