@@ -84,6 +84,10 @@ Route::get('/notas/verEstadoAlumnos','NotasController@verEstadoAlumnos');
 //ingresar notas y promedios al sistema
 Route::post('/notas/ingresarNotas','NotasController@ingresarNotas');
 
+
+//ver las libreta de notas
+Route::get('/libreta_notas/grado','NotasController@grado');
+Route::get('/libreta_notas/ver_libreta','NotasController@ver_libreta');
 //Rutas:
 
 Route::resource('menu','UsuarioController');

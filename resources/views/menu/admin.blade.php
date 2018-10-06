@@ -182,7 +182,10 @@
                             </li>
                             </ul>
                         </li>
-
+                        <li>
+                                
+                                <a href="/libreta_notas/grado"><i class='fa fa-list-ol fa-fw'></i>Libreta de notas</a>
+                            </li>
                     </ul>
                 </div>
             </div>

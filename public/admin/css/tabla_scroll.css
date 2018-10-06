@@ -1,9 +1,9 @@
 #div1 {
      overflow:scroll;
      height:500px;
-     width:600px;
+     width:1000px;
 }
 #div1 table {
-    width:500px;
+    width:800px;
     background-color:lightgray;
 }

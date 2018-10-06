@@ -276,11 +276,41 @@ class NotasController extends Controller
         return view('libreta_notas.create',['alumnos'=> $alumnos,'curso'=> $cursos,'materia'=> $materia]);
     }
 
-    //Eliminamos de la tabla usuario, alumno y su registros de notas
-    public function destroy($id)
+    //cargamos los cursos a la vista admin para ver las libretas de notas de cada curso
+   
+    public function grado()
     {
-    
-    
+             
+        $curso=DB::table('Curso')
+        ->get();
+
+      
+        return view('libreta_notas.grado',['curso'=> $curso]);
+  
+    }
+
+
+    public function ver_libreta(Request $request)
+    {
+        
+        $idCurso = $request->get('idCurso');
+           
+            $libreta=DB::table('Notas as n')
+            ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
+            ->join ('Materia as m', 'm.idMateria', '=' ,'n.idMateria') 
+            ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')  
+            ->where('c.idCurso','=',$idCurso)       
+            ->select('a.nombre as nombre','a.apellido as apellido','m.nombre as materia',
+            'm.idCurso','c.grado','n.idAlumno','n.idMateria','n.n1'
+            ,'n.n2','n.n3','n.n4','n.n5','n.n6','n.n7','n.n8','n.n9','n.n10','n.n11','n.n12','n.promedio')
+            ->orderBy('a.idAlumno','dec')
+            ->paginate(100);
+
+            $curso=DB::table('Curso')
+            ->where('idCurso','=',$idCurso)
+            ->get();       
+
+        return view('libreta_notas.ver_libreta', ["libreta" => $libreta,"curso" => $curso]);
     }
 
 
