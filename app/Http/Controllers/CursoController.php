@@ -87,6 +87,18 @@ class CursoController extends Controller
     {   
     	
             $year =  date("Y");
+
+              //Veremos en que semestre estamos
+        $fecha_actual = strtotime(date("d-m-Y H:i:00",time()));
+        $fecha_entrada = strtotime("11-07-2018 21:00:00");
+
+        if($fecha_actual < $fecha_entrada)
+	{
+        
+        $semestre='1';
+    }else{
+        $semestre='2';
+    }
             try {
 
             DB::beginTransaction();
@@ -95,6 +107,7 @@ class CursoController extends Controller
             $curso = new Curso;
             $curso->grado=$request->get('grado');
             $curso->year = $year;
+            $curso->semestre = $semestre;
             $curso->save();
   
               

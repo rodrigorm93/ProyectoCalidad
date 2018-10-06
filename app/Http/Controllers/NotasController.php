@@ -132,6 +132,10 @@ class NotasController extends Controller
         $idAlumno=$request->get('idAlumno');
         $idMateria=$request->get('idMateria');
         $nombreMateria=$request->get('nombreMateria');
+        $semestre=$request->get('semestre');
+
+        $promedio_s1=$request->get('promedio_s1');
+        $promedio_s2=$request->get('promedio_s2');
 
         //Todas las notas
         $n1=$request->get('n1');
@@ -147,14 +151,6 @@ class NotasController extends Controller
         $n11=$request->get('n11');
         $n12=$request->get('n12');
 
-        //vemos la cantidad de nota exigida en cada materia para luego poder calular
-        //el promedio de cada materia.
-        if($nombreMateria == 'Lenguaje y Comunicación'){
-            $numeroNotas = 12;
-        }else if($nombreMateria == 'Matemáticas'){
-            $numeroNotas = 8;
-        }
-
 
         //Clcularemos el promedio cada vez que se ingresen notas
         $cont = 0;
@@ -163,45 +159,81 @@ class NotasController extends Controller
         
         //Guardamos la suma de todas las notas
         $sumaN =0;
-
-
+        //calculamos el promedio de los dos semestres
+       
+    
   
         //calculamos el promedio y aguardamos cada nota
     while($cont2 < count($idAlumno)){
 
         //guardamos cada nota en un array para luego sacar su promedio 
-        $notas = array($n1[$cont2],$n2[$cont2],$n3[$cont2]
-        ,$n4[$cont2],$n5[$cont2],$n6[$cont2],$n7[$cont2],$n8[$cont2]
-        ,$n9[$cont2],$n10[$cont2],$n11[$cont2],$n12[$cont2]);
+        if($nombreMateria == 'Lenguaje y Comunicación' && $semestre=='1' ){
+        $notas1 = array($n1[$cont2],$n2[$cont2],$n3[$cont2],$n4[$cont2],$n5[$cont2],$n6[$cont2]);
+        $numeroNotas = 6;
 
-        while($cont < count($notas)){
-            $sumaN = $sumaN + $notas[$cont];
+        while($cont < count($notas1)){
+            $sumaN = $sumaN + $notas1[$cont];
             $cont = $cont+1;
         }
-      $promedio[$cont2] = $sumaN/$numeroNotas;
+      $promedioSemestre1[$cont2] = $sumaN/$numeroNotas;
+   
 
-      //guardamos las notas de cada alumno que esta en esa materia
+        }else if($nombreMateria == 'Lenguaje y Comunicación' && $semestre=='2' ){
+            $notas2 = array($n7[$cont2],$n8[$cont2],$n9[$cont2],$n10[$cont2],$n11[$cont2],$n12[$cont2]);
+            $numeroNotas = 6;
+
+        while($cont < count($notas2)){
+            $sumaN = $sumaN + $notas2[$cont];
+            $cont = $cont+1;
+        }
+    
+        $promedioSemestre2[$cont2] = $sumaN/$numeroNotas;
+      
+
+        }
+
+        //Calculamos el promedio final de la materia
+        $promedioFinal1[$cont2]=($promedio_s1[$cont2] + $promedio_s2[$cont2]);
+        $promedioFinal[$cont2]=($promedioFinal1[$cont2])/2;
+        
+     
+        //Guardamos los datos dependiendo del semestre
+        if($semestre=='1'){
+              //guardamos las notas de cada alumno que esta en esa materia
      Notas::where('idAlumno', '=', $idAlumno[$cont2])
-         ->where('idMateria', $idMateria)
-         ->update(['n1' => $n1[$cont2],
-         'n2' => $n2[$cont2],
-         'n3' => $n3[$cont2],
-         'n4' => $n4[$cont2],
-         'n5' => $n5[$cont2],
-         'n6' => $n6[$cont2],
-         'n7' => $n7[$cont2],
-         'n8' => $n8[$cont2],  
-         'n9' => $n9[$cont2],
-         'n10' => $n10[$cont2],
-         'n11' => $n11[$cont2],
-         'n12' => $n12[$cont2],
-         'promedio' => $promedio[$cont2] 
-         ]);
+     ->where('idMateria', $idMateria)
+     ->update(['n1' => $n1[$cont2],
+     'n2' => $n2[$cont2],
+     'n3' => $n3[$cont2],
+     'n4' => $n4[$cont2],
+     'n5' => $n5[$cont2],
+     'n6' => $n6[$cont2],
+     'promedio_s1' => $promedioSemestre1[$cont2]
+     ]);
+    
+     //Caso contrario que seria el segundo semestre y ademas guardamos el promedio final de la materia
+    }else{
+
+     Notas::where('idAlumno', '=', $idAlumno[$cont2])
+     ->where('idMateria', $idMateria)
+     ->update([
+     'n7' => $n7[$cont2],
+     'n8' => $n8[$cont2],  
+     'n9' => $n9[$cont2],
+     'n10' => $n10[$cont2],
+     'n11' => $n11[$cont2],
+     'n12' => $n12[$cont2],
+     'promedio_s2' => $promedioSemestre2[$cont2],
+     'promedio' => $promedioFinal[$cont2]
+     ]);
+
+        }
 
          $cont2 = $cont2+1;
        
          $sumaN =0; //reiniciamos la suma de las notas
          $cont = 0; //reiniciamos el contador que ira recoriendo el array de las notas
+      
 
         }
 
@@ -218,9 +250,11 @@ class NotasController extends Controller
          ->get();
  
          $materia=DB::table('materia as m')
-         ->where('m.idMateria','=',$query)
-         ->get();
- 
+        ->join ('Curso as c', 'c.idCurso', '=' , 'm.idCurso') 
+        ->where('m.idMateria','=',$query)
+        ->select('m.nombre','c.semestre')
+        ->get();
+        
          //Para volver a cargar los cursos que aparecen a la izquierda,que son los cusos impartidos por el
          //profesor
           $query=$this->auth->user()->id;
@@ -230,7 +264,6 @@ class NotasController extends Controller
           ->where('c.estado','=','activo')      
           ->select('c.nombre','c.idMateria as idMateria')
           ->paginate(10);
- 
  
          return view('libreta_notas.create',['alumnos'=> $alumnos,'curso'=> $cursos,'materia'=> $materia]);
       
@@ -252,6 +285,8 @@ class NotasController extends Controller
     //Para crear la libreta de Notas
     public function create(Request $request){
 
+
+    
         // Cargar todos los alumnos de un curso especifico
         $query=trim($request->get('searchText'));
 
@@ -262,8 +297,11 @@ class NotasController extends Controller
         ->get();
 
         $materia=DB::table('materia as m')
+        ->join ('Curso as c', 'c.idCurso', '=' , 'm.idCurso') 
         ->where('m.idMateria','=',$query)
+        ->select('m.nombre','c.semestre')
         ->get();
+        
 
         //Para volver a cargar los cursos que aparecen a la izquierda,que son los cusos impartidos por el
         //profesor

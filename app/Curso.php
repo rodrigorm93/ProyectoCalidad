@@ -14,6 +14,6 @@ class Curso extends Model
 
 
     protected $fillable = [
-       'grado'
+       'grado','year','semestre'
     ];
 }
