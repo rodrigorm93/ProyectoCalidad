@@ -126,6 +126,115 @@ class NotasController extends Controller
         return view('notas.estadoPorCurso',['alumnos'=> $alumnos]);
     }
 
+    //Funcion para guardar las notas de cada alumno
+    public function ingresarNotas(Request $request)
+    {   
+        $idAlumno=$request->get('idAlumno');
+        $idMateria=$request->get('idMateria');
+        $nombreMateria=$request->get('nombreMateria');
+
+
+        $n1=$request->get('n1');
+        $n2=$request->get('n2');
+        $n3=$request->get('n3');
+        $n4=$request->get('n4');
+        $n5=$request->get('n5');
+        $n6=$request->get('n6');
+        $n7=$request->get('n7');
+        $n8=$request->get('n8');
+        $n9=$request->get('n9');
+        $n10=$request->get('n10');
+        $n11=$request->get('n11');
+        $n12=$request->get('n12');
+
+        if($nombreMateria == 'Lenguaje y Comunicación'){
+            $numeroNotas = 12;
+        }else if($nombreMateria == 'Matemáticas'){
+            $numeroNotas = 8;
+        }
+
+
+        //Clcularemos el promedio cada vez que se ingresen notas
+        $cont = 0;
+        $cont2 = 0;
+        $cont3 = 0;
+        
+        //Guardamos la suma de todas las notas
+        $sumaN =0;
+
+
+  
+        //calculamos el promedio y aguardamos cada nota
+    while($cont2 < count($idAlumno)){
+
+        //guardamos cada nota en un array para luego sacar su promedio 
+        $notas = array($n1[$cont2],$n2[$cont2],$n3[$cont2]
+        ,$n4[$cont2],$n5[$cont2],$n6[$cont2],$n7[$cont2],$n8[$cont2]
+        ,$n9[$cont2],$n10[$cont2],$n11[$cont2],$n12[$cont2]);
+
+        while($cont < count($notas)){
+            $sumaN = $sumaN + $notas[$cont];
+            $cont = $cont+1;
+        }
+      $promedio[$cont2] = $sumaN/$numeroNotas;
+
+     Notas::where('idAlumno', '=', $idAlumno[$cont2])
+         ->where('idMateria', $idMateria)
+         ->update(['n1' => $n1[$cont2],
+         'n2' => $n2[$cont2],
+         'n3' => $n3[$cont2],
+         'n4' => $n4[$cont2],
+         'n5' => $n5[$cont2],
+         'n6' => $n6[$cont2],
+         'n7' => $n7[$cont2],
+         'n8' => $n8[$cont2],  
+         'n9' => $n9[$cont2],
+         'n10' => $n10[$cont2],
+         'n11' => $n11[$cont2],
+         'n12' => $n12[$cont2],
+         'promedio' => $promedio[$cont2] 
+         ]);
+
+         $cont2 = $cont2+1;
+       
+         $sumaN =0;
+         $cont = 0;
+
+        }
+
+
+        //PARA VOLVER A CARGAR LA VISTA CREATE 
+
+         // Cargar todos los alumnos de un curso especifico
+         $query=trim($request->get('idMateria'));
+
+         $alumnos=DB::table('materia as m')
+         ->join ('notas as n', 'n.idMateria', '=' , 'm.idMateria')
+         ->join ('alumno as a', 'a.idAlumno', '=' , 'n.idAlumno') 
+         ->where('m.idMateria','=',$query)     
+         ->get();
+ 
+         $materia=DB::table('materia as m')
+         ->where('m.idMateria','=',$query)
+         ->get();
+ 
+         //Para volver a cargar los cursos que aparecen a la izquierda,que son los cusos impartidos por el
+         //profesor
+          $query=$this->auth->user()->id;
+ 
+          $cursos=DB::table('materia as c')
+          ->where('c.idProfesor','=',$query)
+          ->where('c.estado','=','activo')      
+          ->select('c.nombre','c.idMateria as idMateria')
+          ->paginate(10);
+ 
+ 
+         return view('libreta_notas.create',['alumnos'=> $alumnos,'curso'=> $cursos,'materia'=> $materia]);
+      
+
+    
+    }
+
 
 
     public function edit($id)
@@ -137,7 +246,36 @@ class NotasController extends Controller
     
     }
 
-    
+    //Para crear la libreta de Notas
+    public function create(Request $request){
+
+        // Cargar todos los alumnos de un curso especifico
+        $query=trim($request->get('searchText'));
+
+        $alumnos=DB::table('materia as m')
+        ->join ('notas as n', 'n.idMateria', '=' , 'm.idMateria')
+        ->join ('alumno as a', 'a.idAlumno', '=' , 'n.idAlumno') 
+        ->where('m.idMateria','=',$query)     
+        ->get();
+
+        $materia=DB::table('materia as m')
+        ->where('m.idMateria','=',$query)
+        ->get();
+
+        //Para volver a cargar los cursos que aparecen a la izquierda,que son los cusos impartidos por el
+        //profesor
+         $query=$this->auth->user()->id;
+
+         $cursos=DB::table('materia as c')
+         ->where('c.idProfesor','=',$query)
+         ->where('c.estado','=','activo')      
+         ->select('c.nombre','c.idMateria as idMateria')
+         ->paginate(10);
+
+
+        return view('libreta_notas.create',['alumnos'=> $alumnos,'curso'=> $cursos,'materia'=> $materia]);
+    }
+
     //Eliminamos de la tabla usuario, alumno y su registros de notas
     public function destroy($id)
     {

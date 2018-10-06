@@ -81,6 +81,8 @@ Route::get('/notas/updatePromedio','NotasController@updatePromedio');
 Route::get('/notas/grado','NotasController@verPorCurso');
 Route::get('/notas/verEstadoAlumnos','NotasController@verEstadoAlumnos');
 
+//ingresar notas y promedios al sistema
+Route::post('/notas/ingresarNotas','NotasController@ingresarNotas');
 
 //Rutas:
 

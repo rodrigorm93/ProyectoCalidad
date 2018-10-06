@@ -239,7 +239,19 @@ class AsignacionController extends Controller
              $notas = new Notas;
             $notas->idAlumno=$idAlumno[$cont];
             $notas->idMateria=$materias[$cont2];
-            $notas->nota='0';
+            $notas->n1='0';
+            $notas->n2='0';
+            $notas->n3='0';
+            $notas->n4='0';
+            $notas->n5='0';
+            $notas->n6='0';
+            $notas->n7='0';
+            $notas->n8='0';
+            $notas->n9='0';
+            $notas->n10='0';
+            $notas->n11='0';
+            $notas->n12='0';
+
             $notas->promedio='0';
             $notas->save();
 
