@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
 		@foreach ($curso as $c)
-			<h3>Lista de Asignacion: <FONT COLOR="green">{{$c->grado}}</FONT></h3>
+			<h3>Libreta de Notas: <FONT COLOR="green">{{$c->grado}} Año {{$c->year}}</FONT></h3>
 			
 			@endforeach
 		</div>	
@@ -31,6 +31,7 @@
                         <th>N11</th>
                         <th>N12</th>
                         <th>Promedio</th>
+                        <th>Promedio Final</th>
 						
 
 					</thead>
@@ -51,7 +52,7 @@
                         <td>{{$l -> n11}}</td>
                         <td>{{$l -> n12}}</td>
                         <th>{{$l -> promedio}}</th>
-			
+                        <th>{{$l -> promedioFinal}}</th>			
 						</td>
 					</tr>
 			

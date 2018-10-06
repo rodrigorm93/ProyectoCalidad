@@ -49,28 +49,28 @@
 
                         @if($m->nombre === 'Lenguaje y Comunicación')
                     
-                       <td> <input id="n1" type="text" name="n1[]" value="{{$a->n1}}"  style="width:40px"></td>	
-                       <td> <input id="n2" type="text" name="n2[]" value="{{$a->n2}}" style="width:40px"></td>	
-                       <td> <input id="n3" type="text" name="n3[]" value="{{$a->n3}}" style="width:40px"></td>	
-                       <td> <input id="n4" type="text" name="n4[]" value="{{$a->n4}}" style="width:40px"></td>	
-                       <td> <input id="n5" type="text" name="n5[]" value="{{$a->n5}}" style="width:40px"></td>	
-                       <td> <input id="n6" type="text" name="n6[]" value="{{$a->n6}}" style="width:40px"></td>
-                       <td> <input id="n7" type="text" name="n7[]" value="{{$a->n7}}" style="width:40px"></td>	
-                       <td> <input id="n8" type="text" name="n8[]" value="{{$a->n8}}" style="width:40px"></td>	
-                       <td> <input id="n9" type="text" name="n9[]" value="{{$a->n9}}" style="width:40px"></td>	
-                       <td> <input id="n10" type="text" name="n10[]" value="{{$a->n10}}" style="width:40px"></td>	
-                       <td> <input id="n11" type="text" name="n11[]" value="{{$a->n11}}" style="width:40px"></td>	
-                       <td> <input id="n12" type="text" name="n12[]" value="{{$a->n12}}" style="width:40px"></td>
+                       <td> <input id="n1" type="number" min="0" max="70" name="n1[]" value="{{$a->n1}}"  style="width:40px"></td>	
+                       <td> <input id="n2" type="number" min="0" max="70" name="n2[]" value="{{$a->n2}}" style="width:40px"></td>	
+                       <td> <input id="n3" type="number" min="0" max="70" name="n3[]" value="{{$a->n3}}" style="width:40px"></td>	
+                       <td> <input id="n4" type="number" min="0" max="70" name="n4[]" value="{{$a->n4}}" style="width:40px"></td>	
+                       <td> <input id="n5" type="number" min="0" max="70" name="n5[]" value="{{$a->n5}}" style="width:40px"></td>	
+                       <td> <input id="n6" type="number" min="0" max="70" name="n6[]" value="{{$a->n6}}" style="width:40px"></td>
+                       <td> <input id="n7" type="number" min="0" max="70" name="n7[]" value="{{$a->n7}}" style="width:40px"></td>	
+                       <td> <input id="n8" type="number" min="0" max="70" name="n8[]" value="{{$a->n8}}" style="width:40px"></td>	
+                       <td> <input id="n9" type="number" min="0" max="70" name="n9[]" value="{{$a->n9}}" style="width:40px"></td>	
+                       <td> <input id="n10" type="number" min="0" max="70" name="n10[]" value="{{$a->n10}}" style="width:40px"></td>	
+                       <td> <input id="n11" type="number" min="0" max="70" name="n11[]" value="{{$a->n11}}" style="width:40px"></td>	
+                       <td> <input id="n12" type="number" min="0" max="70" name="n12[]" value="{{$a->n12}}" style="width:40px"></td>
                      
                      @elseif($m->nombre === 'Matemáticas')
-                     <td> <input id="n1" type="text" name="n1[]" value="{{$a->n1}}"  style="width:40px"></td>	
-                       <td> <input id="n2" type="text" name="n2[]" value="{{$a->n2}}" style="width:40px"></td>	
-                       <td> <input id="n3" type="text" name="n3[]" value="{{$a->n3}}" style="width:40px"></td>	
-                       <td> <input id="n4" type="text" name="n4[]" value="{{$a->n4}}" style="width:40px"></td>	
-                       <td> <input id="n5" type="text" name="n5[]" value="{{$a->n5}}" style="width:40px"></td>	
-                       <td> <input id="n6" type="text" name="n6[]" value="{{$a->n6}}" style="width:40px"></td>
-                       <td> <input id="n7" type="text" name="n7[]" value="{{$a->n7}}" style="width:40px"></td>	
-                       <td> <input id="n8" type="text" name="n8[]" value="{{$a->n8}}" style="width:40px"></td>
+                     <td> <input id="n1" type="number" min="0" max="70" name="n1[]" value="{{$a->n1}}"  style="width:40px"></td>	
+                       <td> <input id="n2" type="number" min="0" max="70" name="n2[]" value="{{$a->n2}}" style="width:40px"></td>	
+                       <td> <input id="n3" type="number" min="0" max="70" name="n3[]" value="{{$a->n3}}" style="width:40px"></td>	
+                       <td> <input id="n4" type="number" min="0" max="70" name="n4[]" value="{{$a->n4}}" style="width:40px"></td>	
+                       <td> <input id="n5" type="number" min="0" max="70" name="n5[]" value="{{$a->n5}}" style="width:40px"></td>	
+                       <td> <input id="n6" type="number" min="0" max="70" name="n6[]" value="{{$a->n6}}" style="width:40px"></td>
+                       <td> <input id="n7" type="number" min="0" max="70" name="n7[]" value="{{$a->n7}}" style="width:40px"></td>	
+                       <td> <input id="n8" type="number" min="0" max="70" name="n8[]" value="{{$a->n8}}" style="width:40px"></td>
 
                        <td> <input id="n9" type="hidden" name="n9[]" value="0" style="width:40px"></td>	
                        <td> <input id="n10" type="hidden" name="n10[]" value="0" style="width:40px"></td>	
