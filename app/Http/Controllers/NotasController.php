@@ -133,7 +133,7 @@ class NotasController extends Controller
         $idMateria=$request->get('idMateria');
         $nombreMateria=$request->get('nombreMateria');
 
-
+        //Todas las notas
         $n1=$request->get('n1');
         $n2=$request->get('n2');
         $n3=$request->get('n3');
@@ -147,6 +147,8 @@ class NotasController extends Controller
         $n11=$request->get('n11');
         $n12=$request->get('n12');
 
+        //vemos la cantidad de nota exigida en cada materia para luego poder calular
+        //el promedio de cada materia.
         if($nombreMateria == 'Lenguaje y Comunicación'){
             $numeroNotas = 12;
         }else if($nombreMateria == 'Matemáticas'){
@@ -178,6 +180,7 @@ class NotasController extends Controller
         }
       $promedio[$cont2] = $sumaN/$numeroNotas;
 
+      //guardamos las notas de cada alumno que esta en esa materia
      Notas::where('idAlumno', '=', $idAlumno[$cont2])
          ->where('idMateria', $idMateria)
          ->update(['n1' => $n1[$cont2],
@@ -197,8 +200,8 @@ class NotasController extends Controller
 
          $cont2 = $cont2+1;
        
-         $sumaN =0;
-         $cont = 0;
+         $sumaN =0; //reiniciamos la suma de las notas
+         $cont = 0; //reiniciamos el contador que ira recoriendo el array de las notas
 
         }
 
@@ -290,6 +293,7 @@ class NotasController extends Controller
     }
 
 
+    //Cargamos todos los datos de la tabla notas
     public function ver_libreta(Request $request)
     {
         
