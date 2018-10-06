@@ -16,7 +16,7 @@
     
     {!!Form::open(array('url'=>'notas/updatePromedio', 'method'=>'GET', 'autocomplete'=>'off'))!!}
             {{Form::token()}}
-	<div class="row">
+	<div id="div1" class="row">
 		<div class = "col-xs-12">
 			<div class="table-responsive">
 				@if(isset($alumnos))
