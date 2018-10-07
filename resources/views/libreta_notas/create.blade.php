@@ -3,11 +3,12 @@
 
 	<!-- Estilos CSS	-->
 	{!!Html::style('css/extra.css')!!}
-
+    
 	<div class="row">
 		<div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
         @foreach ($materia as $m)
-			<legend><h3>Notas de {{$m->nombre}} Semestre {{$m->semestre}} </h3></legend>
+        <FONT size="5" COLOR="green">{{$m->grado}}</FONT>
+			<legend><h3>{{$m->nombre}} Semestre {{$m->semestre}} </h3></legend>
             @endforeach
             
 		</div>	
@@ -24,36 +25,17 @@
                  
 						<th>Nombre</th>
 						<th>Apellido</th>
-                        @if($m->nombre === 'Lenguaje y Comunicación' && $m->semestre==='1')
-                        <th>Nota 1 </th>
-                        <th>Nota 2 </th>
-                        <th>Nota 3 </th>
-                        <th>Nota 4 </th>
-                        <th>Nota 5 </th>
-                        <th>Nota 6 </th>
-                        <th>Promedio</th>
-                        @elseif($m->nombre === 'Lenguaje y Comunicación' && $m->semestre==='2')
-                        <th>Nota 7 </th>
-                        <th>Nota 8 </th>
-                        <th>Nota 9 </th>
-                        <th>Nota 10 </th>
-                        <th>Nota 11 </th>
-                        <th>Nota 12 </th>
-                        <th>Promedio</th>
-                        @elseif($m->semestre==='1')
-                        <th>Nota 1 </th>
-                        <th>Nota 2 </th>
-                        <th>Nota 3 </th>
-                        <th>Nota 4 </th>
-                        <th>Promedio</th>
-                        @else
-                        <th>Nota 5 </th>
-                        <th>Nota 6 </th>
-                        <th>Nota 7 </th>
-                        <th>Nota 8 </th>
-                        <th>Promedio</th>
-                      
-                        @endif
+                        <?php
+                        $cont=1;
+                        $num=$m->numeroNotas/2;
+                        while($cont <= $num){
+                            echo "<th>Nota $cont </th>";
+                            
+                            $cont=$cont+1;
+
+                        }   
+                        ?>
+                    <th>Promedio</th>
                         @endforeach  
                        
 					</thead>
@@ -63,15 +45,16 @@
                     <input id="idMateria" type="hidden" name="idMateria" value="{{$a -> idMateria}}">
                     <input id="promedio_s1" type="hidden" name="promedio_s1[]" value="{{$a->promedio_s1}}" >
                     <input id="promedio_s2" type="hidden" name="promedio_s2[]" value="{{$a->promedio_s2}}">
+                    
 
 						<td>{{$a -> nombre}}</td>
 						<td>{{$a -> apellido}}</td>
                         @foreach ($materia as $m)
                         <input id="nombreMateria" type="hidden" name="nombreMateria" value="{{$m -> nombre}}">
                         <input id="semestre" type="hidden" name="semestre" value="{{$m -> semestre}}">
-                        
+                        <input id="numNotas" type="hidden" name="numNotas" value="{{$m->numeroNotas}}">
 
-                       @if($m->nombre === 'Lenguaje y Comunicación' && $m->semestre==='1')
+                       @if($m->numeroNotas == 12 && $m->semestre=='1')
                     
                        <td> <input id="n1" type="number" min="0" max="70" name="n1[]" value="{{$a->n1}}"  style="width:40px"></td>	
                        <td> <input id="n2" type="number" min="0" max="70" name="n2[]" value="{{$a->n2}}" style="width:40px"></td>	
@@ -83,7 +66,7 @@
              
                        <td>{{$a->promedio_s1}}</td>
                        
-                       @elseif($m->nombre === 'Lenguaje y Comunicación' && $m->semestre==='2')
+                       @elseif($m->numeroNotas == 12 && $m->semestre=='2')
             
                        <td> <input id="n7" type="number" min="0" max="70" name="n7[]" value="{{$a->n7}}" style="width:40px"></td>	
                        <td> <input id="n8" type="number" min="0" max="70" name="n8[]" value="{{$a->n8}}" style="width:40px"></td>	
@@ -96,7 +79,7 @@
 
     
 
-                     @elseif($m->semestre==='1')
+                     @elseif($m->semestre=='1')
                      <td> <input id="n1" type="number" min="0" max="70" name="n1[]" value="{{$a->n1}}"  style="width:40px"></td>	
                        <td> <input id="n2" type="number" min="0" max="70" name="n2[]" value="{{$a->n2}}" style="width:40px"></td>	
                        <td> <input id="n3" type="number" min="0" max="70" name="n3[]" value="{{$a->n3}}" style="width:40px"></td>	

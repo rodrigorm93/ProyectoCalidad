@@ -120,6 +120,7 @@
                 {{Form::token()}}
                
              <input type="hidden" name="searchText" value="{{$cur->idMateria}}">
+             
              <li><a href="listaAlumno"><i class="fa fa-circle-o">
                  <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Listado del Curso</button>
               </i></a></li> 
@@ -128,6 +129,7 @@
 
               {!! Form::open(array('url'=>'notas/create', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
              <input type="hidden" name="searchText" value="{{$cur->idMateria}}">
+             
               <li><a href="plantillas/create"><i class="fa fa-circle-o">
                   <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Libreta de Notas</button>  
               </i></a></li>

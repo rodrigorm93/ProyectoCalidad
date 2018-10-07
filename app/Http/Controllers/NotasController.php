@@ -10,6 +10,7 @@ use App\User;
 use App\Alumno;
 use App\Notas;
 use App\Curso;
+use App\Materia;
 
 
 //use asistencias\Alumno;
@@ -135,11 +136,12 @@ class NotasController extends Controller
         $idMateria=$request->get('idMateria');
         $nombreMateria=$request->get('nombreMateria');
         $semestre=$request->get('semestre');
+        $numeroNotas=$request->get('numNotas');
 
         $promedio_s1=$request->get('promedio_s1');
         $promedio_s2=$request->get('promedio_s2');
 
-        //Todas las notas
+        //Todas las notas que son maximo 12 y minimo 4
         $n1=$request->get('n1');
         $n2=$request->get('n2');
         $n3=$request->get('n3');
@@ -165,11 +167,11 @@ class NotasController extends Controller
        
     
   
-        //calculamos el promedio y aguardamos cada nota
+        //calculamos el promedio y guardamos cada nota
     while($cont2 < count($idAlumno)){
 
         //guardamos cada nota en un array para luego sacar su promedio 
-        if($nombreMateria == 'Lenguaje y Comunicación' && $semestre=='1' ){
+        if( $numeroNotas == '12' && $semestre=='1' ){
         $notas1 = array($n1[$cont2],$n2[$cont2],$n3[$cont2],$n4[$cont2],$n5[$cont2],$n6[$cont2]);
         $numeroNotas = 6;
 
@@ -180,7 +182,7 @@ class NotasController extends Controller
       $promedioSemestre1[$cont2] = $sumaN/$numeroNotas;
    
 
-        }else if($nombreMateria == 'Lenguaje y Comunicación' && $semestre=='2' ){
+        }else if($numeroNotas == '12' && $semestre=='2' ){
             $notas2 = array($n7[$cont2],$n8[$cont2],$n9[$cont2],$n10[$cont2],$n11[$cont2],$n12[$cont2]);
             $numeroNotas = 6;
 
@@ -227,7 +229,7 @@ class NotasController extends Controller
         
      
         //Guardamos los datos dependiendo del semestre
-        if($nombreMateria == 'Lenguaje y Comunicación' && $semestre=='1' ){
+        if($numeroNotas == '12' && $semestre=='1' ){
               //guardamos las notas de cada alumno que esta en esa materia
      Notas::where('idAlumno', '=', $idAlumno[$cont2])
      ->where('idMateria', $idMateria)
@@ -241,7 +243,7 @@ class NotasController extends Controller
      ]);
     
      //Caso contrario que seria el segundo semestre y ademas guardamos el promedio final de la materia
-    }else if ($nombreMateria == 'Lenguaje y Comunicación' && $semestre=='2' ){
+    }else if ($numeroNotas == '12' && $semestre=='2' ){
            
    
      Notas::where('idAlumno', '=', $idAlumno[$cont2])
@@ -306,7 +308,7 @@ class NotasController extends Controller
          $materia=DB::table('materia as m')
         ->join ('Curso as c', 'c.idCurso', '=' , 'm.idCurso') 
         ->where('m.idMateria','=',$query)
-        ->select('m.nombre','c.semestre')
+        ->select('m.nombre','m.semestre','m.numeroNotas')
         ->get();
         
          //Para volver a cargar los cursos que aparecen a la izquierda,que son los cusos impartidos por el
@@ -354,7 +356,7 @@ class NotasController extends Controller
       }
 
       //Revisamos en que semestre estamos
-      Curso::where('idCurso', '=', $query)
+      Materia::where('idMateria', '=', $query)
       ->update(['semestre' => $semestre]);
 
     
@@ -364,13 +366,14 @@ class NotasController extends Controller
         $alumnos=DB::table('materia as m')
         ->join ('notas as n', 'n.idMateria', '=' , 'm.idMateria')
         ->join ('alumno as a', 'a.idAlumno', '=' , 'n.idAlumno') 
-        ->where('m.idMateria','=',$query)     
+        ->where('m.idMateria','=',$query)
+        ->orderBy('a.nombre','ASC')     
         ->get();
 
         $materia=DB::table('materia as m')
         ->join ('Curso as c', 'c.idCurso', '=' , 'm.idCurso') 
         ->where('m.idMateria','=',$query)
-        ->select('m.nombre','c.semestre')
+        ->select('m.nombre','m.semestre','m.numeroNotas','c.grado')
         ->get();
         
 
@@ -382,7 +385,7 @@ class NotasController extends Controller
          ->where('c.idProfesor','=',$query)
          ->where('c.estado','=','activo')      
          ->select('c.nombre','c.idMateria as idMateria')
-         ->paginate(10);
+         ->paginate(50);
 
 
         return view('libreta_notas.create',['alumnos'=> $alumnos,'curso'=> $cursos,'materia'=> $materia]);

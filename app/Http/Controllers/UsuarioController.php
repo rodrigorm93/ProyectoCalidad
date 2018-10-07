@@ -45,11 +45,12 @@ class UsuarioController extends Controller
             }
             else{
                 $query=$this->auth->user()->id;
-                $cursos=DB::table('materia as c')
-                ->where('c.idProfesor','=',$query)
-                ->where('c.estado','=','activo')      
-                ->select('c.nombre','c.idMateria as idMateria')
-                ->paginate(10);
+                $cursos=DB::table('materia as m')
+                ->join ('Curso as c', 'c.idCurso', '=' , 'm.idCurso')
+                ->where('m.idProfesor','=',$query)
+                ->where('m.estado','=','activo')      
+                ->select('m.nombre','m.idMateria as idMateria')
+                ->paginate(50);
 
             
            

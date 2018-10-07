@@ -76,16 +76,18 @@ class AlumnoController extends Controller
   ->where('c.idProfesor','=',$query)
   ->where('c.estado','=','activo')      
   ->select('c.nombre','c.idCurso as idCurso','c.idMateria as idMateria')
-  ->paginate(10);
+  ->paginate(50);
   
     //Obtiene nombre del profesor
     $lista=DB::table('materia as m')
     ->join ('notas as n', 'n.idMateria', '=' , 'm.idMateria')
     ->join ('alumno as a', 'a.idAlumno', '=' , 'n.idAlumno')
+    ->join ('users as u', 'u.id', '=' , 'a.idAlumno')
     ->where('m.idProfesor','=',$query) 
     ->where('m.idMateria','=',$query2)     
-    ->select('a.nombre','a.apellido')
-    ->paginate(40);
+    ->select('a.nombre','a.apellido','u.email')
+    ->orderBy('a.nombre','ASC')  
+    ->paginate(100);
 
 
 return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);

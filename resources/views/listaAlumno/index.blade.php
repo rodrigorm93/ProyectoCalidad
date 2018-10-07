@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="row">
-		<div class = "col-xs-12">
+		<div class = "col-xs-6">
 			<div class="table-responsive">
 				@if(isset($lista))
 				<table id="tablaAlumnos" class="table table-striped table-bordered table-condensed table-hover">
@@ -19,12 +19,14 @@
 						
 						<th>Nombre</th>
 						<th>Apellido</th>
+						<th>Email</th>
 						
 					</thead>
 					@foreach ($lista as $usu)
 					<tr>
 						<td>{{$usu -> nombre}}</td>
-						<td>{{$usu -> apellido}}</td>	
+						<td>{{$usu -> apellido}}</td>
+						<td>{{$usu -> email}}</td>	
 					</tr>
 					@endforeach
 				</table>

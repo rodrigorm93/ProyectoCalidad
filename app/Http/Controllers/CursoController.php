@@ -126,6 +126,7 @@ class CursoController extends Controller
     { 
 
         $cadena=$request->get('curso');
+        $numNotas=$request->get('numeroNotas');
       //para extrar solo el id y no la cadena completa(funciona si el id es de dos digitos) 
         $idCurso=substr($cadena,0,2);
             try {
@@ -139,6 +140,8 @@ class CursoController extends Controller
             $materia->estado='activo';
             $materia->idProfesor='0';
             $materia->asignacion='';
+            $materia->numeroNotas= $numNotas;
+            $materia->semestre= '0';
             $materia->save();
   
               
