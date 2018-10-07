@@ -86,7 +86,7 @@ class AlumnoController extends Controller
     ->where('m.idProfesor','=',$query) 
     ->where('m.idMateria','=',$query2)     
     ->select('a.nombre','a.apellido','u.email')
-    ->orderBy('a.nombre','ASC')  
+    ->orderBy('a.apellido','ASC')  
     ->paginate(100);
 
 

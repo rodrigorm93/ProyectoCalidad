@@ -350,7 +350,7 @@ class NotasController extends Controller
          ->join ('notas as n', 'n.idMateria', '=' , 'm.idMateria')
          ->join ('alumno as a', 'a.idAlumno', '=' , 'n.idAlumno') 
          ->where('m.idMateria','=',$query)
-         ->orderBy('a.nombre','ASC')       
+         ->orderBy('a.apellido','ASC')       
          ->get();
  
          $materia=DB::table('materia as m')
@@ -367,7 +367,7 @@ class NotasController extends Controller
           ->where('c.idProfesor','=',$query)
           ->where('c.estado','=','activo')      
           ->select('c.nombre','c.idMateria as idMateria')
-          ->paginate(10);
+          ->paginate(50);
  
          return view('libreta_notas.create',['alumnos'=> $alumnos,'curso'=> $cursos,'materia'=> $materia]);
       
@@ -415,7 +415,7 @@ class NotasController extends Controller
         ->join ('notas as n', 'n.idMateria', '=' , 'm.idMateria')
         ->join ('alumno as a', 'a.idAlumno', '=' , 'n.idAlumno') 
         ->where('m.idMateria','=',$query)
-        ->orderBy('a.nombre','ASC')     
+        ->orderBy('a.apellido','ASC')     
         ->get();
 
         $materia=DB::table('materia as m')
