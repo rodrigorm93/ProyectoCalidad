@@ -31,8 +31,9 @@
                 </div>
               
                  <div class="form-group">
-                <label>Numero de Notas: </label>
+                <label>Numero de Notas (Año): </label>
                     <select name="numeroNotas" id="numeroNotas"> 
+                    <option>6</option>
                     <option>8</option>
                     <option>12</option>
                  

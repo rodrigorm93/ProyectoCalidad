@@ -107,7 +107,6 @@ class CursoController extends Controller
             $curso = new Curso;
             $curso->grado=$request->get('grado');
             $curso->year = $year;
-            $curso->semestre = $semestre;
             $curso->save();
   
               

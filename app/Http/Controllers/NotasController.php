@@ -130,13 +130,14 @@ class NotasController extends Controller
     }
 
     //Funcion para guardar las notas de cada alumno
+    //configurado par aingresar 8 y 12 notas
     public function ingresarNotas(Request $request)
     {   
         $idAlumno=$request->get('idAlumno');
         $idMateria=$request->get('idMateria');
         $nombreMateria=$request->get('nombreMateria');
         $semestre=$request->get('semestre');
-        $numeroNotas=$request->get('numNotas');
+        $numeroNotas2=$request->get('numNotas');
 
         $promedio_s1=$request->get('promedio_s1');
         $promedio_s2=$request->get('promedio_s2');
@@ -171,7 +172,7 @@ class NotasController extends Controller
     while($cont2 < count($idAlumno)){
 
         //guardamos cada nota en un array para luego sacar su promedio 
-        if( $numeroNotas == '12' && $semestre=='1' ){
+        if( $numeroNotas2 == '12' && $semestre=='1' ){
         $notas1 = array($n1[$cont2],$n2[$cont2],$n3[$cont2],$n4[$cont2],$n5[$cont2],$n6[$cont2]);
         $numeroNotas = 6;
 
@@ -182,7 +183,7 @@ class NotasController extends Controller
       $promedioSemestre1[$cont2] = $sumaN/$numeroNotas;
    
 
-        }else if($numeroNotas == '12' && $semestre=='2' ){
+        }else if($numeroNotas2 == '12' && $semestre=='2' ){
             $notas2 = array($n7[$cont2],$n8[$cont2],$n9[$cont2],$n10[$cont2],$n11[$cont2],$n12[$cont2]);
             $numeroNotas = 6;
 
@@ -198,7 +199,7 @@ class NotasController extends Controller
         //Para el caso de las demas materias que solo necesitan 4 notas
         //solo veremos en que semestre estamos para ir calculando sus promedios
 
-        }else if($semestre=='1' ){
+        }else if($numeroNotas2 == '8' && $semestre=='1' ){
 
         $notas1 = array($n1[$cont2],$n2[$cont2],$n3[$cont2],$n4[$cont2]);
         $numeroNotas = 4;
@@ -209,7 +210,7 @@ class NotasController extends Controller
         }
       $promedioSemestre1[$cont2] = $sumaN/$numeroNotas;
       //Semestre 2:
-        }else{
+        }else if($numeroNotas2 == '8' && $semestre=='2' ){
             $notas2 = array($n5[$cont2],$n6[$cont2],$n7[$cont2],$n8[$cont2]);
             $numeroNotas = 4;
 
@@ -222,14 +223,38 @@ class NotasController extends Controller
           //Calculamos el promedio final de la materia
          $promedioFinal[$cont2]=($promedio_s1[$cont2] + $promedioSemestre2[$cont2])/2;
         
-        }
+        }else if($numeroNotas2 == '6' && $semestre=='1' ){
+
+            $notas1 = array($n1[$cont2],$n2[$cont2],$n3[$cont2]);
+            $numeroNotas = 3;
+    
+            while($cont < count($notas1)){
+                $sumaN = $sumaN + $notas1[$cont];
+                $cont = $cont+1;
+            }
+          $promedioSemestre1[$cont2] = $sumaN/$numeroNotas;
+          //Semestre 2:
+            }else if($numeroNotas2 == '6' && $semestre=='2' ){
+                $notas2 = array($n4[$cont2],$n5[$cont2],$n6[$cont2]);
+                $numeroNotas = 3;
+    
+            while($cont < count($notas2)){
+                $sumaN = $sumaN + $notas2[$cont];
+                $cont = $cont+1;
+            }
+        
+            $promedioSemestre2[$cont2] = $sumaN/$numeroNotas;
+              //Calculamos el promedio final de la materia
+             $promedioFinal[$cont2]=($promedio_s1[$cont2] + $promedioSemestre2[$cont2])/2;
+            
+            }
 
 
      
         
      
         //Guardamos los datos dependiendo del semestre
-        if($numeroNotas == '12' && $semestre=='1' ){
+        if($numeroNotas2 == '12' && $numeroNotas2 == '1'){
               //guardamos las notas de cada alumno que esta en esa materia
      Notas::where('idAlumno', '=', $idAlumno[$cont2])
      ->where('idMateria', $idMateria)
@@ -243,7 +268,7 @@ class NotasController extends Controller
      ]);
     
      //Caso contrario que seria el segundo semestre y ademas guardamos el promedio final de la materia
-    }else if ($numeroNotas == '12' && $semestre=='2' ){
+    }else if ($numeroNotas2 == '12' && $semestre == '2' ){
            
    
      Notas::where('idAlumno', '=', $idAlumno[$cont2])
@@ -259,7 +284,7 @@ class NotasController extends Controller
      'promedio' => $promedioFinal[$cont2]
      ]);
 
-        }else if($semestre=='1' ){
+        }else if($numeroNotas2 == '8' && $semestre == '1' ){
 
                       
      Notas::where('idAlumno', '=', $idAlumno[$cont2])
@@ -270,7 +295,7 @@ class NotasController extends Controller
      'n4' => $n4[$cont2],
      'promedio_s1' => $promedioSemestre1[$cont2]
      ]);
-        }else{
+        }else if($numeroNotas2 == '8' && $semestre == '2' ){
 
         
             Notas::where('idAlumno', '=', $idAlumno[$cont2])
@@ -283,7 +308,29 @@ class NotasController extends Controller
             'promedio_s2' => $promedioSemestre2[$cont2],
             'promedio' => $promedioFinal[$cont2]
             ]);
-        }
+        }else if($numeroNotas2 == '6' && $semestre == '1' ){
+
+                      
+            Notas::where('idAlumno', '=', $idAlumno[$cont2])
+            ->where('idMateria', $idMateria)
+            ->update(['n1' => $n1[$cont2],
+            'n2' => $n2[$cont2],
+            'n3' => $n3[$cont2],
+            'promedio_s1' => $promedioSemestre1[$cont2]
+            ]);
+               }else if($numeroNotas2 == '6' && $semestre == '2' ){
+       
+               
+                   Notas::where('idAlumno', '=', $idAlumno[$cont2])
+                   ->where('idMateria', $idMateria)
+                   ->update([
+                   'n4' => $n4[$cont2],
+                   'n5' => $n5[$cont2],  
+                   'n6' => $n6[$cont2],
+                   'promedio_s2' => $promedioSemestre2[$cont2],
+                   'promedio' => $promedioFinal[$cont2]
+                   ]);
+               }
 
          $cont2 = $cont2+1;
        
@@ -302,15 +349,16 @@ class NotasController extends Controller
          $alumnos=DB::table('materia as m')
          ->join ('notas as n', 'n.idMateria', '=' , 'm.idMateria')
          ->join ('alumno as a', 'a.idAlumno', '=' , 'n.idAlumno') 
-         ->where('m.idMateria','=',$query)     
+         ->where('m.idMateria','=',$query)
+         ->orderBy('a.nombre','ASC')       
          ->get();
  
          $materia=DB::table('materia as m')
         ->join ('Curso as c', 'c.idCurso', '=' , 'm.idCurso') 
         ->where('m.idMateria','=',$query)
-        ->select('m.nombre','m.semestre','m.numeroNotas')
+        ->select('m.nombre','m.semestre','m.numeroNotas','c.grado')
         ->get();
-        
+
          //Para volver a cargar los cursos que aparecen a la izquierda,que son los cusos impartidos por el
          //profesor
           $query=$this->auth->user()->id;
