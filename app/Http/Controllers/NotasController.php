@@ -417,8 +417,8 @@ class NotasController extends Controller
             'm.idCurso','c.grado','n.idAlumno','n.idMateria','n.n1'
             ,'n.n2','n.n3','n.n4','n.n5','n.n6','n.n7','n.n8','n.n9','n.n10','n.n11','n.n12','n.promedio',
             'a.promedioFinal')
-            ->orderBy('a.idAlumno','dec')
-            ->paginate(100);
+            ->orderBy('a.nombre','ASC')
+            ->paginate(500);
 
             $curso=DB::table('Curso')
             ->where('idCurso','=',$idCurso)
