@@ -72,7 +72,7 @@ var loadFile = function(event) {
 
     var str = '<br> <h4 class="widgettitle">VISTA PREVIA:</h4> <div id="row-fluid" class="row-fluid">';
     var cont = 0;
-    for (var i = 0; i < limite.length; i++) {
+    for (var i = 0; i < 1; i++) {
         str = str+'<div class="span4"><img class="imagen" id="output'+i+'" /> </div>';
 
         cont = cont+1;
