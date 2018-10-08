@@ -254,7 +254,7 @@ class NotasController extends Controller
         
      
         //Guardamos los datos dependiendo del semestre
-        if($numeroNotas2 == '12' && $numeroNotas2 == '1'){
+        if($numeroNotas2 == '12' && $semestre == '1'){
               //guardamos las notas de cada alumno que esta en esa materia
      Notas::where('idAlumno', '=', $idAlumno[$cont2])
      ->where('idMateria', $idMateria)
@@ -396,7 +396,7 @@ class NotasController extends Controller
           $fecha_actual = strtotime(date("d-m-Y H:i:00",time()));
           $fecha_entrada = strtotime("11-07-2018 21:00:00");
   
-          if($fecha_actual < $fecha_entrada)
+          if($fecha_actual > $fecha_entrada)
       { 
           $semestre='1';
       }else{
