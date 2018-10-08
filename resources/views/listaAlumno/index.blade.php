@@ -44,7 +44,9 @@
 		$(document).ready(function () {
 			$("#exportar").click(function(){
 			  $("#tablaAlumnos").table2excel({
-			    filename: "lista alumnos.xlsx"
+				name: "listaAlumnos",
+			    filename: "listaAlumnos",
+				fileext: ".xlsx"
 			  }); 
 			});
 		});
