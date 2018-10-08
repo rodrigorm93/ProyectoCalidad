@@ -32,8 +32,8 @@ class UsuarioController extends Controller
 
     public function index(Request $request)
     {
-    	//la usaremos para validar, si existe el requesta vamos a optener todos los datos de 
-    	//nuestra tabla usuario en la BD
+
+        $year =  date("Y");
 
     	if($request)
     	{       
@@ -48,7 +48,8 @@ class UsuarioController extends Controller
                 $cursos=DB::table('materia as m')
                 ->join ('Curso as c', 'c.idCurso', '=' , 'm.idCurso')
                 ->where('m.idProfesor','=',$query)
-                ->where('m.estado','=','activo')      
+                ->where('m.estado','=','activo')
+                ->where('c.year','=',$year)            
                 ->select('m.nombre','m.idMateria as idMateria')
                 ->paginate(50);
 

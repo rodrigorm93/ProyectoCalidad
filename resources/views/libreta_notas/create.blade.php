@@ -23,7 +23,7 @@
 		<div id="div1" class = "col-xs-12">
 			<div class="table-responsive">
 				@if(isset($alumnos))
-				<table id="libreta" class="table table-striped table-bordered table-condensed table-hover">
+				<table class="table table-striped table-bordered table-condensed table-hover">
 					<thead>
                     @foreach ($materia as $m)
                  
@@ -160,28 +160,12 @@
 
 			</div>
             {!!Form::close()!!}
-            <div id="next_button" align="left">
-					<button id="exportar" class="btn btn-success" align="right">Exportar</button>
-				</div>
-                
+            
 		</div>
 	</div>
 
 
 
-	@push('scripts')
-    <script type="text/javascript">
-		$(document).ready(function () {
-			$("#exportar").click(function(){
-			  $("#libreta").table2excel({
-				name: "libreta de Notas",
-			    filename: "libreta de Notas",
-				fileext: ".xlsx"
-			  }); 
-			});
-		});
-	</script>
-	@endpush
 
 
 @stop

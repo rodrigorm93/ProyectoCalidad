@@ -130,10 +130,20 @@
               {!! Form::open(array('url'=>'notas/create', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
              <input type="hidden" name="searchText" value="{{$cur->idMateria}}">
              
-              <li><a href="plantillas/create"><i class="fa fa-circle-o">
+              <li><a href=""><i class="fa fa-circle-o">
                   <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Libreta de Notas</button>  
               </i></a></li>
               {{Form::close()}}
+
+
+              {!! Form::open(array('url'=>'libreta_notas/ver_libretaPorMateria', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
+             <input type="hidden" name="idMateria" value="{{$cur->idMateria}}">
+             
+              <li><a href=""><i class="fa fa-circle-o">
+                  <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Exportar Libreta</button>  
+              </i></a></li>
+              {{Form::close()}}
+
           
 
         </ul> 

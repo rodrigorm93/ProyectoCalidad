@@ -74,7 +74,7 @@ class NotasController extends Controller
 
 
     //Guardamos el Promedio Final ya redondeado a la tabla alumno con el estado 
-    // A = aprobado, R = reprobado
+    
     public function updatePromedio(Request $request)
     {   
         //Agregamos el promedio Final a la tabla Alumno
@@ -342,7 +342,7 @@ class NotasController extends Controller
 
 
         //PARA VOLVER A CARGAR LA VISTA CREATE 
-
+          $year =  date("Y");
          // Cargar todos los alumnos de un curso especifico
          $query=trim($request->get('idMateria'));
 
@@ -364,8 +364,10 @@ class NotasController extends Controller
           $query=$this->auth->user()->id;
  
           $cursos=DB::table('materia as c')
+          ->join ('Curso as cu', 'cu.idCurso', '=' , 'c.idCurso') 
           ->where('c.idProfesor','=',$query)
-          ->where('c.estado','=','activo')      
+          ->where('c.estado','=','activo')
+          ->where('cu.year','=',$year)         
           ->select('c.nombre','c.idMateria as idMateria')
           ->paginate(50);
  
@@ -391,6 +393,7 @@ class NotasController extends Controller
 
         // Cargar todos los alumnos de un curso especifico
         $query=trim($request->get('searchText'));
+        $year =  date("Y"); //para saber el año actual y solo cargar los cursos de ese año
 
           //Veremos en que semestre estamos
           $fecha_actual = strtotime(date("d-m-Y H:i:00",time()));
@@ -430,8 +433,10 @@ class NotasController extends Controller
          $query=$this->auth->user()->id;
 
          $cursos=DB::table('materia as c')
+         ->join ('Curso as cu', 'cu.idCurso', '=' , 'c.idCurso') 
          ->where('c.idProfesor','=',$query)
-         ->where('c.estado','=','activo')      
+         ->where('c.estado','=','activo')
+         ->where('cu.year','=',$year)         
          ->select('c.nombre','c.idMateria as idMateria')
          ->paginate(50);
 
@@ -453,7 +458,7 @@ class NotasController extends Controller
     }
 
 
-    //Cargamos todos los datos de la tabla notas
+    //Cargamos todos los datos de la tabla notas, para la vista admin
     public function ver_libreta(Request $request)
     {
         
@@ -476,6 +481,51 @@ class NotasController extends Controller
             ->get();       
 
         return view('libreta_notas.ver_libreta', ["libreta" => $libreta,"curso" => $curso]);
+    }
+
+
+
+    
+    //Cargamos todos los datos de la tabla notas de la materia solo para la vista profesor
+    public function ver_libretaPorMateria(Request $request)
+    {
+        
+        $idMateria = $request->get('idMateria');
+           
+            $libreta=DB::table('Notas as n')
+            ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
+            ->join ('Materia as m', 'm.idMateria', '=' ,'n.idMateria') 
+            ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')  
+            ->where('m.idMateria','=',$idMateria)       
+            ->select('a.nombre as nombre','a.apellido as apellido','m.nombre as materia',
+            'm.idCurso','c.grado','n.idAlumno','n.idMateria','n.n1 as 1'
+            ,'n.n2 as 2','n.n3 as 3','n.n4 as 4','n.n5 as 5','n.n6 as 6','n.n7 as 7','n.n8 as 8'
+            ,'n.n9 as 9','n.n10 as 10','n.n11 as 11','n.n12 as 12','n.promedio',
+            'a.promedioFinal','m.numeroNotas')
+            ->orderBy('a.nombre','ASC')
+            ->paginate(500);
+
+            $materia=DB::table('Materia as m')
+            ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')
+            ->where('m.idMateria','=',$idMateria) 
+            ->get();       
+
+
+        //Para volver a cargar los cursos que aparecen a la izquierda,que son los cusos impartidos por el
+        //profesor
+        $year =  date("Y"); //para saber el año actual y solo cargar los cursos de ese año
+         $query=$this->auth->user()->id;
+
+         $cursos=DB::table('materia as c')
+         ->join ('Curso as cu', 'cu.idCurso', '=' , 'c.idCurso') 
+         ->where('c.idProfesor','=',$query)
+         ->where('c.estado','=','activo')
+         ->where('cu.year','=',$year)         
+         ->select('c.nombre','c.idMateria as idMateria')
+         ->paginate(50);
+
+
+        return view('libreta_notas.ver_libretaProfesor', ["libreta" => $libreta,"materia" => $materia,"curso" => $cursos]);
     }
 
 

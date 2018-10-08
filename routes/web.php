@@ -88,6 +88,8 @@ Route::post('/notas/ingresarNotas','NotasController@ingresarNotas');
 //ver las libreta de notas
 Route::get('/libreta_notas/grado','NotasController@grado');
 Route::get('/libreta_notas/ver_libreta','NotasController@ver_libreta');
+//Ver libreta por materia
+Route::get('/libreta_notas/ver_libretaPorMateria','NotasController@ver_libretaPorMateria');
 //Rutas:
 
 Route::resource('menu','UsuarioController');
