@@ -7,8 +7,12 @@
 	<div class="row">
 		<div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
         @foreach ($materia as $m)
-        <FONT size="5" COLOR="green">{{$m->grado}}</FONT>
-			<legend><h3>{{$m->nombre}} Semestre {{$m->semestre}} </h3></legend>
+        <FONT size="6" COLOR="green"><strong>{{$m->grado}}</strong></FONT>
+        @if($m->semestre == 1)
+			<legend><h3>{{$m->nombre}} Primer Semestre </h3></legend>
+            @else
+            <legend><h3>{{$m->nombre}} Segundo Semestre </h3></legend>
+            @endif
             @endforeach
             
 		</div>	
@@ -25,6 +29,7 @@
                  
 						<th>Nombre</th>
 						<th>Apellido</th>
+                       
                         <?php
                         $cont=1;
                         $num=$m->numeroNotas/2;
@@ -49,12 +54,13 @@
 
 						<td>{{$a -> nombre}}</td>
 						<td>{{$a -> apellido}}</td>
+                     
                         @foreach ($materia as $m)
                         <input id="nombreMateria" type="hidden" name="nombreMateria" value="{{$m -> nombre}}">
                         <input id="semestre" type="hidden" name="semestre" value="{{$m -> semestre}}">
                         <input id="numNotas" type="hidden" name="numNotas" value="{{$m->numeroNotas}}">
 
-                       @if($m->numeroNotas == '12' && $m->semestre == '1')
+                       @if($m->numeroNotas == 12 && $m->semestre == 1)
                     
                        <td> <input id="n1" type="number" min="0" max="70" name="n1[]" value="{{$a->n1}}"  style="width:40px"></td>	
                        <td> <input id="n2" type="number" min="0" max="70" name="n2[]" value="{{$a->n2}}" style="width:40px"></td>	
@@ -66,7 +72,7 @@
              
                        <td>{{$a->promedio_s1}}</td>
                        
-                       @elseif($m->numeroNotas == '12' && $m->semestre == '2')
+                       @elseif($m->numeroNotas == 12 && $m->semestre == 2)
             
                        <td> <input id="n7" type="number" min="0" max="70" name="n7[]" value="{{$a->n7}}" style="width:40px"></td>	
                        <td> <input id="n8" type="number" min="0" max="70" name="n8[]" value="{{$a->n8}}" style="width:40px"></td>	
@@ -79,14 +85,14 @@
 
     
 
-                     @elseif($m->numeroNotas == '8' && $m->semestre == '1')
+                     @elseif($m->numeroNotas == 8 && $m->semestre == 1)
                      <td> <input id="n1" type="number" min="0" max="70" name="n1[]" value="{{$a->n1}}"  style="width:40px"></td>	
                        <td> <input id="n2" type="number" min="0" max="70" name="n2[]" value="{{$a->n2}}" style="width:40px"></td>	
                        <td> <input id="n3" type="number" min="0" max="70" name="n3[]" value="{{$a->n3}}" style="width:40px"></td>	
                        <td> <input id="n4" type="number" min="0" max="70" name="n4[]" value="{{$a->n4}}" style="width:40px"></td>
                         <td>{{$a->promedio_s1}}</td>    
 
-                        @elseif($m->numeroNotas == '8' && $m->semestre == '2')
+                        @elseif($m->numeroNotas == 8 && $m->semestre == 2)
                       
                        <td> <input id="n5" type="number" min="0" max="70" name="n5[]" value="{{$a->n5}}" style="width:40px"></td>	
                        <td> <input id="n6" type="number" min="0" max="70" name="n6[]" value="{{$a->n6}}" style="width:40px"></td>
@@ -94,7 +100,7 @@
                        <td> <input id="n8" type="number" min="0" max="70" name="n8[]" value="{{$a->n8}}" style="width:40px"></td>
                         <td>{{$a->promedio_s2}}</td>
 
-                          @elseif($m->numeroNotas == '6' && $m->semestre == '1')
+                          @elseif($m->numeroNotas == 6 && $m->semestre == 1)
                          
                           <td> <input id="n1" type="number" min="0" max="70" name="n1[]" value="{{$a->n1}}"  style="width:40px"></td>	
                        <td> <input id="n2" type="number" min="0" max="70" name="n2[]" value="{{$a->n2}}" style="width:40px"></td>	

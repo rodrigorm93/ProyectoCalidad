@@ -6,12 +6,12 @@
 
 	<div class="row">
 		<div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
-			<legend><h3>Lista de Alumnos </h3></legend>
+			<legend><h3>Listado de Alumnos </h3></legend>
 		</div>	
 	</div>
 
 	<div class="row">
-		<div class = "col-xs-6">
+		<div id="div1" class = "col-xs-6">
 			<div class="table-responsive">
 				@if(isset($lista))
 				<table id="tablaAlumnos" class="table table-striped table-bordered table-condensed table-hover">

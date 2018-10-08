@@ -40,9 +40,9 @@
         <!-- Logo -->
         <a href="/menu" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>GC</b></span>
+          <span class="logo-mini"><b>GM</b></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Cursos</b></span>
+          <span class="logo-lg"><b>Materias</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -160,7 +160,7 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Gestion de Cursos</h3>
+                  <h3 class="box-title">Gestion de Materias</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     
