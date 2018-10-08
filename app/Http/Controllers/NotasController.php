@@ -473,7 +473,7 @@ class NotasController extends Controller
             'm.idCurso','c.grado','n.idAlumno','n.idMateria','n.n1'
             ,'n.n2','n.n3','n.n4','n.n5','n.n6','n.n7','n.n8','n.n9','n.n10','n.n11','n.n12','n.promedio',
             'a.promedioFinal')
-            ->orderBy('a.nombre','ASC')
+            ->orderBy('a.apellido','ASC')
             ->paginate(500);
 
             $curso=DB::table('Curso')
@@ -502,7 +502,7 @@ class NotasController extends Controller
             ,'n.n2 as 2','n.n3 as 3','n.n4 as 4','n.n5 as 5','n.n6 as 6','n.n7 as 7','n.n8 as 8'
             ,'n.n9 as 9','n.n10 as 10','n.n11 as 11','n.n12 as 12','n.promedio',
             'a.promedioFinal','m.numeroNotas')
-            ->orderBy('a.nombre','ASC')
+            ->orderBy('a.apellido','ASC')
             ->paginate(500);
 
             $materia=DB::table('Materia as m')

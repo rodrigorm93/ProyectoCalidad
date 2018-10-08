@@ -43,7 +43,7 @@
 						 <input type="hidden" name="promedioFinal[]" value="{{$usu -> promedioFinal}}">
 						<input type="hidden" name="estado[]" value="AM">
 
-						@elseif($usu -> promedioFinal == '40') 
+						@elseif($usu -> promedioFinal >= '40' && $usu -> promedioFinal <= '60') 
 						<td>{{$usu -> promedioFinal}}</td>
 						<td><FONT COLOR="green"><strong> Aprobado</strong></FONT></td>
 						<input type="hidden" name="promedioFinal[]" value="{{$usu -> promedioFinal}}">
