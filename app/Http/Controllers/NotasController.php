@@ -396,7 +396,7 @@ class NotasController extends Controller
           $fecha_actual = strtotime(date("d-m-Y H:i:00",time()));
           $fecha_entrada = strtotime("11-07-2018 21:00:00");
   
-          if($fecha_actual > $fecha_entrada)
+          if($fecha_actual < $fecha_entrada)
       { 
           $semestre='1';
       }else{
