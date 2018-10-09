@@ -1,4 +1,4 @@
-@extends ('menu.admin')
+@extends ('menu.profesor')
 @section ('contenido')
 
 	@if(session('success'))
@@ -9,33 +9,37 @@
 
 	<div class="row">
 		<div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
-			<h3>Estado de Notas</h3>
+			<h3>Estado Final de la Materia</h3>
+            @foreach ($materia as $m)
+            <h4><FONT  COLOR="green"><strong>{{$m->nombre}}</strong></FONT></h4>
+            @endforeach
 			<!--Busqueda de alumnos-->
 		</div>	
 	</div>
     
-    {!!Form::open(array('url'=>'notas/updatePromedio', 'method'=>'GET', 'autocomplete'=>'off'))!!}
+    {!!Form::open(array('url'=>'notas/updatePromedioMateria', 'method'=>'GET', 'autocomplete'=>'off'))!!}
             {{Form::token()}}
 	<div id="div1" class="row">
 		<div class = "col-xs-12">
 			<div class="table-responsive">
-				@if(isset($alumnos))
+				@if(isset($estado))
                
 				<table class="table table-striped table-bordered table-condensed table-hover">
 					<thead>
-						<th>ID Alumno</th>
+						<th>Nombre</th>
 						<th>Promedio Final</th>
+                        <th>Estado</th>
 					
 					</thead>
-					@foreach ($alumnos as $usu)
+					@foreach ($estado as $usu)
                 
-                    <!-- Solo cargaremos los alumnos con promedio 4-->
-                   
+  
 					<tr>
-						<td>{{$usu -> idAlumno}}</td>
+						<td>{{$usu -> nombreA}} {{$usu -> apellido}}</td>
                        
                          
                          <input type="hidden" name="idAlumno[]" value="{{$usu -> idAlumno}}">
+                         <input type="hidden" name="idMateria" value="{{$usu -> idMateria}}">
 
 						 @if($usu -> promedioFinal >='61' && $usu -> promedioFinal <= '70')
 						 <td>{{$usu -> promedioFinal}}</td> 
@@ -52,7 +56,7 @@
 						@elseif($usu -> promedioFinal >= '21' && $usu -> promedioFinal < '40') 
 						<td><input type="text" name="promedioFinal[]" value="{{$usu -> promedioFinal}}"></td>
 				
-						<td><FONT COLOR="red"><input type="text" name="estado[]" value="PA"></FONT></td>
+						<td><FONT COLOR="red">PA</FONT></td>
 
 						@else
 						<td>{{$usu -> promedioFinal}}</td>

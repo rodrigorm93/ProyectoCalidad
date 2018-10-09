@@ -76,10 +76,15 @@ Route::get('listaAlumno', 'AlumnoController@listaAlumnos');
 //Para actualizar el promedio final del alumno y guardarlo en la BD
 Route::get('/notas/updatePromedio','NotasController@updatePromedio');
 
+//Para actualizar el promedio final de cada asigantura
+Route::get('/notas/updatePromedioMateria','NotasController@updatePromedioMateria');
+
 //ver los alumnos aprobados y reprobados de un curso
 
 Route::get('/notas/grado','NotasController@verPorCurso');
 Route::get('/notas/verEstadoAlumnos','NotasController@verEstadoAlumnos');
+
+Route::get('/notas/verEstadoPorMateria','NotasController@verEstadoPorMateria');
 
 //ingresar notas y promedios al sistema
 Route::post('/notas/ingresarNotas','NotasController@ingresarNotas');
@@ -88,6 +93,7 @@ Route::post('/notas/ingresarNotas','NotasController@ingresarNotas');
 //ver las libreta de notas
 Route::get('/libreta_notas/grado','NotasController@grado');
 Route::get('/libreta_notas/ver_libreta','NotasController@ver_libreta');
+
 //Ver libreta por materia
 Route::get('/libreta_notas/ver_libretaPorMateria','NotasController@ver_libretaPorMateria');
 //Rutas:

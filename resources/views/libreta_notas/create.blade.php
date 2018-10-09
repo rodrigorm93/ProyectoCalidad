@@ -90,7 +90,6 @@
                         <td><FONT COLOR="blue"><strong>{{$a->promedio_s2}}</strong></FONT></td>
                        @endif
 
-    
 
                      @elseif($m->numeroNotas == 8 && $m->semestre == 1)
                      <td> <input id="n1" type="number" min="0" max="70" name="n1[]" value="{{$a->n1}}"  style="width:40px"></td>	

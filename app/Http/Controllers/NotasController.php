@@ -250,7 +250,6 @@ class NotasController extends Controller
             }
 
 
-     
         
      
         //Guardamos los datos dependiendo del semestre
@@ -527,6 +526,124 @@ class NotasController extends Controller
 
         return view('libreta_notas.ver_libretaProfesor', ["libreta" => $libreta,"materia" => $materia,"curso" => $cursos]);
     }
+
+
+
+
+      //Cargamos todos los datos de la tabla notas de la materia solo para la vista profesor
+      //En esta funcion veremos si el alumno aprobo la materia o esta pendiente
+      //en el caso d eestar pendiente el promedio final podra ser modificado
+      public function verEstadoPorMateria(Request $request)
+      {
+          
+          $idMateria = $request->get('idMateria');
+             
+         
+ 
+          $estado=DB::table('Notas as n')
+          ->join ('Materia as m', 'm.idMateria', '=' ,'n.idMateria') 
+          ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso') 
+          ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno')
+           ->where('m.idMateria','=',$idMateria)           
+          ->where('a.asignacion', '=','ASIGNADO') 
+          ->select('a.nombre as nombreA','a.apellido','a.idAlumno','n.promedio as promedioFinal',
+          'm.nombre as nombreM','m.idMateria') 
+          ->orderBy('a.apellido','ASC')
+          ->get();  
+          
+          $materia=DB::table('Materia as m')
+          ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso') 
+          ->where('m.idMateria','=',$idMateria)  
+          ->get();
+  
+  
+          //Para volver a cargar los cursos que aparecen a la izquierda,que son los cusos impartidos por el
+          //profesor
+          $year =  date("Y"); //para saber el año actual y solo cargar los cursos de ese año
+           $query=$this->auth->user()->id;
+  
+           $cursos=DB::table('materia as c')
+           ->join ('Curso as cu', 'cu.idCurso', '=' , 'c.idCurso') 
+           ->where('c.idProfesor','=',$query)
+           ->where('c.estado','=','activo')
+           ->where('cu.year','=',$year)         
+           ->select('c.nombre','c.idMateria as idMateria')
+           ->paginate(50);
+  
+  
+           return view('notas.estadoPorMateria',['estado'=> $estado,'curso'=> $cursos,'materia'=> $materia]);
+      }
+
+//Guardamos los promedios finales de cada materia
+      public function updatePromedioMateria(Request $request)
+    {   
+        //Agregamos el promedio Final a la tabla Alumno
+        try {
+
+            DB::beginTransaction();
+
+        $idAlumno=$request->get('idAlumno');
+        $promedioFinal=$request->get('promedioFinal');
+        $idMateria=$request->get('idMateria');
+
+        $cantidad=count($idAlumno);
+
+        $cont=0;
+        while($cont < count($idAlumno)){
+     
+        Notas::where('idAlumno', '=', $idAlumno[$cont])
+        ->where('idMateria', '=', $idMateria)
+        ->update(['promedio' => $promedioFinal[$cont]]);
+
+        $cont = $cont+1;
+        }
+
+        DB::commit();
+
+        //Para volver a cargar la vista DE estadoPorMateria
+        $estado=DB::table('Notas as n')
+        ->join ('Materia as m', 'm.idMateria', '=' ,'n.idMateria') 
+        ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso') 
+        ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno')
+         ->where('m.idMateria','=',$idMateria)           
+        ->where('a.asignacion', '=','ASIGNADO') 
+        ->select('a.nombre as nombreA','a.apellido','a.idAlumno','n.promedio as promedioFinal',
+        'm.nombre as nombreM','m.idMateria')
+        ->orderBy('a.apellido','ASC') 
+        ->get();  
+        
+        $materia=DB::table('Materia as m')
+        ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso') 
+        ->where('m.idMateria','=',$idMateria)  
+        ->get();
+
+
+        //Para volver a cargar los cursos que aparecen a la izquierda,que son los cusos impartidos por el
+        //profesor
+        $year =  date("Y"); //para saber el año actual y solo cargar los cursos de ese año
+         $query=$this->auth->user()->id;
+
+         $cursos=DB::table('materia as c')
+         ->join ('Curso as cu', 'cu.idCurso', '=' , 'c.idCurso') 
+         ->where('c.idProfesor','=',$query)
+         ->where('c.estado','=','activo')
+         ->where('cu.year','=',$year)         
+         ->select('c.nombre','c.idMateria as idMateria')
+         ->paginate(50);
+
+
+         return view('notas.estadoPorMateria',['estado'=> $estado,'curso'=> $cursos,'materia'=> $materia]);
+
+    } catch (Exception $e) {
+        DB::rollback();
+        
+        
+    }
+   
+
+
+    }
+  
 
 
 }

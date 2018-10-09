@@ -144,6 +144,14 @@
               </i></a></li>
               {{Form::close()}}
 
+              {!! Form::open(array('url'=>'notas/verEstadoPorMateria', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
+             <input type="hidden" name="idMateria" value="{{$cur->idMateria}}">
+             
+              <li><a href=""><i class="fa fa-circle-o">
+                  <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Estado</button>  
+              </i></a></li>
+              {{Form::close()}}
+
           
 
         </ul> 
