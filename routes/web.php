@@ -59,6 +59,7 @@ Route::get('/seccion_curso/modal_materias','AsignacionController@destroyMateria'
 Route::get('/seccion_curso/modal','AsignacionController@destroy');
 
 
+
 //para eliminar una materia del curso
 //Route::get('/curso/modal','CursoController@destroyMateria');
 
@@ -96,7 +97,15 @@ Route::get('/libreta_notas/ver_libreta','NotasController@ver_libreta');
 
 //Ver libreta por materia
 Route::get('/libreta_notas/ver_libretaPorMateria','NotasController@ver_libretaPorMateria');
+
+//Cargar todas las noticias para poder eliminarlas o editarlas
+Route::get('/noticias/lista_noticias','NoticiasController@lista_noticias');
+
+//Para eliminar una noticia
+Route::get('/noticias/modal','NoticiasController@destroyNoticia');
 //Rutas:
+
+
 
 Route::resource('menu','UsuarioController');
 Route::resource('/','HomeController');

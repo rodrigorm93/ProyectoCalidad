@@ -8,12 +8,12 @@ class Imagenes extends Model
 {
     protected $table = 'fotos';
 
-    protected $primarykey = 'id_foto, id_noticias';
+    protected $primarykey = 'id_foto';
 
     public $timestamps = false;
 
     protected $fillable = [
-    	'foto',
+    	'foto','id_noticia'
     	
     ];
 }

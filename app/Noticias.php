@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Noticias extends Model
 {
-    protected $table = 'noticias';
-
-    protected $primarykey = 'id_noticia';
-
     public $timestamps = false;
+    protected $table='noticias';
+
+    protected $primarykey='id_noticia';
+
+   
 
     protected $fillable = [
     	'descripcion','fecha','titulo',

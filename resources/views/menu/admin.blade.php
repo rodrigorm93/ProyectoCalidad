@@ -73,6 +73,10 @@
                                 
                                     <a href="/noticias/create"><i class='fa fa-plus fa-fw'></i>Subir Noticia</a>
                                 </li>
+
+                                <li>
+                                    <a href="/noticias/lista_noticias"><i class='fa fa-list-ol fa-fw'></i> Noticias</a>
+                                </li>
                             </ul>
                         </li>
 

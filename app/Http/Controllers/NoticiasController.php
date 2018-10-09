@@ -13,6 +13,7 @@ use App\Imagenes;
 use App\Noticias;
 use App\Notas;
 
+
 use Image; 
 use DB;
 use PDF;
@@ -60,6 +61,27 @@ class NoticiasController extends Controller
 
         
     }
+
+
+    public function lista_noticias(){
+  
+        //Cargamos las noticias en nuestra pagina principal
+        $noticia = DB::table('noticias as n')
+        ->join ('fotos as f', 'n.id_noticia', '=' , 'f.id_noticia')
+        ->select('n.id_noticia as id_noticia',
+                'n.titulo as titulo',
+                'n.descripcion as descripcion',
+                'n.fecha as fechacreacion',
+                'f.foto as foto'
+                
+                )
+        ->orderBy('n.id_noticia', 'ASC')
+        ->paginate(10);
+
+        return view('noticias.lista_noticias', ['noticia'=> $noticia]);
+
+      
+  }
 
     public function create(Guard $auth){
 
@@ -172,24 +194,18 @@ class NoticiasController extends Controller
     }
 
 
- 
 
-
-    public function destroy($id_anuncio)
+    public function destroyNoticia(Request $request)
     {
+        $id_noticia2=$request->get('idNoticia');
 
         try {
 
         DB::beginTransaction();
 
-        $orden=DB::table('orden')->where('id_anuncio', '=', $id_anuncio)->select('id_secretaria as id_secretaria')->first();
 
-        $secretaria=DB::table('secretaria')->where('id_secretaria', '=', $orden->id_secretaria)->select('anuncios_pend as anuncios_pend')->first();
-
-            Secretaria::where('id_secretaria', $orden->id_secretaria)
-                  ->update(['anuncios_pend' => $secretaria->anuncios_pend-1]);
-      
-        DB::table('anuncio')->where('id_anuncio', '=', $id_anuncio)->delete();
+        $noticia=Noticias::find($id_noticia2);
+        $noticia->delete();
 
         DB::commit();
           
@@ -197,8 +213,8 @@ class NoticiasController extends Controller
           DB::rollback();
       }
 
-      alert()->success('El anuncio ha sido eliminado.', '¡Listo!')->persistent('Cerrar');
-      return Redirect::to('/servicios');
+      //alert()->success('La noticia ha sido Eliminada.', '¡Listo!')->persistent('Cerrar');
+      return Redirect::to('/menu');
 
 
     }
