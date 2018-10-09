@@ -45,8 +45,8 @@
                 </div>
                 <div class="form-group">
                     <label for="genero">Género: </label>
-                    <input type="radio" name="genero" value="hombre"> hombre
-                    <input type="radio" name="genero" value="mujer"> mujer
+                    <input type="radio" name="genero" value="1"> hombre
+                    <input type="radio" name="genero" value="0"> mujer
                 </div>
                 <div class="form-group">
                     <label for="edad">Edad: </label>
