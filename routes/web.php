@@ -103,6 +103,10 @@ Route::get('/noticias/lista_noticias','NoticiasController@lista_noticias');
 
 //Para eliminar una noticia
 Route::get('/noticias/modal','NoticiasController@destroyNoticia');
+
+//Actualizar Noticias
+Route::post('/noticias/updateNoticia','NoticiasController@updateNoticia');
+
 //Rutas:
 
 

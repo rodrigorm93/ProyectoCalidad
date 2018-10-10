@@ -194,18 +194,101 @@ class NoticiasController extends Controller
     }
 
 
+    public function edit($id_noticia)
+    {
+        $noticia = DB::table('noticias')->where('id_noticia', $id_noticia)->first();//sacamos la noticia
+        $imagen = DB::table('fotos')->where('id_noticia', $id_noticia)->get();//sacamos la imagenes
+        
+        return view("noticias.edit", ['noticia' => $noticia,'imagen' => $imagen]);
+       
+
+    }
+
+    public function updateNoticia(Request $request)
+    {
+    
+       $id_noticia2= $request->get('idNoticia');
+       $idFoto= $request->get('idImagen');
+
+
+
+       $time = time(); 
+       $fecha_actual=date("Y-m-d H:i:s");
+
+     try {
+
+
+           DB::beginTransaction();
+        
+           //Primero borramos la noticia y su imagen 
+       $noticiaE = DB::table('noticias')->where('id_noticia', $id_noticia2)->delete();//sacamos la noticia
+
+           //Guardamos nuevamente la noticia con el id de la borrada 
+           $noticia = new Noticias;
+           $noticia->id_noticia=$id_noticia2;
+           $noticia->titulo = $request->get('titulo');
+           $noticia->descripcion = $request->get('descripcion');
+           $noticia->fecha=$fecha_actual;
+           
+           $noticia->save();
+
+
+           //AQUI SE GUARDAN LAS FOTOS
+           //Se crean los array de los siguientes datos:
+           $file = Input::file('imagen');
+
+           $cont = 0;
+
+           //Se recorren y asignan los array
+           while($cont < count($file)){
+
+          
+               if ($file[$cont]->guessExtension() != 'jpeg') {
+                   alert()->error('Las imágenes deben estar en formato jpeg')->persistent('Cerrar');
+                   return Redirect::to('/');
+               }
+
+               $aleatorio = str_random(50);
+               $nombre = $aleatorio.'-'.$file[$cont]->getClientOriginalName();
+               $path = public_path('uploads/'.$nombre);
+               $url = '/uploads/'.$nombre;
+               $imagen = Image::make($file[$cont]->getRealPath())->resize(1280, 820);
+               $imagen->save($path);
+
+               $imagen = new Imagenes;
+               $imagen->id_foto = $idFoto;
+               $imagen->id_noticia = $id_noticia2;
+               $imagen->foto = $url;
+               $imagen->save();   
+
+               $cont = $cont+1;
+
+           }
+
+
+           DB::commit();
+           
+       } catch (Exception $e) {
+           DB::rollback();
+       }
+
+
+        return Redirect::to('/menu')->with('success2', "Noticia Editada Correctamente");
+
+    }
+
+
 
     public function destroyNoticia(Request $request)
     {
-        $id_noticia2=$request->get('idNoticia');
+        $id_noticia=$request->get('idNoticia');
 
         try {
 
         DB::beginTransaction();
+        //consulta para eliminar la noticia creada
+        $noticia = DB::table('noticias')->where('id_noticia', $id_noticia)->delete();//sacamos la noticia
 
-
-        $noticia=Noticias::find($id_noticia2);
-        $noticia->delete();
 
         DB::commit();
           

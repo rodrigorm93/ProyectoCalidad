@@ -14,7 +14,7 @@ id="modal-delete-{{$n->id_noticia}}">
             <input id="idNoticia" type="hidden" name="idNoticia" value="{{$n->id_noticia}}">
 
 			<div class="modal-body">
-				<p>Confirme si desea Elimninarla</p>
+				<p>Confirme si desea Eliminarla</p>
 			</div>
 
 			<div class="modal-footer">
