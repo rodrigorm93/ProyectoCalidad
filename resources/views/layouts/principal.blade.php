@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8">
   <title>Escuela Especial Evangelica Presbiteriana</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -1186,6 +1187,7 @@
           <!-- Start  contact -->
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="form contact-form">
+    
               <div id="sendmessage">Your message has been sent. Thank you!</div>
               <div id="errormessage"></div>
              
@@ -1198,11 +1200,11 @@
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required />
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" maxlength="20" data-msg="Please enter at least 8 chars of subject" required />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="descripcion" required></textarea>
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" maxlength="500" placeholder="descripcion" required></textarea>
                   <div class="validation"></div>
                 </div>
                 <div class="text-center"><button type="submit"><Em>Enviar Mensaje</Em></button></div>
@@ -1294,7 +1296,7 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="copyright text-center">
               <p>
-                &copy; Copyright <strong>eBusiness</strong>. All Rights Reserved
+                &copy; Copyright <strong>Sistema Colegio</strong>. All Rights Reserved
               </p>
             </div>
             <div class="credits">
@@ -1335,6 +1337,8 @@
 
   <script src="js/main.js"></script>
   <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+
+  
 </body>
 
 </html>

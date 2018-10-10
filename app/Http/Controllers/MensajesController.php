@@ -56,8 +56,7 @@ class MensajesController extends Controller
         } catch (Exception $e) {
             DB::rollback();
         }
-
-        return Redirect::to('/');
+        return Redirect::to('/#contact');
 
     }
 
