@@ -29,6 +29,7 @@
 						<td>{{$usu -> email}}</td>	
 					</tr>
 					@endforeach
+			
 				</table>
 				@endif
 				<div id="next_button" align="right">
