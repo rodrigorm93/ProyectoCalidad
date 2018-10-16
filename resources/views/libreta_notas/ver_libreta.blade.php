@@ -37,7 +37,7 @@
                         <th>N10</th>
                         <th>N11</th>
                         <th>N12</th>
-                        <th>Promedio Semestre 1</th>
+                        <th><FONT COLOR="green"><strong>Promedio Semestre 1</strong></Font></th>
                         <th>Promedio Semestre 2</th>
                         <th>Promedio Final</th>
                         <th>Promedio Del Curso</th>
@@ -49,31 +49,31 @@
 						<td>{{$l -> materia}}</td>
 						
                         @if($l->numeroNotas == 12)
-                        <td>{{$l -> n1}}</td>
-                        <td>{{$l -> n2}}</td>
-                        <td>{{$l -> n3}}</td>
-                        <td>{{$l -> n4}}</td>
-                        <td>{{$l -> n5}}</td>
-                        <td>{{$l -> n6}}</td>
-                        <td>{{$l -> n7}}</td>
-                        <td>{{$l -> n8}}</td>
-                        <td>{{$l -> n9}}</td>
-                        <td>{{$l -> n10}}</td>
-                        <td>{{$l -> n11}}</td>
-                        <td>{{$l -> n12}}</td>
-                        <td>{{$l -> promedio_s1}}</td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n1}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n2}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n3}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n4}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n5}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n6}}</strong></Font></td>
+                        <td><strong>{{$l -> n7}}</strong></td>
+                        <td><strong>{{$l -> n8}}</strong></td>
+                        <td><strong>{{$l -> n9}}</strong></td>
+                        <td><strong>{{$l -> n10}}</strong></td>
+                        <td><strong>{{$l -> n11}}</strong></td>
+                        <td><strong>{{$l -> n12}}</strong></td>
+                        <td><strong>{{$l -> promedio_s1}}</strong></td>
                         <td>{{$l -> promedio_s2}}</td>
                         <td>{{$l -> promedio}}</td>
                         <td>{{$l -> promedioFinal}}</td>
                         @elseif($l->numeroNotas == 8)
-                        <td>{{$l -> n1}}</td>
-                        <td>{{$l -> n2}}</td>
-                        <td>{{$l -> n3}}</td>
-                        <td>{{$l -> n4}}</td>
-                        <td>{{$l -> n5}}</td>
-                        <td>{{$l -> n6}}</td>
-                        <td>{{$l -> n7}}</td>
-                        <td>{{$l -> n8}}</td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n1}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n2}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n3}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n4}}</strong></Font></td>
+                        <td><strong>{{$l -> n5}}</strong></td>
+                        <td><strong>{{$l -> n6}}</strong></td>
+                        <td><strong>{{$l -> n7}}</strong></td>
+                        <td><strong>{{$l -> n8}}</strong></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -83,12 +83,12 @@
                         <td>{{$l -> promedio}}</td>
                         <td>{{$l -> promedioFinal}}</td>
                         @else
-                        <td>{{$l -> n1}}</td>
-                        <td>{{$l -> n2}}</td>
-                        <td>{{$l -> n3}}</td>
-                        <td>{{$l -> n4}}</td>
-                        <td>{{$l -> n5}}</td>
-                        <td>{{$l -> n6}}</td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n1}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n2}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n3}}</strong></Font></td>
+                        <td><strong>{{$l -> n4}}</strong></td>
+                        <td><strong>{{$l -> n5}}</strong></td>
+                        <td><strong>{{$l -> n6}}</strong></td>
                         <td></td>
                         <td></td>
                         <td></td>
