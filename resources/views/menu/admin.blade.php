@@ -226,6 +226,7 @@
     <!-- Permite importar Excel como JSON -->
     <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/alasql/0.4.0/alasql.min.js')}}"></script>
     <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.6/xlsx.core.min.js')}}"></script>
+    <script src="{{asset('profesor/js/jquery.table2excel.js')}}"></script>
 
 </body>
 

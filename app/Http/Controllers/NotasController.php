@@ -471,7 +471,7 @@ class NotasController extends Controller
             ->select('a.nombre as nombre','a.apellido as apellido','m.nombre as materia',
             'm.idCurso','c.grado','n.idAlumno','n.idMateria','n.n1'
             ,'n.n2','n.n3','n.n4','n.n5','n.n6','n.n7','n.n8','n.n9','n.n10','n.n11','n.n12','n.promedio',
-            'a.promedioFinal')
+            'a.promedioFinal','n.promedio_s1','n.promedio_s2','m.numeroNotas')
             ->orderBy('a.apellido','ASC')
             ->paginate(500);
 
