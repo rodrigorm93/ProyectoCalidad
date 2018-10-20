@@ -25,16 +25,16 @@
 					<tr>
 						<td>{{$sec -> materia}}</td>
 						<td>{{$sec -> nombre}} {{$sec -> apellido}}</td>
-							
-						
+				
+				
+				
 				<td>
 				<a href="" data-target="#modal-delete-{{$sec->idAlumno,$sec->idMateria}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i> </btn></a>
 			     </td>
-				<!--	
-				 <td>
-				 <a href="" data-target="#modal_materias-delete-{{$sec->idAlumno}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i> </btn></a>
-				<td>
-			-->
+
+
+				
+
 						</td>
 					</tr>
 				@include('seccion_curso.modal')
@@ -46,5 +46,12 @@
 			{{$seccion->render()}}
 		</div>
 	</div>
-
+	{!!Form::open(array('url'=>'seccion_curso/reiniciarCurso', 'method'=>'GET', 'autocomplete'=>'off'))!!}
+                {{Form::token()}}
+				@foreach ($seccion as $s)
+				<input id="Alumnos" type="hidden" name="Alumnos[]" value="{{$s -> idAlumno}}">
+				@endforeach
+	<button class="btn btn-danger" type="submit">Reiniciar Curso</button>
+	
+	{!!Form::close()!!}	
 @stop

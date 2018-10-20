@@ -107,6 +107,10 @@ Route::get('/noticias/modal','NoticiasController@destroyNoticia');
 //Actualizar Noticias
 Route::post('/noticias/updateNoticia','NoticiasController@updateNoticia');
 
+//Reiniciar Curso
+Route::get('/seccion_curso/reiniciarCurso','AsignacionController@reiniciarCurso');
+
+
 //Rutas:
 
 

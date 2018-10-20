@@ -350,5 +350,42 @@ class AsignacionController extends Controller
     }
 
 
+     //Reiniciar Curso 
+     public function reiniciarCurso(Request $request)
+     {
+        
+        $idAlumno = $request->get('Alumnos');
+        $cont = 0;
+               
+  try {
+        while($cont < count($idAlumno)){
+ 
+            //Lo dejamos libre 
+            Alumno::where('idAlumno', '=', $idAlumno[$cont])
+                   ->update(['asignacion' => 'No asignado']);
+
+     //Eliminamos al alumno de un curso 
+       $nota = Notas::find($idAlumno[$cont]);
+       $nota->delete();
+      
+      DB::commit();
+      $cont= $cont+1;
+        }
+
+            
+        } catch (Exception $e) {
+            DB::rollback();
+            
+            
+        }
+ 
+     //Actualizamos al alumnos como no asignado a ningun curso
+    
+ 
+             return Redirect::to('/seccion_curso');
+       
+       
+     }
+
 
 }

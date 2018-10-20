@@ -62,13 +62,13 @@
 				</table>
 				@endif
 			</div>
-			<div id="next_button" align="right">
-					<button id="exportar" class="btn btn-success" align="right">Exportar</button>
-				</div>
+			
 		</div>
 	</div>
 
-
+<div id="next_button" align="left">
+					<button id="exportar" class="btn btn-success" align="left">Exportar</button>
+				</div>
     	@push('scripts')
     <script type="text/javascript">
 		$(document).ready(function () {

@@ -153,17 +153,18 @@
                 
 				</table>
 				@endif
-				<div id="next_button" align="right">
-                <button class="btn btn-primary" type="submit">Guardar Notas</button>
-				</div>
+			
 
 			</div>
-            {!!Form::close()!!}
+            
             
 		</div>
 	</div>
 
-
+<div id="next_button" align="left">
+                <button class="btn btn-primary" type="submit">Guardar Notas</button>
+				</div>
+            {!!Form::close()!!}
 
 
 

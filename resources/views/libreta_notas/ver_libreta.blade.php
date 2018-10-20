@@ -37,9 +37,9 @@
                         <th>N10</th>
                         <th>N11</th>
                         <th>N12</th>
-                        <th><FONT COLOR="green"><strong>Promedio Semestre 1</strong></Font></th>
-                        <th>Promedio Semestre 2</th>
-                        <th>Promedio Final</th>
+                        <th><FONT COLOR="green"><strong>Promedio Primer Semestre</strong></Font></th>
+                        <th>Promedio Segundo Semestre</th>
+                        <th>Promedio Final Materia</th>
                         <th>Promedio Del Curso</th>
 
 					</thead>
