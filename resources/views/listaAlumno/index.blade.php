@@ -32,13 +32,14 @@
 			
 				</table>
 				@endif
-				<div id="next_button" align="right">
-					<button id="exportar" class="btn btn-success" align="right">Exportar</button>
-				</div>
+				
 			</div>
-			{{$lista->render()}}
+			
 		</div>
 	</div>
+	<div id="next_button" align="center">
+					<button id="exportar" class="btn btn-success" align="right">Exportar</button>
+				</div>
 
 	@push('scripts')
     <script type="text/javascript">
