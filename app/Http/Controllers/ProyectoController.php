@@ -31,8 +31,9 @@ class ProyectoController extends Controller
     }
 
     public function index(){
-  
-         return view('proyecto.index');
+
+     $proyecto = Proyecto::orderBy('id_proyecto', 'ASC')->paginate(10);
+      return view('proyecto.index', compact('proyecto'));
     }
 
 

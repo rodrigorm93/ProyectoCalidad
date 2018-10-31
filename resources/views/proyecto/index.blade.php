@@ -7,19 +7,43 @@
 		</div>
 	@endif
 
+	<div class="row">
+		<div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
+			<h3>Lista de Proyectos </h3>
+			<!--Busqueda de alumnos-->
+		</div>	
+	</div>
 
-	{!!Form::open(array('url'=>'proyecto', 'method'=>'POST', 'class'=>'stdform', 'files' => true, 'name'=>'proyectoin', 'enctype' => 'multipart/form-data', 'autocomplete'=>'off'))!!}
-
-		<div class="form-group">
-			<label for="">Descripcion</label>
-			<input type="text" name="descripcion" class="form-control">
+	<div class="row">
+		<div class = "col-xs-12">
+			<div class="table-responsive">
+				@if(isset($proyecto))
+				<table class="table table-striped table-bordered table-condensed table-hover">
+					<thead>
+						<th>Id</th>
+						<th>descripcion</th>
+						<th>archivo</th>
+					</thead>
+					@foreach ($proyecto as $pro)
+					<tr>
+						<td>{{$pro -> id_proyecto}}</td>
+						<td>{{$pro -> descripcion}}</td>
+						<td><a href="{{ Storage::url($pro->proyecto) }}" target="_blank">proyecto</a></td>
+						
+						<td>
+							<a href="#"><btn class="btn btn-info"><i class="material-icons" style="font-size:18px">border_color</i></btn></a>
+							<a href="#" data-target="" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i></btn></a>
+						</td>
+				
+					</tr>
+					
+					@endforeach
+				</table>
+				@endif
+			</div>
+			{!! $proyecto->render() !!}
 		</div>
-
-		<div class="form-group">
-			<label for="">Proyecto</label>
-			<input type="file" name="archivo">
-		</div>
-
-		<button type="submit" class="btn btn-primary">Guardar</button>
+	</div>
 
 @stop
+

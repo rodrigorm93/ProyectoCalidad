@@ -136,6 +136,7 @@ Route::resource('mensajes', 'MensajesController');
 Route::resource('/auth','AuthController');
 Route::resource('/usuarios','UserController');
 Route::resource('/proyecto','ProyectoController');
+Route::resource('/proyecto/editar','ProyectoController');
 
 Auth::routes();
 //para poder cerrar seccion
