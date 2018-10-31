@@ -68,9 +68,10 @@
 				</table>
 				@endif
 			</div>
-            <button class="btn btn-primary" type="submit">Guardar Promedios</button>
-            {!!Form::close()!!}
+           
+            
 		</div>
 	</div>
-
+	<button class="btn btn-primary" type="submit">Guardar Promedios</button>
+	{!!Form::close()!!}
 @stop

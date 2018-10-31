@@ -174,14 +174,14 @@
                                 <li>
                                     <a href="#"><i class='fa fa-plus fa-fw'></i> Agregar</a>
                                 </li>
-                                -->
+                                
                                 <li>
                                 
                                     <a href="/notas"><i class='fa fa-list-ol fa-fw'></i>Estado</a>
                                 </li>
 
                                  <li>
-                                
+                                -->
                                 <a href="/notas/grado"><i class='fa fa-list-ol fa-fw'></i>Calcular Promedios Finales</a>
                             </li>
                             </ul>
