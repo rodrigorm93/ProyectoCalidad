@@ -39,7 +39,7 @@ class ProyectoController extends Controller
 
     public function create(Guard $auth){
 
-      return view('proyecto.index');
+      return view('proyecto.create');
 
     }
 
@@ -61,16 +61,36 @@ class ProyectoController extends Controller
        
     }
 
-    public function show($id_noticia)
+    public function show($id_proyecto)
     {
     
     }
 
 
-    public function edit($id_noticia)
+    public function edit($id_proyecto)
     {
-       
+       return view('proyecto.edit');
     }
+
+     public function destroy($id_proyecto)
+  {
+    $proyecto = Proyecto::find($id_proyecto);
+    $proyecto->delete();
+
+     try {
+            DB::beginTransaction();
+            
+            $proyecto = Proyecto::find($id_proyecto);
+            $proyecto->delete();
+            
+            DB::commit();
+        
+        } catch (Exception $e) {
+            DB::rollback();
+        }
+        
+        return Redirect::to('/proyecto')->with('success', "Registro Eliminado Correctamente");
+  }
 
 
   }

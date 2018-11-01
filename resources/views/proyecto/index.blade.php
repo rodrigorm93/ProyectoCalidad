@@ -23,16 +23,18 @@
 						<th>Id</th>
 						<th>descripcion</th>
 						<th>archivo</th>
+						<th>Opciones</th>
 					</thead>
 					@foreach ($proyecto as $pro)
 					<tr>
 						<td>{{$pro -> id_proyecto}}</td>
 						<td>{{$pro -> descripcion}}</td>
-						<td><a href="{{ Storage::url($pro->proyecto) }}" target="_blank">proyecto</a></td>
+						<td><a href="Archivos/{{$pro->proyecto}}" target="_blank" >proyecto</a></td>
 						
 						<td>
-							<a href="#"><btn class="btn btn-info"><i class="material-icons" style="font-size:18px">border_color</i></btn></a>
-							<a href="#" data-target="" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i></btn></a>
+							<a href="{{URL::action('ProyectoController@edit', $pro -> id_proyecto)}}"><btn class="btn btn-info"><i class="material-icons" style="font-size:18px">border_color</i></btn></a>
+
+							<a href="" data-target="#modal-delete-{{$pro->id_proyecto}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i></btn></a>
 						</td>
 				
 					</tr>

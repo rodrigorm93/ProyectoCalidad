@@ -88,7 +88,11 @@
                                 <li>
                                     <a href="#"><i class='fa fa-plus fa-fw'></i> Agregar</a>
                                 </li>
+
                                 -->
+                                <li>
+                                    <a href="/proyecto/create/create?1"> <i class='fa fa-plus fa-fw'></i> Agregar </a>
+                                </li>
                                 <li>
                                 
                                     <a href="/proyecto"><i class='fa fa-plus fa-fw'></i>Proyecto</a>
