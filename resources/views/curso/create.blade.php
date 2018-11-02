@@ -26,6 +26,14 @@
                 <input type="text" name="grado" placeholder="Ej: primero basico">
             </div>
 
+              <div class="form-group">
+                <label>Ciclo:</label>
+                    <select name="curso" id="ciclo">
+                    <option>Primer Ciclo Basico</option>
+                    <option>Segundo Ciclo Basico</option>
+                    </select>
+                </div>
+
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>
                 <button class="btn btn-danger" type="reset">Cancelar</button>

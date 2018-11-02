@@ -31,7 +31,13 @@
                     
                     {!!Form::open(array('url'=>'curso/ver_materias', 'method'=>'GET', 'autocomplete'=>'off'))!!}
                 {{Form::token()}}
-						<td>{{$c -> grado}} Año {{$c -> year}}</td>
+
+                            @if($c -> ciclo == '0')
+                            <td>{{$c -> grado}} Año {{$c -> year}} (Primer Ciclo Basico)</td>
+                            @else
+                            <td>{{$c -> grado}} Año {{$c -> year}} (Segundo Ciclo Basico)</td>
+                            @endif
+
                         <input id="idCurso2" type="hidden" name="idCurso2" value="{{$c -> idCurso}}">
                         
                         

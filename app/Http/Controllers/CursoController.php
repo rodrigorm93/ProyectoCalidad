@@ -91,6 +91,13 @@ class CursoController extends Controller
               //Veremos en que semestre estamos
         $fecha_actual = strtotime(date("d-m-Y H:i:00",time()));
         $fecha_entrada = strtotime("11-07-2018 21:00:00");
+        $ciclo=$request->get('ciclo');
+
+        if($ciclo ='Primer Ciclo Basico'){
+            $numCiclo=0;
+        }else{
+            $numCiclo=1;
+        }
 
         if($fecha_actual < $fecha_entrada)
 	{
@@ -106,8 +113,10 @@ class CursoController extends Controller
         
             $curso = new Curso;
             $curso->grado=$request->get('grado');
+            $curso->ciclo=$numCiclo;
             $curso->year = $year;
             $curso->save();
+
   
               
             DB::commit();
@@ -230,7 +239,7 @@ class CursoController extends Controller
         
     }
 
-      return Redirect::to('/menu');
+      return Redirect::to('/curso');
     }
 
 
