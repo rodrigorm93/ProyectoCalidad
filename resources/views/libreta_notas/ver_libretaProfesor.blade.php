@@ -3,10 +3,14 @@
 
 	<div class="row">
 		<div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
+		
 		@foreach ($materia as $m)
-			<h3>Libreta de Notas: <FONT COLOR="green">{{$m->grado}} Año {{$m->year}}</FONT></h3>
+		@if($m -> ciclo == '0')
+			<h3>Libreta de Notas: <FONT COLOR="green">{{$m->grado}} Año {{$m->year}}(Primer Ciclo Basico)</FONT></h3>
     
-      
+		@else
+		<h3>Libreta de Notas: <FONT COLOR="green">{{$m->grado}} Año {{$m->year}}(Segundo Ciclo Basico)</FONT></h3>
+		@endif
 			@endforeach
 		</div>	
 	</div>
@@ -16,8 +20,10 @@
 			<div   class="table-responsive">
 				@if(isset($libreta))
 				<table id="libreta" class="table table-striped table-bordered table-condensed table-hover">
+			
+				
 					<thead>
-                    
+	
                         <th>Materia</th>	
 						<th>Alumno</th>
                         @foreach ($materia as $m)
