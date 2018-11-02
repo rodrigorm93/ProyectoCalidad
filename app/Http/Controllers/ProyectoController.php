@@ -73,23 +73,7 @@ class ProyectoController extends Controller
 
     public function update($id_proyecto)
     {
-      $descripcio= $request->get('descripcion');
-      $proyecto= $request->get('proyecto');
-
-      try {
-
-        DB::beginTransaction();
-        
-        $proyecto = DB::table('proyecto')->where('id_proyecto', $id_proyecto)->delete();
-
-
-
-        DB::commit();
-          
-      } catch (Exception $e) {
-          DB::rollback();
-      }
-
+      
        
     }
 
