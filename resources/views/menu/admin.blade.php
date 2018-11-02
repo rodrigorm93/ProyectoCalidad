@@ -95,7 +95,7 @@
                                 </li>
                                 <li>
                                 
-                                    <a href="/proyecto"><i class='fa fa-plus fa-fw'></i>Proyecto</a>
+                                    <a href="/proyecto"><i class='fa fa-list-ol fa-fw'></i>Proyecto</a>
                                 </li>
                             </ul>
                         </li>

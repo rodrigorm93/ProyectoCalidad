@@ -143,7 +143,7 @@ class ProfesorController extends Controller
             DB::rollback();
         }
       
-        return Redirect::to('/profesores')->with('profesores', "Registro Eliminado Correctamente");;
+        return Redirect::to('/profesores')->with('profesores', "Registro Eliminado Correctamente");
     }
 
 

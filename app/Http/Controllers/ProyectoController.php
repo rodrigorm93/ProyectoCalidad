@@ -48,7 +48,7 @@ class ProyectoController extends Controller
       if($request->file('archivo')){
         $file = $request->file('archivo');
         $name = time().$file->getClientOriginalName();
-        $file->move(public_path().'/archivos/', $name);
+        $file->move(public_path().'/storage/', $name);
       }
 
       $proyecto = new Proyecto();
@@ -61,35 +61,56 @@ class ProyectoController extends Controller
        
     }
 
-    public function show($id_proyecto)
-    {
-    
-    }
-
 
     public function edit($id_proyecto)
     {
-       return view('proyecto.edit');
+      $descripcion = DB::table('proyecto')->where('id_proyecto', $id_proyecto)->first();
+      $proyecto = DB::table('proyecto')->where('id_proyecto', $id_proyecto)->get();
+  
+      return view("proyecto.edit", ['descripcion' => $descripcion,'proyecto' => $proyecto]); 
     }
 
-     public function destroy($id_proyecto)
-  {
-    $proyecto = Proyecto::find($id_proyecto);
-    $proyecto->delete();
 
-     try {
-            DB::beginTransaction();
-            
-            $proyecto = Proyecto::find($id_proyecto);
-            $proyecto->delete();
-            
-            DB::commit();
+    public function update($id_proyecto)
+    {
+      $descripcio= $request->get('descripcion');
+      $proyecto= $request->get('proyecto');
+
+      try {
+
+        DB::beginTransaction();
         
-        } catch (Exception $e) {
-            DB::rollback();
-        }
+        $proyecto = DB::table('proyecto')->where('id_proyecto', $id_proyecto)->delete();
+
+
+
+        DB::commit();
+          
+      } catch (Exception $e) {
+          DB::rollback();
+      }
+
+       
+    }
+
+     public function destroy($id)
+  {
+    
+        try {
+
+        DB::beginTransaction();
         
-        return Redirect::to('/proyecto')->with('success', "Registro Eliminado Correctamente");
+        $proyecto = DB::table('proyecto')->where('id_proyecto', $id)->delete();
+
+        
+
+        DB::commit();
+          
+      } catch (Exception $e) {
+          DB::rollback();
+      }
+        
+       return Redirect::to('/proyecto')->with('proyecto', "Proyecto Eliminado Correctamente");;
   }
 
 

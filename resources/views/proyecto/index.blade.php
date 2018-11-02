@@ -29,7 +29,7 @@
 					<tr>
 						<td>{{$pro -> id_proyecto}}</td>
 						<td>{{$pro -> descripcion}}</td>
-						<td><a href="Archivos/{{$pro->proyecto}}" target="_blank" >proyecto</a></td>
+						<td><a href="{{ Storage::url($pro->proyecto) }}" target="_blank" >proyecto</a></td>
 						
 						<td>
 							<a href="{{URL::action('ProyectoController@edit', $pro -> id_proyecto)}}"><btn class="btn btn-info"><i class="material-icons" style="font-size:18px">border_color</i></btn></a>
@@ -38,12 +38,12 @@
 						</td>
 				
 					</tr>
-					
+					@include('proyecto.modal')
 					@endforeach
 				</table>
 				@endif
 			</div>
-			{!! $proyecto->render() !!}
+			{{$proyecto->render()}}
 		</div>
 	</div>
 
