@@ -239,7 +239,7 @@ class CursoController extends Controller
         
     }
 
-      return Redirect::to('/menu');
+      return Redirect::to('/curso');
     }
 
 
