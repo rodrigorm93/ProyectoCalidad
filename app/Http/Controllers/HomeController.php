@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use DB;
+use App\Proyecto;
 
 class HomeController extends Controller
 {
@@ -39,7 +40,9 @@ class HomeController extends Controller
         ->orderBy('n.id_noticia', 'desc')
         ->get();
 
-        return view('/home', ['noticia'=> $noticia]);
+        $proyecto = Proyecto::orderBy('id_proyecto', 'ASC')->paginate(10);
+
+        return view('/home', ['noticia'=> $noticia],['proyecto'=> $proyecto]);
 
      //  return view('menu.admin');
     
