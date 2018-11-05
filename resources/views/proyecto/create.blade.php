@@ -16,7 +16,7 @@
 		</div>
 
 		<div class="form-group">
-			<label for="">Proyecto</label>
+			<label for="">Plan</label>
 			<input type="file" name="archivo">
 		</div>
 

@@ -85,7 +85,7 @@
                     <a class="page-scroll" href="#about">¿Quienes Somos?</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#services">Proyecto Educativo</a>
+                    <a class="page-scroll" href="#services">Plan ANUAL</a>
                   </li>
                   <li>
                     <a class="page-scroll" href="#team">Cuerpo Docente</a>
@@ -174,7 +174,7 @@
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">Proyecto Educativo</a>
+                  <a class="ready-btn right-btn page-scroll" href="#services">PALN ANUAL</a>
                   <a class="ready-btn page-scroll" href="#about">Leer Más</a>
                 </div>
               </div>
@@ -199,7 +199,7 @@
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">Proyecto Educativo</a>
+                  <a class="ready-btn right-btn page-scroll" href="#services">PLAN ANUAL</a>
                   <a class="ready-btn page-scroll" href="#about">Leer Más</a>
                 </div>
               </div>
@@ -299,7 +299,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline services-head text-center">
-            <h2>PROYECTO EDUCATIVO</h2>
+            <h2>PLAN ANUAL</h2>
           </div>
         </div>
       </div>
@@ -311,7 +311,7 @@
             <div class="about-move">
               <div class="services-details">
                 <div class="single-services">
-        
+         
                   <a class="services-icon" href="{{ Storage::url($pro->proyecto) }}" target="_blank" >
                   <h4>{{$pro -> descripcion}}</h4>
 										</a>
