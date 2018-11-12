@@ -62,19 +62,32 @@ class ProyectoController extends Controller
     }
 
 
-    public function edit($id_proyecto)
+    public function edit($id)
     {
-      $descripcion = DB::table('proyecto')->where('id_proyecto', $id_proyecto)->first();
-      $proyecto = DB::table('proyecto')->where('id_proyecto', $id_proyecto)->get();
-  
-      return view("proyecto.edit", ['descripcion' => $descripcion,'proyecto' => $proyecto]); 
+     $proyecto = DB::table('proyecto')->where('id_proyecto', $id)->first();
+
+      return view("proyecto.edit", ["proyecto"=>$proyecto]);
     }
 
 
-    public function update($id_proyecto)
+    public function update(Request $request, $id)
     {
+      $proyecto = DB::table('proyecto')->where('id_proyecto', $id);
       
-       
+
+      if($request->file('archivo1')){
+        $file = $request->file('archivo1');
+        $name = time().$file->getClientOriginalName();
+        $file->move(public_path().'/storage/', $name);
+      }
+
+      $proyecto->descripcion = $request->input('descripcion1');
+      $proyecto->proyecto = $name;
+      $proyecto->update();
+
+      return view('proyecto');
+
+      
     }
 
      public function destroy($id)
@@ -85,8 +98,6 @@ class ProyectoController extends Controller
         DB::beginTransaction();
         
         $proyecto = DB::table('proyecto')->where('id_proyecto', $id)->delete();
-
-        
 
         DB::commit();
           

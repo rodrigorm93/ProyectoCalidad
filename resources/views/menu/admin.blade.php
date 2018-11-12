@@ -91,7 +91,7 @@
 
                                 -->
                                 <li>
-                                    <a href="/proyecto/create/create?1"> <i class='fa fa-plus fa-fw'></i> Agregar </a>
+                                    <a href="/proyecto/create"> <i class='fa fa-plus fa-fw'></i> Agregar </a>
                                 </li>
                                 <li>
                                 
