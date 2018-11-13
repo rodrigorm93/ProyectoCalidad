@@ -137,8 +137,7 @@ Route::resource('/auth','AuthController');
 Route::resource('/usuarios','UserController');
 
 Route::resource('proyecto','ProyectoController');
-Route::get('proyecto/edit','ProyectoController@update');
-Route::get('proyecto/create','ProyectoController@create');
+
 
 Auth::routes();
 //para poder cerrar seccion

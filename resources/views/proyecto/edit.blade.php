@@ -7,26 +7,26 @@
 		</div>
 	@endif
 
-	<legend class="text-center header">Editar proyecto {{ $proyecto->id_proyecto}} </legend>
+	<legend class="text-center header">Editar Plan Anual </legend>
 
 
-	{!!Form::open(array('url'=>'proyecto/edit', 'method'=>'POST', 'class'=>'stdform', 'files' => true, 'name'=>'formu', 'enctype' => 'multipart/form-data', 'autocomplete'=>'off'))!!}
+	{!!Form::model($proyecto, ['method'=>'PATCH', 'route'=>['proyecto.update', $proyecto->id_proyecto],'files' => true,'autocomplete'=>'off']) !!}
+            {{Form::token()}}
 
 		<div class="form-group">
-			<label for="">Descripcion</label>
-			<input type="text" name="descripcion1" class="form-control">
+			<label for="">Año</label>
+			<input type="text" name="descripcion1" class="form-control" values="{{$proyecto->descripcion}}" type="year" placeholder="{{$proyecto->descripcion}}">
 		</div>
 
 		<div class="form-group">
-			<label for="">Proyecto</label>
-			<input type="file" name="archivo1">
+			<label for="">Plan Anual</label>
+			<input type="file" name="archivo1" values="{{$proyecto->proyecto}}">
 		</div>
+		
+		<div class="form-group">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+        </div>
 		{!! Form::close() !!}
-
-
-
-		<button type="submit" class="btn btn-primary">actualizar</button>
-
 		
 
-@stop
+@endsection

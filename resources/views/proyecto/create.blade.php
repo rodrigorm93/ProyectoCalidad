@@ -7,16 +7,18 @@
 		</div>
 	@endif
 
+	<legend class="text-center header">Plan Anual </legend>
+
 
 	{!!Form::open(array('url'=>'proyecto', 'method'=>'POST', 'class'=>'stdform', 'files' => true, 'name'=>'proyectoin', 'enctype' => 'multipart/form-data', 'autocomplete'=>'off'))!!}
 
 		<div class="form-group">
-			<label for="">Descripcion</label>
+			<label for="">Año</label>
 			<input type="text" name="descripcion" class="form-control">
 		</div>
 
 		<div class="form-group">
-			<label for="">Plan</label>
+			<label for="">Plan Anual</label>
 			<input type="file" name="archivo">
 		</div>
 

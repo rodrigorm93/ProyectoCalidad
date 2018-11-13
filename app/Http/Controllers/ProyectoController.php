@@ -70,24 +70,34 @@ class ProyectoController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-      $proyecto = DB::table('proyecto')->where('id_proyecto', $id);
-      
 
-      if($request->file('archivo1')){
+      try {
+
+        DB::beginTransaction();
+
+      $proyectoE = DB::table('proyecto')->where('id_proyecto', $id)->delete();
+
+       if($request->file('archivo1')){
         $file = $request->file('archivo1');
         $name = time().$file->getClientOriginalName();
         $file->move(public_path().'/storage/', $name);
       }
 
+      $proyecto = new Proyecto;
+
       $proyecto->descripcion = $request->input('descripcion1');
       $proyecto->proyecto = $name;
-      $proyecto->update();
+      $proyecto->save();
 
-      return view('proyecto');
+      DB::commit();
+          
+      } catch (Exception $e) {
+          DB::rollback();
+      }
 
-      
+      return Redirect::to('proyecto')->with('success2', "Plan Anual Editado Correctamente");
     }
 
      public function destroy($id)

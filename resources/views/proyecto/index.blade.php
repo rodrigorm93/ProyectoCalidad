@@ -20,16 +20,16 @@
 				@if(isset($proyecto))
 				<table class="table table-striped table-bordered table-condensed table-hover">
 					<thead>
-						<th>Id</th>
-						<th>descripcion</th>
-						<th>archivo</th>
+						
+						<th>Año</th>
+						<th>Plan Anual</th>
 						<th>Opciones</th>
 					</thead>
 					@foreach ($proyecto as $pro)
 					<tr>
-						<td>{{$pro -> id_proyecto}}</td>
+						
 						<td>{{$pro -> descripcion}}</td>
-						<td><a href="{{ Storage::url($pro->proyecto) }}" target="_blank" >proyecto</a></td>
+						<td><a href="{{ Storage::url($pro->proyecto) }}" target="_blank" >Plan Anual</a></td>
 						
 						<td>
 							<a href="{{URL::action('ProyectoController@edit', $pro -> id_proyecto)}}"><btn class="btn btn-info"><i class="material-icons" style="font-size:18px">border_color</i></btn></a>
