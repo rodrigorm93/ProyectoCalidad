@@ -14,7 +14,7 @@
 
 		<div class="form-group">
 			<label for="">Año</label>
-			<input type="text" name="descripcion" class="form-control">
+			<input type="text" name="descripcion" class="form-control" placeholder="YYYY">
 		</div>
 
 		<div class="form-group">

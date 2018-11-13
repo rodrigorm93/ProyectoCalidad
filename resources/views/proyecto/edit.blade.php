@@ -15,7 +15,7 @@
 
 		<div class="form-group">
 			<label for="">Año</label>
-			<input type="text" name="descripcion1" class="form-control" values="{{$proyecto->descripcion}}" placeholder="{{$proyecto->descripcion}}">
+			<input type="text" name="descripcion1" class="form-control" values="{{$proyecto->descripcion}}" placeholder="{{$proyecto->descripcion}}" >
 		</div>
 
 		<div class="form-group">
@@ -25,6 +25,7 @@
 		
 		<div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>
+                <button class="btn btn-danger" type="submit">Cancelar</button>
         </div>
 		{!! Form::close() !!}
 		

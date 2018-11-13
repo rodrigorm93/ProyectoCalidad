@@ -73,22 +73,44 @@ class ProyectoController extends Controller
     public function update(Request $request,$id)
     {
 
+      $pro = DB::table('proyecto')->where('id_proyecto', $id)->first();
+      $des = $pro->descripcion;
+      $arch = $pro->proyecto;
+
       try {
 
         DB::beginTransaction();
 
+        $proyecto = new Proyecto;
+
+
       $proyectoE = DB::table('proyecto')->where('id_proyecto', $id)->delete();
+
+      $proyecto->id_proyecto = $id;
 
        if($request->file('archivo1')){
         $file = $request->file('archivo1');
         $name = time().$file->getClientOriginalName();
         $file->move(public_path().'/storage/', $name);
+        $proyecto->proyecto = $name;
+      }
+      else{
+        $proyecto->proyecto = $arch;
       }
 
-      $proyecto = new Proyecto;
+      if ($request->input('descripcion1')) {
+        $proyecto->descripcion = $request->input('descripcion1');
+        # code...
+      }
+      else{
+        $proyecto->descripcion = $des;
 
-      $proyecto->descripcion = $request->input('descripcion1');
-      $proyecto->proyecto = $name;
+      }
+
+      
+
+      
+      
       $proyecto->save();
 
       DB::commit();
