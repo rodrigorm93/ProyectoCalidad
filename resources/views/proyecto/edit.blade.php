@@ -15,7 +15,7 @@
 
 		<div class="form-group">
 			<label for="">Año</label>
-			<input type="text" name="descripcion1" class="form-control" values="{{$proyecto->descripcion}}" type="year" placeholder="{{$proyecto->descripcion}}">
+			<input type="text" name="descripcion1" class="form-control" values="{{$proyecto->descripcion}}" placeholder="{{$proyecto->descripcion}}">
 		</div>
 
 		<div class="form-group">
