@@ -19,6 +19,12 @@
     {!!Html::style('admin/css/sb-admin-2.css')!!}
     {!!Html::style('admin/css/font-awesome.min.css')!!}
     {!!Html::style('admin/css/tabla_scroll.css')!!}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript" src="{{ URL::asset('js/Chart.bundle.js') }}"></script>
+      <script type="text/javascript" src="{{ URL::asset('js/Chart.bundle.min.js') }}"></script>
+      <script type="text/javascript" src="{{ URL::asset('js/Chart.js') }}"></script>
+      <script type="text/javascript" src="{{ URL::asset('js/Chart.min.js') }}"></script>
 
 </head>
 
@@ -224,6 +230,8 @@
     {!!Html::script('admin/js/bootstrap.min.js')!!}
     {!!Html::script('admin/js/metisMenu.min.js')!!}
     {!!Html::script('admin/js/sb-admin-2.js')!!}
+
+
 
     <!-- Permite exportar tablas html como excel -->
     <script src="{{asset('js/jquery.table2excel.js')}}"></script>
