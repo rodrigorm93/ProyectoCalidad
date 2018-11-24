@@ -111,6 +111,12 @@ Route::post('/noticias/updateNoticia','NoticiasController@updateNoticia');
 Route::get('/seccion_curso/reiniciarCurso','AsignacionController@reiniciarCurso');
 
 
+
+//VISTA ALUMNO 
+
+
+//Para ver las notas 
+Route::get('/libreta_notas/ver_libretaAlumno','NotasController@verNotas');
 //Rutas:
 
 

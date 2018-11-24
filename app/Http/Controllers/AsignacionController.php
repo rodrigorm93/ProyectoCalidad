@@ -365,8 +365,12 @@ class AsignacionController extends Controller
                    ->update(['asignacion' => 'No asignado']);
 
      //Eliminamos al alumno de un curso 
-       $nota = Notas::find($idAlumno[$cont]);
-       $nota->delete();
+
+     Notas::where('idAlumno',$idAlumno[$cont])
+             ->delete();
+
+      // $nota = Notas::find($idAlumno[$cont]);
+      // $nota->delete();
       
       DB::commit();
       $cont= $cont+1;

@@ -643,6 +643,52 @@ class NotasController extends Controller
 
 
     }
+
+
+    public function verNotas(Request $request)
+    {
+        $idAlumno=$this->auth->user()->id;
+        $idMateria = $request->get('idMateria');
+           
+            $libreta=DB::table('Notas as n')
+            ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
+            ->join ('Materia as m', 'm.idMateria', '=' ,'n.idMateria') 
+            ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')  
+            ->where('m.idMateria','=',$idMateria)
+            ->where('a.idAlumno','=',$idAlumno)         
+            ->select('a.nombre as nombre','a.apellido as apellido','m.nombre as materia',
+            'm.idCurso','c.grado','n.idAlumno','n.idMateria','n.n1 as 1'
+            ,'n.n2 as 2','n.n3 as 3','n.n4 as 4','n.n5 as 5','n.n6 as 6','n.n7 as 7','n.n8 as 8'
+            ,'n.n9 as 9','n.n10 as 10','n.n11 as 11','n.n12 as 12','n.promedio',
+            'a.promedioFinal','m.numeroNotas')
+            ->get();
+            
+
+            $materia=DB::table('Materia as m')
+            ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')
+            ->where('m.idMateria','=',$idMateria) 
+            ->get();       
+
+
+        //Para volver a cargar los cursos que aparecen a la izquierda,que son los cusos impartidos por el
+        //profesor
+        $year =  date("Y"); //para saber el año actual y solo cargar los cursos de ese año
+ 
+
+         $query=$this->auth->user()->id;
+         $cursos=DB::table('Alumno as a')
+         ->join ('Notas as n', 'n.idAlumno', '=' , 'a.idAlumno')
+         ->join ('Materia as m', 'm.idMateria', '=' , 'n.idMateria')
+         ->join ('Curso as c', 'c.idCurso', '=' , 'm.idCurso')
+         ->where('a.idAlumno','=',$query)       
+         ->where('c.year','=',$year)            
+         ->select('m.nombre','m.idMateria as idMateria')
+         ->paginate(50);
+
+
+
+        return view('libreta_notas.ver_libretaAlumno', ["libreta" => $libreta,"materia" => $materia,"curso" => $cursos]);
+    }
   
 
 

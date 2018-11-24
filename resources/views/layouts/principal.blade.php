@@ -115,6 +115,21 @@
                          
 						  </li>
               @endif
+
+              @if(Auth::user()->rol=='alumno')
+                    <li class="page-scroll">
+                          <a href="#" class="page-scroll" data-toggle="dropdown">
+                                <i ></i>
+                                <p style="color:#f1f1f1;">{{ Auth::user()->nombre}}</p>
+                            </a>
+                      
+                        
+						<ul class="dropdown-menu">
+                            <li ><a style="color:#000;"  href="menu">Mis Cursos</a></li>
+                            <li><a style="color:#000;" href="{{url('/logout')}}">Salir</a></li>
+                         
+						  </li>
+              @endif
               @if(Auth::user()->rol=='admin')
               <li class="page-scroll">
                           <a href="#" class="page-scroll" data-toggle="dropdown">

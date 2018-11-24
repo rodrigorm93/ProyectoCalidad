@@ -43,7 +43,7 @@ class UsuarioController extends Controller
 
                 return view('menu.admin'); 
             }
-            else{
+            else if($this->auth->user()->rol=='profesor') {
                 $query=$this->auth->user()->id;
                 $cursos=DB::table('materia as m')
                 ->join ('Curso as c', 'c.idCurso', '=' , 'm.idCurso')
@@ -58,6 +58,23 @@ class UsuarioController extends Controller
 
             
                 return view('menu.profesor',["curso"=> $cursos]);
+            }else{
+
+                $query=$this->auth->user()->id;
+                $cursos=DB::table('Alumno as a')
+                ->join ('Notas as n', 'n.idAlumno', '=' , 'a.idAlumno')
+                ->join ('Materia as m', 'm.idMateria', '=' , 'n.idMateria')
+                ->join ('Curso as c', 'c.idCurso', '=' , 'm.idCurso')
+                ->where('a.idAlumno','=',$query)       
+                ->where('c.year','=',$year)            
+                ->select('m.nombre','m.idMateria as idMateria')
+                ->paginate(50);
+
+            
+           
+
+            
+                return view('menu.alumno',["curso"=> $cursos]);
             }
             
         }
