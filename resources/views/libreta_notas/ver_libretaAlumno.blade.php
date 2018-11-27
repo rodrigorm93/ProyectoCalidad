@@ -3,92 +3,126 @@
 
 	<div class="row">
 		<div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
-        @foreach ($materia as $m)
-		@if($m -> ciclo == '0')
-			<h3>Notas: <FONT COLOR="green">{{$m->grado}} Año {{$m->year}} (Primer Ciclo Basico)</FONT></h3>
-    
-		@else
-		<h3>Libreta de Notas: <FONT COLOR="green">{{$m->grado}} Año {{$m->year}} (Segundo Ciclo Basico)</FONT></h3>
-		@endif
-			@endforeach
+		
+			<h3>Libreta de Notas: <FONT COLOR="green"></FONT></h3>
+			
+	
 		</div>	
-	</div>
-    
 	</div>
 
 	<div class="row">
 		<div id="div1" class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
 			<div   class="table-responsive">
 				@if(isset($libreta))
-				<table id="libreta" class="table table-striped table-bordered table-condensed table-hover">
-			
-				
+				<table id="LibretaNotas" class="table table-striped table-bordered table-condensed table-hover">
 					<thead>
-	
-                        <th>Materia</th>	
-						<th>Alumno</th>
-                        @foreach ($materia as $m)
-                        <?php
-                        $cont=1;
-                        $num=$m->numeroNotas;
-                        while($cont <= $num){
-                            echo "<th>N $cont </th>";
-                            
-                            $cont=$cont+1;
-
-                        }   
-                        ?>
-                        <th>Promedio</th>
-                        @endforeach  
+                    </tr>
+                 
+                      
+                        <tr align="center" valign="middle"> 
+                        <th rowspan="12">Alumno</th>
+                            <th rowspan="12">Materia</th>  
+                
+                        <th>N1</th>
+                        <th>N2</th>
+                        <th>N3</th>
+                        <th>N4</th>
+                        <th>N5</th>
+                        <th>N6</th>
+                        <th>N7</th>
+                        <th>N8</th>
+                        <th>N9</th>
+                        <th>N10</th>
+                        <th>N11</th>
+                        <th>N12</th>
+                        <th><FONT COLOR="green"><strong>Promedio Primer Semestre</strong></Font></th>
+                        <th>Promedio Segundo Semestre</th>
+                        <th>Promedio Final </th>
+                       
 
 					</thead>
 					@foreach ($libreta as $l)
 					<tr>
-                    <td>{{$l -> materia}}</td>
-						<td>{{$l -> nombre}} {{$l -> apellido}}</td>
-                    <?php
-                        $cont=1;
-                        $num=$l->numeroNotas;
-                        while($cont <= $num){
-                           // creamos tantas columnas como numero de notas tenga la materia
-                            echo "<th>{$l -> $cont}</th>";
-                            
-                            $cont=$cont+1;
-
-                        }   
-                        ?>
-                         @if($l->promedio <= 39 )
-                        <td><FONT COLOR="red"><strong>{{$l->promedio}}</strong></FONT></td>
+                    <td>{{$l -> nombre}} {{$l -> apellido}}</td>
+						<td>{{$l -> materia}}</td>
+						
+                        @if($l->numeroNotas == 12)
+                        <td><FONT COLOR="green"><strong>{{$l -> n1}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n2}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n3}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n4}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n5}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n6}}</strong></Font></td>
+                        <td><strong>{{$l -> n7}}</strong></td>
+                        <td><strong>{{$l -> n8}}</strong></td>
+                        <td><strong>{{$l -> n9}}</strong></td>
+                        <td><strong>{{$l -> n10}}</strong></td>
+                        <td><strong>{{$l -> n11}}</strong></td>
+                        <td><strong>{{$l -> n12}}</strong></td>
+                        <td><strong>{{$l -> promedio_s1}}</strong></td>
+                        <td>{{$l -> promedio_s2}}</td>
+                        <td>{{$l -> promedio}}</td>
+                      
+                        @elseif($l->numeroNotas == 8)
+                        <td><FONT COLOR="green"><strong>{{$l -> n1}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n2}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n3}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n4}}</strong></Font></td>
+                        <td><strong>{{$l -> n5}}</strong></td>
+                        <td><strong>{{$l -> n6}}</strong></td>
+                        <td><strong>{{$l -> n7}}</strong></td>
+                        <td><strong>{{$l -> n8}}</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{$l -> promedio_s1}}</td>
+                        <td>{{$l -> promedio_s2}}</td>
+                        <td>{{$l -> promedio}}</td>
+                      
                         @else
-                        <td><FONT COLOR="blue"><strong>{{$l->promedio}}</strong></FONT></td>
-                       @endif		
-						</td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n1}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n2}}</strong></Font></td>
+                        <td><FONT COLOR="green"><strong>{{$l -> n3}}</strong></Font></td>
+                        <td><strong>{{$l -> n4}}</strong></td>
+                        <td><strong>{{$l -> n5}}</strong></td>
+                        <td><strong>{{$l -> n6}}</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{$l -> promedio_s1}}</td>
+                        <td>{{$l -> promedio_s2}}</td>
+                        <td>{{$l -> promedio}}</td>
+              
+                        @endif
 					</tr>
-			
+                
 				@endforeach
-				</table>
-				@endif
+				</table>   
+				@endif  
 			</div>
-			
 		</div>
 	</div>
+    <div id="next_button" align="center">
+					<button id="exportar" class="btn btn-success" align="right">Exportar</button>
+	</div>
 
-<div id="next_button" align="left">
-					<button id="exportar" class="btn btn-success" align="left">Exportar</button>
-				</div>
-    	@push('scripts')
+    
+	@push('scripts')
     <script type="text/javascript">
 		$(document).ready(function () {
 			$("#exportar").click(function(){
-			  $("#libreta").table2excel({
-				name: "libreta de Notas",
-			    filename: "libreta de Notas",
+			  $("#LibretaNotas").table2excel({
+				name: "Libreta",
+			    filename: "Libreta",
 				fileext: ".xlsx"
 			  }); 
 			});
 		});
 	</script>
 	@endpush
-
 
 @stop

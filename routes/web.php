@@ -111,12 +111,19 @@ Route::post('/noticias/updateNoticia','NoticiasController@updateNoticia');
 Route::get('/seccion_curso/reiniciarCurso','AsignacionController@reiniciarCurso');
 
 
+//Para eliminar un aviso
+Route::get('/avisos/modal','AvisosController@destroyAviso');
 
 //VISTA ALUMNO 
 
 
 //Para ver las notas 
 Route::get('/libreta_notas/ver_libretaAlumno','NotasController@verNotas');
+
+
+//Para ver los avisos 
+Route::get('/avisos/ver_aviso_alum','AvisosController@ver_aviso_alum');
+
 //Rutas:
 
 
@@ -144,6 +151,8 @@ Route::resource('/usuarios','UserController');
 
 Route::resource('proyecto','ProyectoController');
 
+//ruta para mandar los avisos a los cursos
+Route::resource('avisos','AvisosController');
 
 Auth::routes();
 //para poder cerrar seccion

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Materias | Inscritas </title>
+    <title>Portal | Alumnos </title>
 
     <!-- Estilos CSS  -->
     {!!Html::style('profesor/css/extra.css')!!}
@@ -40,9 +40,9 @@
         <!-- Logo -->
         <a href="/menu" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>GM</b></span>
+          <span class="logo-mini"><b>PA</b></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Materias</b></span>
+          <span class="logo-lg"><b>Portal</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -94,7 +94,7 @@
       </header>
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
-      @foreach($curso as $cur)
+    
         <!-- sidebar: style can be found in sidebar.less -->
   
         <section class="sidebar">
@@ -109,7 +109,7 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>{{$cur->nombre}}</span>
+                <span>Información</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
 
@@ -118,22 +118,22 @@
 
              {!! Form::open(array('url'=>'libreta_notas/ver_libretaAlumno', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
                
-             <input type="hidden" name="idMateria" value="{{$cur->idMateria}}">
              
              <li><a href=""><i class="fa fa-circle-o">
                  <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Ver Notas</button>
               </i></a></li> 
               {!!Form::close()!!}
 
-
-              {!! Form::open(array('url'=>'notas/create', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
-             <input type="hidden" name="searchText" value="{{$cur->idMateria}}">
-             
-              <li><a href=""><i class="fa fa-circle-o">
-                  <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Citaciones apoderados</button>  
-              </i></a></li>
-              {{Form::close()}}
-
+            {!! Form::open(array('url'=>'avisos/ver_aviso_alum', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
+            
+            @foreach ($curso as $cu)
+            <input type="hidden" name="idCurso" value="{{$cu->idCurso}}">
+            @endforeach
+               <li><a href=""><i class="fa fa-circle-o">
+                   <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Mensajes</button>
+                </i></a></li> 
+                {!!Form::close()!!}
+        
 
 
           
@@ -142,7 +142,7 @@
 
    
         </section>
-      @endforeach
+
 
         <!-- /.sidebar -->
       </aside>
@@ -162,7 +162,6 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Gestion de Materias</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     

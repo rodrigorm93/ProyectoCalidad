@@ -196,10 +196,28 @@
                             </li>
                             </ul>
                         </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-film fa-fw"></i> Avisos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/avisos/create"><i class='fa fa-plus fa-fw'></i>Enviar</a>
+                                </li>
+                                
+                                 <li>
+                                    <a href="avisos"><i class='fa fa-list-ol fa-fw'></i>Mostrar</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li>
                                 
                                 <a href="/libreta_notas/grado"><i class='fa fa-list-ol fa-fw'></i>Libreta de notas</a>
                             </li>
+
+                            
+
+                          
                     </ul>
                 </div>
             </div>
