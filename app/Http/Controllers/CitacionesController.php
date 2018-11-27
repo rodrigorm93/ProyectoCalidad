@@ -114,6 +114,33 @@ public function store(Request $request)
   return Redirect::to('/menu')->with('success2', "Se han ingresado los datos correctamente");
 }
 
+public function edit($id_citacion)
+{
+    $citacion = DB::table('citaciones')->where('id_citacion', $id_citacion)->first();
+    
+    return view("citaciones.edit", ['citacion' => $citacion]);
+   
+
+}
+
+public function updateCitacion(Request $request)
+{
+$id_citacion= $request->get('idCitacion');
+$titulo = $request->get('titulo');
+$mensaje = $request->get('descripcion');
+$time = time(); 
+$fecha_actual=date("Y-m-d H:i:s");
+
+
+
+Citacion::where('id_citacion', '=', $id_citacion)
+->update(['titulo' => $titulo],['mensaje' => $mensaje],['fecha' => $fecha_actual]);
+
+  return Redirect::to('/citaciones');
+}
+
+
+
 
 public function destroyCitacion(Request $request)
 {
@@ -133,7 +160,7 @@ public function destroyCitacion(Request $request)
   }
 
   //alert()->success('La noticia ha sido Eliminada.', '¡Listo!')->persistent('Cerrar');
-  return Redirect::to('/citaciones');
+  return Redirect::to('/citaciones')->with('success2', "Registro Eliminado");;
 
 
 }

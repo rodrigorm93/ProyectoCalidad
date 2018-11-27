@@ -36,7 +36,7 @@
                         <td>{{$c -> fecha}}</td>
 
 						<td>
-                        <a href="{{URL::action('AvisosController@edit', $c -> id_citacion)}}"><btn class="btn btn-info"><i class="material-icons" style="font-size:18px">border_color</i></btn></a>
+                        <a href="{{URL::action('CitacionesController@edit', $c -> id_citacion)}}"><btn class="btn btn-info"><i class="material-icons" style="font-size:18px">border_color</i></btn></a>
 						<a href="" data-target="#modal-delete-{{$c->id_citacion}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i></btn></a>
 							
 						</td>

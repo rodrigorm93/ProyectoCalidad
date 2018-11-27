@@ -130,6 +130,8 @@ Route::get('/avisos/ver_aviso_alum','AvisosController@ver_aviso_alum');
 
 //Para ver las citaciones 
 Route::get('/citaciones/ver_citacion_alum','CitacionesController@ver_citacion_alum');
+//Actualizar citaciones
+Route::post('/citaciones/updateCitacion','CitacionesController@updateCitacion');
 
 
 
