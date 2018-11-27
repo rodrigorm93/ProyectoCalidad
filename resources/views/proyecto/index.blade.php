@@ -40,7 +40,12 @@
 					</tr>
 					@include('proyecto.modal')
 					@endforeach
+
+
+
+
 				</table>
+
 				@endif
 			</div>
 			{{$proyecto->render()}}

@@ -145,6 +145,21 @@
                          
 						  </li>
               @endif
+              @if(Auth::user()->rol=='utp')
+              <li class="page-scroll">
+                          <a href="#" class="page-scroll" data-toggle="dropdown">
+                                <i ></i>
+                                <p style="color:#f1f1f1;">{{ Auth::user()->nombre}}</p>
+                            </a>
+                      
+                        
+            <ul class="dropdown-menu">
+                            <li ><a style="color:#000;"  href="grafico">Gestionar</a></li>
+              <li class="divider"></li>
+                            <li><a style="color:#000;" href="{{url('/logout')}}">Salir</a></li>
+                         
+              </li>
+              @endif
 						  @else
                     <li><a href="/login2" class="button special">Login</a></li>
                     @endif

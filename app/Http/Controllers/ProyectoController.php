@@ -36,6 +36,12 @@ class ProyectoController extends Controller
       return view('proyecto.index', compact('proyecto'));
     }
 
+    public function show(){
+
+     $proyecto = Proyecto::orderBy('id_proyecto', 'ASC')->paginate(10);
+      return view('proyecto.show', compact('proyecto'));
+    }
+
 
     public function create(Guard $auth){
 
@@ -106,12 +112,7 @@ class ProyectoController extends Controller
         $proyecto->descripcion = $des;
 
       }
-
-      
-
-      
-      
-      $proyecto->save();
+       $proyecto->save();
 
       DB::commit();
           

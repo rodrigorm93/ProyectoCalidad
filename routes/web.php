@@ -161,6 +161,7 @@ Route::resource('/auth','AuthController');
 Route::resource('/usuarios','UserController');
 
 Route::resource('proyecto','ProyectoController');
+Route::resource('grafico','GraficoController');
 
 //ruta para mandar los avisos a los cursos
 Route::resource('avisos','AvisosController');
