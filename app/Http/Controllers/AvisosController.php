@@ -147,4 +147,5 @@ public function ver_aviso_alum(Request $request)
 
 }
 
+
 }

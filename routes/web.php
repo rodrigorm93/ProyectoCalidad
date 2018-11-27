@@ -114,6 +114,9 @@ Route::get('/seccion_curso/reiniciarCurso','AsignacionController@reiniciarCurso'
 //Para eliminar un aviso
 Route::get('/avisos/modal','AvisosController@destroyAviso');
 
+//Para eliminar una citacion
+Route::get('/citaciones/modal','CitacionesController@destroyCitacion');
+
 //VISTA ALUMNO 
 
 
@@ -124,6 +127,14 @@ Route::get('/libreta_notas/ver_libretaAlumno','NotasController@verNotas');
 //Para ver los avisos 
 Route::get('/avisos/ver_aviso_alum','AvisosController@ver_aviso_alum');
 
+
+//Para ver las citaciones 
+Route::get('/citaciones/ver_citacion_alum','CitacionesController@ver_citacion_alum');
+
+
+
+//citaicones del profesor
+Route::get('/citaciones/create2','CitacionesController@create2');
 //Rutas:
 
 
@@ -153,6 +164,9 @@ Route::resource('proyecto','ProyectoController');
 
 //ruta para mandar los avisos a los cursos
 Route::resource('avisos','AvisosController');
+
+//ruta para mandar los citaciones a alumnos especificos
+Route::resource('citaciones','CitacionesController');
 
 Auth::routes();
 //para poder cerrar seccion

@@ -133,6 +133,16 @@
                    <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Mensajes</button>
                 </i></a></li> 
                 {!!Form::close()!!}
+
+            {!! Form::open(array('url'=>'citaciones/ver_citacion_alum', 'method'=>'GET','autocomplete'=>'off', 'role'=>'search')) !!}
+            
+            @foreach ($curso as $cu)
+            <input type="hidden" name="idCurso" value="{{$cu->idCurso}}">
+            @endforeach
+               <li><a href=""><i class="fa fa-circle-o">
+                   <button id="seleccion" type="submit" onmouseover="this.backgroundColor='green'" onmouseout="this.backgroundColor=''">Citaciones</button>
+                </i></a></li> 
+                {!!Form::close()!!}
         
 
 
