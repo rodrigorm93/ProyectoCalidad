@@ -205,7 +205,7 @@
                                 </li>
                                 
                                  <li>
-                                    <a href="avisos"><i class='fa fa-list-ol fa-fw'></i>Mostrar</a>
+                                    <a href="/avisos"><i class='fa fa-list-ol fa-fw'></i>Mostrar</a>
                                 </li>
                             </ul>
                         </li>
