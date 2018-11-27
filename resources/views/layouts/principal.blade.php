@@ -82,10 +82,10 @@
                     <a class="page-scroll" href="#home">Home</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#about">¿Quienes Somos?</a>
+                    <a class="page-scroll" href="#services">¿Quienes Somos?</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#services">Plan ANUAL</a>
+                    <a class="page-scroll" href="#about">Plan Anual</a>
                   </li>
                   <li>
                     <a class="page-scroll" href="#team">Cuerpo Docente</a>
@@ -189,7 +189,7 @@
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">PALN ANUAL</a>
+                  <a class="ready-btn right-btn page-scroll" href="#about">Plan Anual</a>
                   <a class="ready-btn page-scroll" href="#about">Leer Más</a>
                 </div>
               </div>
@@ -214,7 +214,7 @@
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">PLAN ANUAL</a>
+                  <a class="ready-btn right-btn page-scroll" href="#services">Plan Anual</a>
                   <a class="ready-btn page-scroll" href="#about">Leer Más</a>
                 </div>
               </div>
@@ -251,65 +251,8 @@
   </div>
   <!-- End Slider Area -->
 
-  <!-- Start About area -->
-  <div id="about" class="about-area area-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="section-headline text-center">
-            <h2>About eBusiness</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <!-- single-well start-->
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="well-left">
-            <div class="single-well">
-              <a href="#">
-								  <img src="img/about/1.jpg" alt="">
-								</a>
-            </div>
-          </div>
-        </div>
-        <!-- single-well end-->
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="well-middle">
-            <div class="single-well">
-              <a href="#">
-                <h4 class="sec-head">project Maintenance</h4>
-              </a>
-              <p>
-                Redug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure aspernatur sit adipisci quaerat unde at nequeRedug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure
-              </p>
-              <ul>
-                <li>
-                  <i class="fa fa-check"></i> Interior design Package
-                </li>
-                <li>
-                  <i class="fa fa-check"></i> Building House
-                </li>
-                <li>
-                  <i class="fa fa-check"></i> Reparing of Residentail Roof
-                </li>
-                <li>
-                  <i class="fa fa-check"></i> Renovaion of Commercial Office
-                </li>
-                <li>
-                  <i class="fa fa-check"></i> Make Quality Products
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- End col-->
-      </div>
-    </div>
-  </div>
-  <!-- End About area -->
-
   <!-- Start Service area -->
-  <div id="services" class="services-area area-padding">
+  <div id="about" class="services-area area-padding">
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -336,6 +279,13 @@
               <!-- end about-details -->
               @endforeach
               <!-- end about-details -->
+        <!-- End col-->
+      </div>
+    </div>
+  </div>
+  <!-- End About area -->
+
+  
             </div>
           </div>
         </div>
@@ -344,172 +294,48 @@
   </div>
   <!-- End Service area -->
 
-  <!-- our-skill-area start -->
-  <div class="our-skill-area fix hidden-sm">
-    <div class="test-overly"></div>
-    <div class="skill-bg area-padding-2">
-      <div class="container">
-        <!-- section-heading end -->
-        <div class="row">
-          <div class="skill-text">
-            <!-- single-skill start -->
-            <div class="col-xs-12 col-sm-3 col-md-3 text-center">
-              <div class="single-skill">
-                <div class="progress-circular">
-                  <input type="text" class="knob" value="0" data-rel="95" data-linecap="round" data-width="175" data-bgcolor="#fff" data-fgcolor="#3EC1D5" data-thickness=".20" data-readonly="true" disabled>
-                  <h3 class="progress-h4">Web Design</h3>
-                </div>
-              </div>
-            </div>
-            <!-- single-skill end -->
-            <!-- single-skill start -->
-            <div class="col-xs-12 col-sm-3 col-md-3 text-center">
-              <div class="single-skill">
-                <div class="progress-circular">
-                  <input type="text" class="knob" value="0" data-rel="85" data-linecap="round" data-width="175" data-bgcolor="#fff" data-fgcolor="#3EC1D5" data-thickness=".20" data-readonly="true" disabled>
-                  <h3 class="progress-h4">Graphics Design</h3>
-                </div>
-              </div>
-            </div>
-            <!-- single-skill end -->
-            <!-- single-skill start -->
-            <div class="col-xs-12 col-sm-3 col-md-3 text-center">
-              <div class="single-skill">
-                <div class="progress-circular">
-                  <input type="text" class="knob" value="0" data-rel="75" data-linecap="round" data-width="175" data-bgcolor="#fff" data-fgcolor="#3EC1D5" data-thickness=".20" data-readonly="true" disabled>
-                  <h3 class="progress-h4">Php Developer</h3>
-                </div>
-              </div>
-            </div>
-            <!-- single-skill end -->
-            <!-- single-skill start -->
-            <div class="col-xs-12 col-sm-3 col-md-3 text-center">
-              <div class="single-skill">
-                <div class="progress-circular">
-                  <input type="text" class="knob" value="0" data-rel="65" data-linecap="round" data-width="175" data-bgcolor="#fff" data-fgcolor="#3EC1D5" data-thickness=".20" data-readonly="true" disabled>
-                  <h3 class="progress-h4">Java Script</h3>
-                </div>
-              </div>
-            </div>
-            <!-- single-skill end -->
+  <!-- Start Suscrive Area -->
+  <div class="suscribe-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
+          <div class="suscribe-text text-center">
+            <h3>PROYECTO EDUCATIVO</h3>
+              
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- our-skill-area end -->
-
-  <!-- Faq area start -->
-  <div class="faq-area area-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="section-headline text-center">
-            <h2>Faq Question</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="faq-details">
-            <div class="panel-group" id="accordion">
-              <!-- Panel Default -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="check-title">
-											<a data-toggle="collapse" class="active" data-parent="#accordion" href="#check1">
-                                                <span class="acc-icons"></span>Consectetur adipisicing elit.
-											</a>
-										</h4>
-                </div>
-                <div id="check1" class="panel-collapse collapse in">
-                  <div class="panel-body">
-                    <p>
-                      Redug Lefes dolor sit amet, consectetur adipisicing elit. Aspernatur, tempore, commodi quas mollitia dolore magnam quidem repellat, culpa voluptates laboriosam maiores alias accusamus recusandae vero
-                    </p>
-                  </div>
-                </div>
-              </div>
               <!-- End Panel Default -->
-              <!-- Panel Default -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="check-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#check2">
-                                                <span class="acc-icons"></span> Dolore magnam quidem repellat.
-											</a>
-										</h4>
-                </div>
-                <div id="check2" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <p>
-                      Redug Lefes dolor sit amet, consectetur adipisicing elit. Aspernatur, tempore, commodi quas mollitia dolore magnam quidem repellat, culpa voluptates laboriosam maiores alias accusamus recusandae vero aperiam sint nulla beatae eos.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!-- End Panel Default -->
-              <!-- Panel Default -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="check-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#check3">
-                                                <span class="acc-icons"></span>Redug Lefes dolor sit.
-											</a>
-										</h4>
-                </div>
-                <div id="check3" class="panel-collapse collapse ">
-                  <div class="panel-body">
-                    <p>
-                      Redug Lefes dolor sit amet, consectetur adipisicing elit. Aspernatur, tempore, commodi quas mollitia dolore magnam quidem repellat, culpa voluptates laboriosam maiores alias accusamus recusandae vero aperiam sint nulla beatae eos.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!-- End Panel Default -->
-              <!-- Panel Default -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="check-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#check4">
-                                                <span class="acc-icons"></span>Maiores alias accusamus
-											</a>
-										</h4>
-                </div>
-                <div id="check4" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <p>
-                      Redug Lefes dolor sit amet, consectetur adipisicing elit. Aspernatur, tempore, commodi quas mollitia dolore magnam quidem repellat, culpa voluptates laboriosam maiores alias accusamus recusandae vero aperiam sint nulla beatae eos.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              
               <!-- End Panel Default -->
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div id ="services" class="col-md-12 col-sm-12 col-xs-12">
           <div class="tab-menu">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
               <li class="active">
-                <a href="#p-view-1" role="tab" data-toggle="tab">Project</a>
+                <a href="#p-view-1" role="tab" data-toggle="tab">Visión</a>
               </li>
               <li>
-                <a href="#p-view-2" role="tab" data-toggle="tab">Planning</a>
+                <a href="#p-view-2" role="tab" data-toggle="tab">Misión</a>
               </li>
-              <li>
-                <a href="#p-view-3" role="tab" data-toggle="tab">Success</a>
-              </li>
+      
             </ul>
           </div>
           <div class="tab-content">
             <div class="tab-pane active" id="p-view-1">
               <div class="tab-inner">
                 <div class="event-content head-team">
-                  <h4>Project</h4>
+                  <h4>Visión</h4>
                   <p>
-                    Redug Lares dolor sit amet, consectetur adipisicing elit. Animi vero excepturi magnam ducimus adipisci voluptas, praesentium maxime necessitatibus in dolor dolores unde ab, libero quo. Aut, laborum sequi.
+                  Respetar, valorar y promover la diversidad de pensamiento contribuyendo a 
+                  la sociedad con personas integrales, libres con capacidad para tomar sus propias decisiones y 
+                  que puedan desenvolverse con valores sólidos, comprometidos con su quehacer y felices en el camino que escojan para sus vidasRespetar, valorar y promover la diversidad de pensamiento contribuyendo a la sociedad con personas integrales, libres con capacidad para tomar sus propias decisiones y que puedan desenvolverse con valores sólidos, comprometidos con su quehacer y 
+                  felices en el camino que escojan para sus vidas
                   </p>
                   <p>
                     voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas, praesentium architecto ducimus, doloribus fuga itaque omnis placeat.
@@ -520,13 +346,11 @@
             <div class="tab-pane" id="p-view-2">
               <div class="tab-inner">
                 <div class="event-content head-team">
-                  <h4>Planning</h4>
+                  <h4>Misión</h4>
                   <p>
-                    voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas, praesentium architecto ducimus, doloribus fuga itaque omnis.
+                  Educar integralmente, a través del desarrollo de habilidades y capacidades intelectuales, físicas, socio-afectivas y culturales; utilizando estrategias acorde a las necesidades de los estudiantes.
                   </p>
-                  <p>
-                    Redug Lares dolor sit amet, consectetur adipisicing elit. Animi vero excepturi magnam ducimus adipisci voluptas, praesentium maxime necessitatibus in dolor dolores unde ab, libero quo. Aut.
-                  </p>
+                
                 </div>
               </div>
             </div>
@@ -551,33 +375,7 @@
   </div>
   <!-- End Faq Area -->
 
-  <!-- Start Wellcome Area -->
-  <div class="wellcome-area">
-    <div class="well-bg">
-      <div class="test-overly"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="wellcome-text">
-              <div class="well-text text-center">
-                <h2>Welcome To Our eBusiness</h2>
-                <p>
-                  Busuness Lorem ipsum dolor sit amet, consectetur adipiscing elit.luctus est eget congue.
-                </p>
-                <div class="subs-feilds">
-                  <div class="suscribe-input">
-                    <input type="email" class="email form-control width-80" id="sus_email" placeholder="Email">
-                    <button type="submit" id="sus_submit" class="add-btn width-20">Subscribe</button>
-                    <div id="msg_Submit" class="h3 text-center hidden"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <!-- End Wellcome Area -->
 
   <!-- Start team Area -->
@@ -586,7 +384,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>Our special Team</h2>
+            <h2>Cuerpo Docente</h2>
           </div>
         </div>
       </div>
@@ -730,21 +528,7 @@
   </div>
   <!-- End Team Area -->
 
-  <!-- Start reviews Area -->
-  <div class="reviews-area hidden-xs">
-    <div class="work-us">
-      <div class="work-left-text">
-        <a href="#">
-						<img src="img/about/2.jpg" alt="">
-					</a>
-      </div>
-      <div class="work-right-text text-center">
-        <h2>working with us</h2>
-        <h5>Web Design, Ready Home, Construction and Co-operate Outstanding Buildings.</h5>
-        <a href="#contact" class="ready-btn">Contact us</a>
-      </div>
-    </div>
-  </div>
+  <
   <!-- End reviews Area -->
 
 
@@ -754,206 +538,55 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>Our Portfolio</h2>
+            <h2>PROCESO DE ADMISIÓN</h2>
+            <p><strong>ESCUELA ESPECIAL EVANGÉLICA PRESBITERIANA</strong></p>
           </div>
         </div>
       </div>
   
 
       <div class="row">
-        <!-- Start Portfolio -page -->
-        <div class="awesome-project-1 fix">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="awesome-menu ">
-              <ul class="project-menu">
-                <li>
-                  <a href="#" class="active" data-filter="*">All</a>
-                </li>
-                <li>
-                  <a href="#" data-filter=".development">Development</a>
-                </li>
-                <li>
-                  <a href="#" data-filter=".design">Design</a>
-                </li>
-                <li>
-                  <a href="#" data-filter=".photo">Photoshop</a>
-                </li>
-              </ul>
-            </div>
+        
           </div>
-        </div>
-        <div class="awesome-project-content">
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 design development">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/1.jpg" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/1.jpg">
-                      <h4>Business City</h4>
-                      <span>Web Development</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 photo">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/2.jpg" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/2.jpg">
-                      <h4>Blue Sea</h4>
-                      <span>Photosho</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 design">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/3.jpg" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/3.jpg">
-                      <h4>Beautiful Nature</h4>
-                      <span>Web Design</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 photo development">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/4.jpg" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/4.jpg">
-                      <h4>Creative Team</h4>
-                      <span>Web design</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 development">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/5.jpg" alt="" /></a>
-                <div class="add-actions text-center text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/5.jpg">
-                      <h4>Beautiful Flower</h4>
-                      <span>Web Development</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 design photo">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/6.jpg" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/6.jpg">
-                      <h4>Night Hill</h4>
-                      <span>Photoshop</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
+          <p>
+          estimada comunidad educativa, a modo de ajustarnos a la normativa educacional vigente, 
+          conforme a lo prescrito en el D.F.L Nº 2 de 2009, de la Ley Nº 20.370, con las normas no derogadas del 
+          D.F.L. Nº 1, de 2005, D.F.L. Nº 2 de 1998, D.F.L. Nº 2,de 1996, la Ley 20.609, la Ley 20.529, en el decreto Nº 315 del 2010, la Resolución Nº 1600 de 2008 y según lo dispuesto en la Ley Nº 20.845, es que debemos informar a ustedes lo siguiente respecto del proceso de admisión a primeros básicos a nuestro establecimiento para el año 2018: INFORMACIÓN DEL ESTABLECIMIENTO: Modalidad de Enseñanza : Enseñanza Básica y Enseñanza Media Científico – Humanista. Dependencia : Particular Subvencionado con Financiamiento Compartido en Enseñanza Básica y Enseñanza Media. Cobro Mensual en Enseñanza Básica : 12.500 pesos Proyectos en Funcionamiento : Proyecto de Integración Escolar de 1º a 8º Básico (PIE) Subvención Escolar Preferencial (SEP) Capacidad Normativa De Primero Básico : 135 estudiantes Vacantes Disponibles 1º Básico : 135 Jornada de Funcionamiento Primeros Básicos : Tarde (14:00 a 19:00 horas y 2 días de 14:00 a 
+          19:45 horas) Postulación 1º Básicos : Exclusivamente vía web en www.iabtalca.cl
+ </p>
+
+        <p>a).- PROCESO DE POSTULACIÓN INTERNA:  13 Y 14 DE SEPTIEMBRE 2017</p>
+        <p><strong>POSTULAN EN ESTE PROCESO: </strong> Hijos de Funcionarios, hermanos de estudiantes matriculados en nuestro establecimiento e hijos o hermanos de ex-alumnos.
+        <p><strong>CRITERIOS DE ADMISIÓN:</strong> Los criterios admisión a nuestro Instituto son:
+        
+        <ul style="list-style-type:circle">
+            <li>Tener 6 años cumplidos al 31 de marzo del 2018 (esto será verificado en página web de registro civil, de ser inscrita una postulación que no cumpla este criterio, se asumirá como nula por no ceñirse a 
+            lo estipulado en los criterios de admisión).</li>
+        <li>Adherir al Proyecto Educativo Institucional y Reglamento Interno de Convivencia Escolar (disponible en www.iabtalca.cl)
+            </li>
+        </ul>
+
+        <p><strong>TENDRÁN PRIORIDAD DE INGRESO:</strong> En caso que el número de postulaciones de este proceso interno superen la capacidad normativa disponible, la prioridad de ingreso será la siguiente:</p>
+
+          <ol>
+
+            <li value="1">Los postulantes hijos de un/a funcionario/a. </li>
+
+            <li> Postulante que tenga un hermano matriculado en nuestro establecimiento. </li>
+
+            <li> Postulante hijo o hermano de un exalumno de nuestro establecimiento (Egresado de 4to Medio). </li>
+
+            </ol>
+
+
+
+
         </div>
       </div>
     </div>
   </div>
   <!-- awesome-portfolio end -->
-  <!-- start pricing area -->
-  <div id="pricing" class="pricing-area area-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="section-headline text-center">
-            <h2>Pricing Table</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <div class="pri_table_list">
-            <h3>basic <br/> <span>$80 / month</span></h3>
-            <ol>
-              <li class="check">Online system</li>
-              <li class="check cross">Full access</li>
-              <li class="check">Free apps</li>
-              <li class="check">Multiple slider</li>
-              <li class="check cross">Free domin</li>
-              <li class="check cross">Support unlimited</li>
-              <li class="check">Payment online</li>
-              <li class="check cross">Cash back</li>
-            </ol>
-            <button>sign up now</button>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <div class="pri_table_list active">
-            <span class="saleon">top sale</span>
-            <h3>standard <br/> <span>$110 / month</span></h3>
-            <ol>
-              <li class="check">Online system</li>
-              <li class="check">Full access</li>
-              <li class="check">Free apps</li>
-              <li class="check">Multiple slider</li>
-              <li class="check cross">Free domin</li>
-              <li class="check">Support unlimited</li>
-              <li class="check">Payment online</li>
-              <li class="check cross">Cash back</li>
-            </ol>
-            <button>sign up now</button>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <div class="pri_table_list">
-            <h3>premium <br/> <span>$150 / month</span></h3>
-            <ol>
-              <li class="check">Online system</li>
-              <li class="check">Full access</li>
-              <li class="check">Free apps</li>
-              <li class="check">Multiple slider</li>
-              <li class="check">Free domin</li>
-              <li class="check">Support unlimited</li>
-              <li class="check">Payment online</li>
-              <li class="check">Cash back</li>
-            </ol>
-            <button>sign up now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End pricing table area -->
+  
   <!-- Start Testimonials -->
   <div class="testimonials-area">
     <div class="testi-inner area-padding">
@@ -1011,7 +644,9 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="section-headline text-center">
-              <h2>Ultimas Noticias</h2>
+              <h2>Noticias</h2>
+              <h4>Enterate de nuestras Actividades y Noticias aquí</h4>
+              <BR><BR><BR>
             </div>
           </div>
         </div>
@@ -1025,13 +660,14 @@
         </div>
 
         <div class="single-blog">
+        <BR><BR>
         <center>
         <span>
         <a href="noticias" class="ready-btn page-scroll" >Ver Todas</a>
         </span>
         </center>
        </div>
-   
+       <BR><BR><BR>
 
       </div>
     </div>
