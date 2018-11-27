@@ -132,7 +132,23 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
 
     public function show($id)
     {
-    	return view("alumno.show", ["usuario"=>User::findOrFail($id)]);
+    	         
+            $usuarios = DB::table('users as u')
+            ->join ('Alumno as a', 'a.idAlumno', '=' , 'u.id')
+            
+            ->where('estado', '<>', 'inactivo')
+            ->select('u.id as id',
+                    'u.digito as digito',
+                    'u.nombre as nombre',
+                    'u.apellido as apellido',
+                    'u.email as email',
+                    'u.genero as genero',
+                    'u.edad as edad',   
+                    'a.ingreso as ingreso'
+                    )
+            ->paginate(15);
+
+            return view('alumno.show', ["usuarios" => $usuarios]);
     }
 
     public function edit($id)
