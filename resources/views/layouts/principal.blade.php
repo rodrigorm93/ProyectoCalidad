@@ -205,7 +205,7 @@
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
                   <a class="ready-btn right-btn page-scroll" href="#about">Plan Anual</a>
-                  <a class="ready-btn page-scroll" href="#about">Leer Más</a>
+                  <a class="ready-btn page-scroll" href="#services">Leer Más</a>
                 </div>
               </div>
             </div>
@@ -229,8 +229,8 @@
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">Plan Anual</a>
-                  <a class="ready-btn page-scroll" href="#about">Leer Más</a>
+                  <a class="ready-btn right-btn page-scroll" href="#about">Plan Anual</a>
+                  <a class="ready-btn page-scroll" href="#services">Leer Más</a>
                 </div>
               </div>
             </div>
