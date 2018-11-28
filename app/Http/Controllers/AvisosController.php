@@ -42,7 +42,6 @@ class AvisosController extends Controller
         ->select('av.id_aviso',
                   'av.mensaje',
                   'av.fecha',
-                  'av.id_curso',
                   'av.titulo'
                   
                   )
@@ -57,10 +56,9 @@ class AvisosController extends Controller
 
 public function create(){
 
-    $cursos = DB::table('curso')
-    ->get();
+ 
 
-    return view('avisos.create',['cursos'=> $cursos]);
+    return view('avisos.create');
 }
 
 public function store(Request $request)
@@ -68,16 +66,12 @@ public function store(Request $request)
     $time = time(); 
     $fecha_actual=date("Y-m-d H:i:s");
 
-    $idCurso1=$request->get('curso');
-
     $titulo=$request->get('titulo');
- //para extrar solo el id y no la cadena completa(funciona si el id es de dos digitos) 
-  $idCurso=substr($idCurso1,0,3);
+
 
     $aviso = new Aviso;
     $aviso->mensaje=$request->get('descripcion');
     $aviso->fecha=$fecha_actual;
-    $aviso->id_curso=$idCurso;
     $aviso->titulo=$titulo;
 
 
@@ -117,17 +111,15 @@ public function ver_aviso_alum(Request $request)
 {
   
     $year =  date("Y"); 
-    $id_curso=$request->get('idCurso');
+   
 
     $avisos = DB::table('avisos as av')
     ->select('av.id_aviso',
               'av.mensaje',
               'av.fecha',
-              'av.id_curso',
               'av.titulo'
               
               )
-      ->where('av.id_curso',$id_curso)
       ->orderBy('av.id_aviso', 'desc')
       ->paginate(50);
 

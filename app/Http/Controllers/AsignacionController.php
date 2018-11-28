@@ -61,7 +61,8 @@ class AsignacionController extends Controller
                 ->join ('Alumno as a', 'a.idAlumno', '=' ,'n.idAlumno') 
                 ->join ('Materia as m', 'm.idMateria', '=' ,'n.idMateria') 
                 ->join ('Curso as c', 'c.idCurso', '=' ,'m.idCurso')  
-                ->where('c.idCurso','=',$idCurso)       
+                ->where('c.idCurso','=',$idCurso)   
+                ->where('a.asignacion','=','ASIGNADO')      
                 ->select('a.nombre as nombre','a.apellido as apellido','m.nombre as materia',
                 'm.idCurso','c.grado','n.idAlumno','n.idMateria')
                 ->orderBy('a.idAlumno','dec')
@@ -366,8 +367,8 @@ class AsignacionController extends Controller
 
      //Eliminamos al alumno de un curso 
 
-     Notas::where('idAlumno',$idAlumno[$cont])
-             ->delete();
+     //Notas::where('idAlumno',$idAlumno[$cont])
+            // ->delete();
 
       // $nota = Notas::find($idAlumno[$cont]);
       // $nota->delete();

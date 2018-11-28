@@ -31,7 +31,12 @@
                     
                     {!!Form::open(array('url'=>'libreta_notas/ver_libreta', 'method'=>'GET', 'autocomplete'=>'off'))!!}
                 {{Form::token()}}
-						<td>{{$c -> grado}}</td>
+                             @if($c -> ciclo == '0')
+                            <td>{{$c -> grado}} Año {{$c -> year}} (Primer Ciclo Basico)</td>
+                            @else
+                            <td>{{$c -> grado}} Año {{$c -> year}} (Segundo Ciclo Basico)</td>
+                            @endif
+
                         <input id="idCurso" type="hidden" name="idCurso" value="{{$c -> idCurso}}">
                         
                         

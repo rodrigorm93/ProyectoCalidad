@@ -77,11 +77,20 @@ class UsuarioController extends Controller
                 ->select('m.nombre','m.idMateria as idMateria','c.idCurso')
                 ->paginate(50);
 
+                $avisos = DB::table('avisos as av')
+                ->select('av.id_aviso',
+                          'av.mensaje',
+                          'av.fecha',
+                          'av.titulo'
+                          
+                          )
+                  ->orderBy('av.id_aviso', 'desc')
+                  ->paginate(50);
             
            
 
             
-                return view('menu.alumno',["curso"=> $cursos]);
+                return view('avisos.ver_aviso_alum',["curso"=> $cursos],["aviso"=> $avisos]);
             }
             
         }

@@ -86,7 +86,7 @@ class CursoController extends Controller
     public function store(Request $request)
     {   
     	
-            $year =  date("Y");
+           // $year =  date("Y");
 
               //Veremos en que semestre estamos
         $fecha_actual = strtotime(date("d-m-Y H:i:00",time()));
@@ -114,7 +114,7 @@ class CursoController extends Controller
             $curso = new Curso;
             $curso->grado=$request->get('grado');
             $curso->ciclo=$numCiclo;
-            $curso->year = $year;
+            $curso->year =$request->get('year');;
             $curso->save();
 
   

@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="row">
-		<div id="div1" class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
+		<div  class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
 			<div   class="table-responsive">
             @foreach ($aviso as $av)
             <div class="post-information">
@@ -30,7 +30,7 @@
 			
                 @endforeach
 
-
+	{{$aviso->render()}}
 
 			</div>
 		</div>

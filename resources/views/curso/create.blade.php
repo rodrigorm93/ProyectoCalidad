@@ -23,7 +23,7 @@
 
             <div class="form-group">
                 <label for="grado">Curso: </label>
-                <input type="text" name="grado" placeholder="Ej: primero basico">
+                <input type="text" name="grado" placeholder="Ej: primero basico" required>
             </div>
 
               <div class="form-group">
@@ -33,6 +33,11 @@
                     <option>Segundo Ciclo Basico</option>
                     </select>
                 </div>
+
+<div class="form-group">
+                <label for="year">Año: </label>
+            <input type="text" name="year" placeholder="Ej: 2018"  minlength="4" maxlength="4" required>
+            </div>
 
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>

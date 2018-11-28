@@ -9,15 +9,6 @@
                     <fieldset>
                         <legend class="text-center header">Enviar Mensajes</legend>
 
-                            <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                            <select name="curso" id="curso">
-                            @foreach($cursos as $c)
-                            <option>{{$c -> idCurso}}   {{$c -> grado}}</option>
-                            @endforeach
-                            </select>
-                            </div>
-                            </div>
 
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
@@ -54,8 +45,10 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 
+<!-- Insertar CKeditor para la caja de descripcion-->
+<script>
 
 CKEDITOR.config.height = 400;
 CKEDITOR.config.width = 'auto';
