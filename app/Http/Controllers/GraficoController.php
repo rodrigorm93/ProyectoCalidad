@@ -31,8 +31,32 @@ class GraficoController extends Controller
 
     public function index(){
 
-     
-      return view('grafico.index');
+     $alumno=DB::table('alumno')
+     ->get();
+
+     $aprob = '0';
+     $naprob = '0';
+     $aprobm = '0';
+     $pa = '0';
+
+     foreach($alumno as $a){
+            if($a->estado_curso == 'NA'){
+                $naprob = $naprob + '1';
+            }
+            if($a->estado_curso == 'A'){
+                $aprob = $aprob + '1';
+            }
+            if($a->estado_curso == 'AM'){
+                $aprobm = $aprobm + '1';
+            }
+            if($a->estado_curso == 'PA'){
+                $pa = $pa + '1';
+            }
+        }
+
+        return view('grafico.index', ['alumno' => $alumno, 'aprob' => $aprob, 'naprob' => $naprob,'aprobm' => $aprobm,'pa' => $pa]);
+      
+      
     }
 
   }

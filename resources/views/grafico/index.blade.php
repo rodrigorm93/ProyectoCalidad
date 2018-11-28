@@ -25,10 +25,10 @@
         var myChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ["a","b","c"],
+                labels: ["Reprobados","Aprobados","Aprobacion Maxima","Pendiente"],
                 datasets: [{
                     label: 'Pesos',
-                    data: [{{24}},{{30}},{{10}}],
+                    data: [{{$naprob}},{{$aprob}},{{$aprob}},{{$pa}}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

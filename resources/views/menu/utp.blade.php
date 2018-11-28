@@ -93,44 +93,7 @@
                             </ul>
                         </li>
 
-                        <li>
-                            <a href="#"><i class="fa fa-film fa-fw"></i> Cursos<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <!--
-                                <li>
-                                    <a href="/curso/importar"> <i class='fa fa-plus fa-fw'></i> Importar lista </a>
-                                </li>
-                                -->
-                                <li>
-                                    <a href="{{ route('curso.index') }}"><i class='fa fa-list-ol fa-fw'></i> Cursos</a>
-                                </li>
-                            </ul>
-                        </li>
-
-
-                        <li>
-                            <a href="#"><i class="fa fa-child fa-fw"></i> Profesores<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                
-                                <li>
-                                    <a href="/profesores"><i class='fa fa-list-ol fa-fw'></i> Profesores</a>
-                                </li>
-
-                           
-                            </ul>
-                            
-                        </li>
-
-                              <li>
-                            <a href="#"><i class="fa fa-film fa-fw"></i> Asignar Cursos<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                
-                              
-                                 <li>
-                                    <a href="{{ route('seccion_curso.index') }}"><i class='fa fa-list-ol fa-fw'></i>Mostrar</a>
-                                </li>
-                            </ul>
-                        </li>
+                       
 
                            <li>
                             <a href="#"><i class="fa fa-film fa-fw"></i>Estado de Notas<span class="fa arrow"></span></a>

@@ -67,8 +67,14 @@ class NotasController extends Controller
         ->get();
 
       
-             
-        return view('notas.grado',['curso'=> $curso]);
+        if($this->auth->user()->rol=='utp'){
+
+                return view('notas.grado1',['curso'=> $curso]); 
+            }else {
+
+                return view('notas.grado',['curso'=> $curso]);
+            }    
+        
   
     }
 
@@ -124,6 +130,14 @@ class NotasController extends Controller
         ->select( 'n.idAlumno', DB::raw( 'round(AVG( n.promedio ),0) as promedioFinal' ))
         ->groupBy('n.idAlumno')      
         ->get();
+
+        if($this->auth->user()->rol=='utp'){
+
+                return view('notas.estadoPorCurso1',['alumnos'=> $alumnos]); 
+            }else {
+
+                return view('notas.estadoPorCurso',['alumnos'=> $alumnos]);
+            } 
 
 
         return view('notas.estadoPorCurso',['alumnos'=> $alumnos]);
@@ -451,6 +465,14 @@ class NotasController extends Controller
         $curso=DB::table('Curso')
         ->get();
 
+        if($this->auth->user()->rol=='utp'){
+
+                return view('libreta_notas.grado1',['curso'=> $curso]); 
+            }else {
+
+                return view('libreta_notas.grado',['curso'=> $curso]);
+            }    
+
       
         return view('libreta_notas.grado',['curso'=> $curso]);
   
@@ -477,7 +499,15 @@ class NotasController extends Controller
 
             $curso=DB::table('Curso')
             ->where('idCurso','=',$idCurso)
-            ->get();       
+            ->get();  
+
+            if($this->auth->user()->rol=='utp'){
+
+                return view('libreta_notas.ver_libretaUtp', ["libreta" => $libreta,"curso" => $curso]); 
+            }else {
+
+                return view('libreta_notas.ver_libreta', ["libreta" => $libreta,"curso" => $curso]);
+            }      
 
         return view('libreta_notas.ver_libreta', ["libreta" => $libreta,"curso" => $curso]);
     }
