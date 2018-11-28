@@ -117,6 +117,10 @@ Route::get('/avisos/modal','AvisosController@destroyAviso');
 //Para eliminar una citacion
 Route::get('/citaciones/modal','CitacionesController@destroyCitacion');
 
+
+
+//Para eliminar una citacion
+Route::get('/mensajes/modal','MensajesController@destroyMsj');
 //VISTA ALUMNO 
 
 

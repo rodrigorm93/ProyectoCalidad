@@ -21,7 +21,17 @@ class MensajesController extends Controller
  
 
     public function index(){
-  
+        $msj = DB::table('mensajes as m')
+        ->select('m.idMensaje',
+                  'm.nombre',
+                  'm.fecha',
+                  'm.descripcion',
+                  'm.asunto',
+                  'm.email'
+        )
+        ->paginate(5);
+
+        return view('mensajes.index', ['msj'=> $msj]);
         
     }
 
@@ -70,30 +80,8 @@ class MensajesController extends Controller
  
 
 
-    public function destroy($id_anuncio)
+    public function destroyMsj(Request $request)
     {
-
-        try {
-
-        DB::beginTransaction();
-
-        $orden=DB::table('orden')->where('id_anuncio', '=', $id_anuncio)->select('id_secretaria as id_secretaria')->first();
-
-        $secretaria=DB::table('secretaria')->where('id_secretaria', '=', $orden->id_secretaria)->select('anuncios_pend as anuncios_pend')->first();
-
-            Secretaria::where('id_secretaria', $orden->id_secretaria)
-                  ->update(['anuncios_pend' => $secretaria->anuncios_pend-1]);
-      
-        DB::table('anuncio')->where('id_anuncio', '=', $id_anuncio)->delete();
-
-        DB::commit();
-          
-      } catch (Exception $e) {
-          DB::rollback();
-      }
-
-      alert()->success('El anuncio ha sido eliminado.', '¡Listo!')->persistent('Cerrar');
-      return Redirect::to('/servicios');
 
 
     }

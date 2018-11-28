@@ -228,6 +228,10 @@
                                 <a href="/libreta_notas/grado"><i class='fa fa-list-ol fa-fw'></i>Libreta de notas</a>
                             </li>
 
+                             <li>
+                                    <a href="/mensajes"><i class='fa fa-list-ol fa-fw'></i>Mensajes</a>
+                                </li>
+
                             
 
                           
