@@ -67,7 +67,7 @@ class ProfesorController extends Controller
 
         //Revisamos que el registro no este duplicado
         
-         $regitros = Alumno::where("idAlumno","=",$idProfesor)->count();
+         $regitros = Profesor::where("idProfesor","=",$idProfesor)->count();
          if($regitros >0){
          return Redirect::to('menu')->with('error', "El Profesor ".$idProfesor.
              " Ya esta Registrado");
