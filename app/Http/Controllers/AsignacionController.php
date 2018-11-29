@@ -219,8 +219,35 @@ class AsignacionController extends Controller
             $idCurso=$request->get('idCurso');
             $materias=$request->get('idMateria');
 
+            $cantidad = 0;
+
             $cont = 0;
             $cont2 = 0;
+
+            $contM =0 ;
+            $contR =0;
+
+            //REVISAMOS QUE EL ALUMNO NO HAYA ESTADO INSCRITO ANTES EN EL RAMO
+
+            while($contM < count($materias)){
+            while($contR < count($idAlumno)){
+                  
+                if($Asignar[$contR]=='Asignar'){
+
+                $registro = Notas::where("idAlumno","=",$idAlumno[$contR])
+                ->where("idMateria","=",$materias[$contM])->count();
+                if($registro >0){
+                    return Redirect::to('seccion_curso/grado')->with('error', "El Alumno ".$idAlumno[$contR].
+                    " Ya fue registrado en ese curso");
+
+                }
+            }
+                $contR = $contR+1;
+            }
+            $contM = $contM+1;
+        }
+                
+        //************************************************************************************** */
 
 
             //Se recorren y asignan los array
@@ -233,6 +260,8 @@ class AsignacionController extends Controller
              
             Alumno::where('idAlumno', '=', $idAlumno[$cont])
                    ->update(['asignacion' => 'ASIGNADO']);
+
+             $cantidad = $cantidad+1;
 
             
 
@@ -259,12 +288,13 @@ class AsignacionController extends Controller
             $notas->promedio='0';
             $notas->save();
 
+  
+
             $cont2 = $cont2+1;
             }
 
                 }
                
-
                 $cont = $cont+1;
                 $cont2 = 0;
             }
@@ -273,10 +303,14 @@ class AsignacionController extends Controller
             
         } catch (Exception $e) {
             DB::rollback();
-            
+
+           
             
         }
-            return Redirect::to('/menu');
+       
+
+        return Redirect::to('menu')->with('success2', "Se han ingresado ".$cantidad." datos correctamente");
+
     }
 
 
