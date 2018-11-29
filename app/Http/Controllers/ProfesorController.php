@@ -173,7 +173,20 @@ class ProfesorController extends Controller
 
             $cont = 0;
             $cantidad = 0;
+            $contR = 0;
 
+            while($contR < count($id)){
+                $user = Profesor::where("idProfesor","=",$id[$contR])->count();
+                if($user >0){
+                    return Redirect::to('menu')->with('error', "El Profesor ".$id[$contR]." ".$nombre[$contR]." ".$apellido[$contR].
+                    " Ya esta Registrado");
+                    
+    
+                }
+                $contR = $contR+1;
+            }
+
+                    
             //Se recorren y asignan los array
             while($cont < count($id)){
 
@@ -213,6 +226,7 @@ class ProfesorController extends Controller
             }
 
             DB::commit();
+
             
         } catch (Exception $e) {
             DB::rollback();

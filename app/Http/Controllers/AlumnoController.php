@@ -234,8 +234,19 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
 
             $cont = 0;
             $cantidad = 0;
+            $contR = 0;
 
-            //Se recorren y asignan los array
+            //Revisamos que el registro no este duplicado
+            while($contR < count($id)){
+            $regitros = Alumno::where("idAlumno","=",$id[$contR])->count();
+            if($regitros >0){
+                return Redirect::to('menu')->with('error', "El Alumno ".$id[$contR]." ".$nombre[$contR]." ".$apellido[$contR].
+                " Ya esta Registrado");
+            }
+            $contR = $contR+1;
+        }
+
+                 //Se recorren y asignan los array
             while($cont < count($id)){
 
                 
@@ -278,6 +289,8 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
             }
 
             DB::commit();
+
+    
             
         } catch (Exception $e) {
             DB::rollback();

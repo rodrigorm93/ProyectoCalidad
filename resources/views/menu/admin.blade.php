@@ -5,6 +5,12 @@
 			{{session('success2')}}
 		</div>
 	@endif
+
+    @if(session('error'))
+		<div class="alert alert-danger">
+			{{session('error')}}
+		</div>
+	@endif
 <head>
 
     <!-- IMPORTANDO ICONOS -->
