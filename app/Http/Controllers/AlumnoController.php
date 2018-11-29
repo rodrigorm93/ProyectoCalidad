@@ -104,6 +104,17 @@ return view('listaAlumno.index', ["lista" => $lista,"curso" => $cursos ]);
 
     public function store(Request $request)
     {   
+        $idAlumno =$request->get('id');;
+
+           //Revisamos que el registro no este duplicado
+           
+            $regitros = Alumno::where("idAlumno","=",$idAlumno)->count();
+            if($regitros >0){
+            return Redirect::to('menu')->with('error', "El Alumno ".$idAlumno.
+                " Ya esta Registrado");
+            }
+         
+
         $usuario = new User;
         $usuario->id=$request->get('id');
         $usuario->digito=$request->get('digito');
