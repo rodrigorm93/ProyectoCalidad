@@ -33,7 +33,7 @@
 						<td>{!!str_limit($av->mensaje,40)!!}</td>
                         <td>{{$av -> fecha}}</td>
 						<td>
-                        <a href="{{URL::action('AvisosController@edit', $av -> id_aviso)}}"><btn class="btn btn-info"><i class="material-icons" style="font-size:18px">border_color</i></btn></a>
+                  
 						<a href="" data-target="#modal-delete-{{$av->id_aviso}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i></btn></a>
 							
 						</td>
