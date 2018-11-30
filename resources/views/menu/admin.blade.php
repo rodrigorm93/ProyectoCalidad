@@ -209,7 +209,7 @@
                             </ul>
                         </li>
 
-                        @if(Auth::user()->rol=='admin' && Auth::user()->rol=='utp' )
+                        @if(Auth::user()->rol=='admin' || Auth::user()->rol=='utp' )
 
                            <li>
                             <a href="#"><i class="fa fa-film fa-fw"></i>Estado de Notas<span class="fa arrow"></span></a>
