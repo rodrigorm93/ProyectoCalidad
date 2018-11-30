@@ -27,10 +27,11 @@
 						<td>{{$sec -> nombre}} {{$sec -> apellido}}</td>
 				
 				
-				
+				@if(Auth::user()->rol=='admin')
 				<td>
 				<a href="" data-target="#modal-delete-{{$sec->idAlumno,$sec->idMateria}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i> </btn></a>
 			     </td>
+				 @endif
 
 
 				
@@ -46,12 +47,14 @@
 			{{$seccion->render()}}
 		</div>
 	</div>
+	@if(Auth::user()->rol=='admin')
 	{!!Form::open(array('url'=>'seccion_curso/reiniciarCurso', 'method'=>'GET', 'autocomplete'=>'off'))!!}
                 {{Form::token()}}
 				@foreach ($seccion as $s)
 				<input id="Alumnos" type="hidden" name="Alumnos[]" value="{{$s -> idAlumno}}">
 				@endforeach
 	<button class="btn btn-danger" type="submit">Reiniciar Curso</button>
+	@endif
 	
 	{!!Form::close()!!}	
 @stop
