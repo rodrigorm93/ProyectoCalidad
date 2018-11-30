@@ -43,11 +43,9 @@ class GraficoController extends Controller
             if($a->estado_curso == 'NA'){
                 $naprob = $naprob + '1';
             }
-            if($a->estado_curso == 'A'){
+            if(($a->estado_curso == 'A') || ($a->estado_curso == 'AM')){
                 $aprob = $aprob + '1';
-            }
-            if($a->estado_curso == 'AM'){
-                $aprobm = $aprobm + '1';
+                
             }
             if($a->estado_curso == 'PA'){
                 $pa = $pa + '1';

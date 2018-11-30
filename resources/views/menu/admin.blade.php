@@ -147,6 +147,22 @@
                             </ul>
                         </li>
                         @endif
+
+                        @if(Auth::user()->rol=='admin')
+                            <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Utp<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/utp/create"> <i class='fa fa-plus fa-fw'></i> Agregar </a>
+                                </li>
+                              
+                                <li>
+                                    <a href="/utp"><i class='fa fa-list-ol fa-fw'></i>Mostrar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @endif
+
                         <li>
                             <a href="#"><i class="fa fa-film fa-fw"></i> Cursos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

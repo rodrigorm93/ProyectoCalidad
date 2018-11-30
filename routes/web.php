@@ -153,6 +153,7 @@ Route::resource('noticias', 'NoticiasController');
 Route::resource('profesores', 'ProfesorController');
 
 Route::resource('director', 'DirectorController');
+Route::resource('utp', 'UtpController');
 
 Route::resource('curso', 'CursoController');
 
