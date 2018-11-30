@@ -42,14 +42,21 @@ class UsuarioController extends Controller
             if($this->auth->user()->rol=='admin'){
 
                 return view('menu.admin'); 
-            }else if($this->auth->user()->rol=='utp'){
-
-                return view('menu.utp'); 
             }
             
+            
+            else if($this->auth->user()->rol=='utp'){
 
+                return view('menu.utp'); 
 
+            }  
+            else if($this->auth->user()->rol=='director'){
 
+                return view('menu.admin'); 
+
+            }  
+            
+    
             else if($this->auth->user()->rol=='profesor') {
                 $query=$this->auth->user()->id;
                 $cursos=DB::table('materia as m')

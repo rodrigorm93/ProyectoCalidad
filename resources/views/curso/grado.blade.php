@@ -44,15 +44,21 @@
                         <td><button class="btn btn-primary" type="submit">ingresar</button></td>
                         {!!Form::close()!!}
 
+                      
                         <td>
+                        @if(Auth::user()->rol=='admin')
+
                     	<a href="{{URL::action('CursoController@edit', $c -> idCurso)}}"><btn class="btn btn-info">
                     <i class="material-icons" style="font-size:18px">border_color</i></btn></a>
 
                     
 						<a href="" data-target="#modal-delete-{{$c->idCurso}}" data-toggle="modal"><btn class="btn btn-danger">
                     <i class="fa fa-trash" style="font-size:20px;color:white"></i> </btn></a></td>
+                    @endif
                 
 				 </tr>
+
+                 
 		
                  @include('curso.modal') 
              

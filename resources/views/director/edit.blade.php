@@ -7,7 +7,7 @@
         <div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
             
             <fieldset>
-                <legend><h3>Editar Profesor: {{ $usuario->id }}-{{ $usuario->digito }}</h3></legend>
+                <legend><h3>Editar Director: {{ $usuario->id }}-{{ $usuario->digito }}</h3></legend>
                 @if(count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
@@ -18,7 +18,7 @@
                 </div>
                 @endif
 
-                {!!Form::model($usuario, ['method'=>'PATCH', 'route'=>['profesores.update', $usuario->id]]) !!}
+                {!!Form::model($usuario, ['method'=>'PATCH', 'route'=>['director.update', $usuario->id]]) !!}
                 {{Form::token()}}
                 <div class="form-group">
                     <label for="id">RUT: </label>
@@ -29,11 +29,11 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña: </label>
-                    <input type="password" name="password" placeholder="*************" value="{{$usuario->password}}">
+                    <input type="password" name="password" placeholder="*************" >
                 </div>
                 <div class="form-group">
                     <label for="password2">Confirme la Contraseña: </label>
-                    <input type="password" name="password2" placeholder="*************" value="{{$usuario->password}}">
+                    <input type="password" name="password2" placeholder="*************" >
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre: </label>
@@ -44,7 +44,7 @@
                     <input type="text" name="apellido" placeholder="EJ: Laloca" value="{{$usuario->apellido}}">
                 </div>
 
-                <div class="form-group">
+               <div class="form-group">
                     <label for="genero">Genero: </label>
                     @if($usuario->genero == 0)
                     <input type="text" name="genero" value="mujer" > 

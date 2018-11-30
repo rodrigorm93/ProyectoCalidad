@@ -7,7 +7,7 @@ use App\Http\Requests;
 
 //agregamos nuestro modelo
 use App\User;
-use App\Profesor;
+use App\Director;
 use App\Materia;
 
 //hacemos referencias a redirect para hacer algunas redirrecciones
@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Redirect;
 //para tebajar con la clase DB de laravel.
 use DB;
 
-class ProfesorController extends Controller
+class DirectorController extends Controller
 {
     //vamos a declarar un constructor:
 
@@ -35,7 +35,7 @@ class ProfesorController extends Controller
             $query=trim($request->get('searchText'));
 
             $usuarios = DB::table('users as u')
-            ->join ('Profesor as p', 'p.idProfesor', '=' , 'u.id')
+            ->join ('Director as d', 'd.id_director', '=' , 'u.id')
             ->where('id', 'LIKE', '%'.$query.'%')
             ->where('estado', '<>', 'inactivo')
             ->select('u.id as id',
@@ -46,7 +46,7 @@ class ProfesorController extends Controller
             ->paginate(5);
 
     
-            return view('profesor.index', ["usuarios" => $usuarios, "searchText" => $query]);
+            return view('director.index', ["usuarios" => $usuarios, "searchText" => $query]);
         
     }
 
@@ -55,7 +55,7 @@ class ProfesorController extends Controller
     {
 
        
-        return view('profesor.create');
+        return view('director.create');
   
     }
 
@@ -63,23 +63,13 @@ class ProfesorController extends Controller
     public function store(Request $request)
     {   
 
-        $idProfesor =$request->get('id');
-        $genero = $request->get('genero');
-
-        if($genero=='mujer'){
-            $generoP=0;
-        }
-        else{
-            $generoP =1;
-
-        }
-        
+        $idDirector =$request->get('id');;
 
         //Revisamos que el registro no este duplicado
         
-         $regitros = Profesor::where("idProfesor","=",$idProfesor)->count();
+         $regitros = Director::where("id_director","=",$idDirector)->count();
          if($regitros >0){
-         return Redirect::to('menu')->with('error', "El Profesor ".$idProfesor.
+         return Redirect::to('menu')->with('error', "El Director ".$idDirector.
              " Ya esta Registrado");
          }
       
@@ -90,31 +80,31 @@ class ProfesorController extends Controller
       $usuario->nombre=$request->get('nombre');
       $usuario->apellido=$request->get('apellido');
       $usuario->email=$request->get('email');
-      $usuario->genero=$generoP;
+      $usuario->genero=$request->get('genero');
       $usuario->edad=$request->get('edad');
-      $usuario->rol= 'profesor';
+      $usuario->rol= 'director';
       $usuario->estado= 'activo';
       $usuario->save(); 
 
-      $profesor = new Profesor;
-      $profesor->idProfesor = $request->get('id');
-      $profesor->nombre=$request->get('nombre');
-      $profesor->apellido=$request->get('apellido');
-      $profesor->save(); 
+      $director = new Director;
+      $director->id_director = $request->get('id');
+      $director->nombre=$request->get('nombre');
+      $director->apellido=$request->get('apellido');
+      $director->save(); 
 
-      return Redirect::to('/profesores')->with('profesores', "Se han ingresado los datos correctamente");;
+      return Redirect::to('/director')->with('director', "Se han ingresado el Director correctamente");;
       
     }
 
 
     public function show($id)
     {
-        return view("profesor.show", ["usuario"=>User::findOrFail($id)]);
+        return view("director.show", ["usuario"=>User::findOrFail($id)]);
     }
 
     public function edit($id)
     {
-      return view("profesor.edit", ["usuario"=>User::findOrFail($id), "profesor"=>Profesor::findOrFail($id)]);  
+      return view("director.edit", ["usuario"=>User::findOrFail($id), "director"=>Director::findOrFail($id)]);  
     }
 
     public function update(Request $request, $id)
@@ -139,17 +129,17 @@ class ProfesorController extends Controller
       $usuario->email=$request->get('email');
       $usuario->genero=$generoP;
       $usuario->edad=$request->get('edad');
-      $usuario->rol= 'profesor';
+      $usuario->rol= 'director';
       $usuario->update(); 
 
-      $profesor = Profesor::findOrFail($id);
-      $profesor->idProfesor=$request->get('id');
-      $profesor->nombre=$request->get('nombre');
-      $profesor->apellido=$request->get('apellido');
-      $profesor->update();  
+      $director = Director::findOrFail($id);
+      $director->id_director=$request->get('id');
+      $director->nombre=$request->get('nombre');
+      $director->apellido=$request->get('apellido');
+      $director->update();  
 
 
-      return Redirect::to('/profesores');
+      return Redirect::to('/director');
     }
 
 
@@ -162,12 +152,8 @@ class ProfesorController extends Controller
             $usuario = User::findOrFail($id);
             $usuario->delete();  
 
-            $profesor = Profesor::findOrFail($id);
+            $profesor = Director::findOrFail($id);
             $profesor->delete(); 
-      
-            //Dejamos la materia que impartia el profesor como no asignada.
-            Materia::where('idProfesor', $id)
-            ->update(['asignacion' => 'No asignado','idProfesor' => 0]);
 
             DB::commit();
 
@@ -175,7 +161,7 @@ class ProfesorController extends Controller
             DB::rollback();
         }
       
-        return Redirect::to('/profesores')->with('profesores', "Registro Eliminado Correctamente");
+        return Redirect::to('/director')->with('director', "Registro Eliminado Correctamente");
     }
 
 

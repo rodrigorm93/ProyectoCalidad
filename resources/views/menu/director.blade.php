@@ -47,11 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @if(Auth::user()->rol=='admin')
                 <a class="navbar-brand" href="/menu">Admin</a>
-                @else
-                <a class="navbar-brand" href="/menu">Director(a)</a>
-                @endif
                 <a class="navbar-brand" href="/">Home</a>
             </div>
            
@@ -119,50 +115,20 @@
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Estudiantes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                            @if(Auth::user()->rol=='admin')
+                             
                                 <li>
-                                    <a href="{{ route('alumno.create') }}"> <i class='fa fa-plus fa-fw'></i> Agregar </a>
-                                </li>
-                                <li>
-                                    <a href="/alumno/importar"> <i class='fa fa-plus fa-fw'></i> Importar lista </a>
-                                </li>
-                                <li>
-                                @endif
                                     <a href="/alumno"><i class='fa fa-list-ol fa-fw'></i> Estudiantes</a>
                                 </li>
                             </ul>
                         </li>
 
-                        @if(Auth::user()->rol=='admin')
-                            <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Director<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/director/create"> <i class='fa fa-plus fa-fw'></i> Agregar </a>
-                                </li>
-                              
-                                <li>
-                                    <a href="/director"><i class='fa fa-list-ol fa-fw'></i>Mostrar</a>
-                                </li>
-                            </ul>
-                        </li>
-                        @endif
+
+                       
+
                         <li>
                             <a href="#"><i class="fa fa-film fa-fw"></i> Cursos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                            @if(Auth::user()->rol=='admin')
-                                <li>
-                                    <a href="/curso/create"><i class='fa fa-plus fa-fw'></i> Curso</a>
-                                </li>
-                                <li>
-                                    <a href="/curso/createMateria"><i class='fa fa-plus fa-fw'></i> Materia</a>
-                                </li>
-                                <!--
-                                <li>
-                                    <a href="/curso/importar"> <i class='fa fa-plus fa-fw'></i> Importar lista </a>
-                                </li>
-                                -->
-                                @endif
+                              
                                 <li>
                                     <a href="{{ route('curso.index') }}"><i class='fa fa-list-ol fa-fw'></i> Cursos</a>
                                 </li>
@@ -173,15 +139,7 @@
                         <li>
                             <a href="#"><i class="fa fa-child fa-fw"></i> Profesores<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-
-                            @if(Auth::user()->rol=='admin')
-                                <li>
-                                    <a href="{{route('profesores.create') }}"><i class='fa fa-plus fa-fw'></i> Agregar</a>
-                                </li>
-                                <li>
-                                    <a href="/profesor/importar"> <i class='fa fa-plus fa-fw'></i> Importar lista </a>
-                                </li>
-                                @endif
+                             
                                 <li>
                                     <a href="/profesores"><i class='fa fa-list-ol fa-fw'></i> Profesores</a>
                                 </li>
@@ -192,45 +150,17 @@
                         </li>
 
                               <li>
-                            <a href="#"><i class="fa fa-film fa-fw"></i> Asignar Cursos<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-film fa-fw"></i> Asignaciones<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                            @if(Auth::user()->rol=='admin')
-                                <li>
-                                    <a href="/seccion_curso/grado"><i class='fa fa-plus fa-fw'></i>Alumnos</a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/seccion_curso/asignarP"><i class='fa fa-plus fa-fw'></i>Profesor</a>
-                                </li>
-                              @endif
+                               
+                              
                                  <li>
                                     <a href="{{ route('seccion_curso.index') }}"><i class='fa fa-list-ol fa-fw'></i>Mostrar</a>
                                 </li>
                             </ul>
                         </li>
 
-                        @if(Auth::user()->rol=='admin' && Auth::user()->rol=='utp' )
-
-                           <li>
-                            <a href="#"><i class="fa fa-film fa-fw"></i>Estado de Notas<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                            <!--
-                                <li>
-                                    <a href="#"><i class='fa fa-plus fa-fw'></i> Agregar</a>
-                                </li>
-                                
-                                <li>
-                                
-                                    <a href="/notas"><i class='fa fa-list-ol fa-fw'></i>Estado</a>
-                                </li>
-
-                                 <li>
-                                -->
-                                <a href="/notas/grado"><i class='fa fa-list-ol fa-fw'></i>Calcular Promedios Finales</a>
-                            </li>
-                            </ul>
-                        </li>
-                        @endif
+                           
 
                         <li>
                             <a href="#"><i class="fa fa-film fa-fw"></i> Avisos<span class="fa arrow"></span></a>

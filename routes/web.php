@@ -152,6 +152,7 @@ Route::resource('alumno', 'AlumnoController');
 Route::resource('noticias', 'NoticiasController');
 Route::resource('profesores', 'ProfesorController');
 
+Route::resource('director', 'DirectorController');
 
 Route::resource('curso', 'CursoController');
 

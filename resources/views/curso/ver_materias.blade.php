@@ -34,9 +34,13 @@
 
 					     {!!Form::open(array('url'=>'curso/editMateria', 'method'=>'GET', 'autocomplete'=>'off'))!!}
             {{Form::token()}}
-					<td><input type="hidden" name="idMateria"  value="{{$m->id}}">
+					<td>
+					@if(Auth::user()->rol=='admin')
+					<input type="hidden" name="idMateria"  value="{{$m->id}}">
 					<button class="btn btn-info" type="submit">
-                    <i class="material-icons" style="font-size:18px">border_color</i></td>	
+                    <i class="material-icons" style="font-size:18px">border_color</i>
+					@endif
+					</td>	
 					{!!Form::close()!!}
 				 </tr>
 			

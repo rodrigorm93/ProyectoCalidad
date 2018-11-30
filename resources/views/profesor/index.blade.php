@@ -32,10 +32,12 @@
 						<td>{{$usu -> nombre}}</td>
 						<td>{{$usu -> apellido}}</td>
 						<td>{{$usu -> email}}</td>
+						@if(Auth::user()->rol=='admin')
 						<td>
 							<a href="{{URL::action('ProfesorController@edit', $usu -> id)}}"><btn class="btn btn-info"><i class="material-icons" style="font-size:18px">border_color</i></btn></a>
 							<a href="" data-target="#modal-delete-{{$usu->id}}" data-toggle="modal"><btn class="btn btn-danger"><i class="fa fa-trash" style="font-size:20px;color:white"></i></btn></a>
 						</td>
+						@endif
 					</tr>
 					@include('profesor.modal')
 					@endforeach
