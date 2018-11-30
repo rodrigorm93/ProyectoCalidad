@@ -34,8 +34,6 @@
 				 @endif
 
 
-				
-
 						</td>
 					</tr>
 				@include('seccion_curso.modal')
